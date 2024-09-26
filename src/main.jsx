@@ -7,6 +7,8 @@ import router from './Router/Router.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <div className='font-quicksand'>
+      <RouterProvider router={router} />
+    </div>
   </StrictMode>,
 )

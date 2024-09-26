@@ -5,13 +5,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { Pagination } from 'swiper/modules';
-import banner from '../../assets/banner.png'
-import banner1 from '../../assets/banner1.png'
-import banner2 from '../../assets/banner2.png'
+import banner from '../../../assets/banner.png'
+import banner1 from '../../../assets/banner1.png'
+import banner2 from '../../../assets/banner2.png'
 
 const Banner = () => {
     return (
-        <div className='lg:mx-20'>
+        <div className=''>
             <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
                 <SwiperSlide>
                     <div>

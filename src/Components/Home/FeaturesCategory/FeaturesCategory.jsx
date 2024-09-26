@@ -1,19 +1,17 @@
 import React from 'react';
-import cake from '../../assets/category/cake.png'
-import oganik from '../../assets/category/oganik.png'
-import peach from '../../assets/category/peach.png'
-import redApple from '../../assets/category/redApple.png'
-import snack from '../../assets/category/snak.png'
-import vagitables from '../../assets/category/vagitables.png'
-import strawberry from '../../assets/category/strawberry.png'
-import blackPlum from '../../assets/category/blackPlum.png'
-import custardApple from '../../assets/category/custardApple.png'
-import coffe from '../../assets/category/coffe.png'
+import cake from '../../../assets/category/cake.png'
+import oganik from '../../../assets/category/oganik.png'
+import peach from '../../../assets/category/peach.png'
+import redApple from '../../../assets/category/redApple.png'
+import snack from '../../../assets/category/snak.png'
+import vagitables from '../../../assets/category/vagitables.png'
+import strawberry from '../../../assets/category/strawberry.png'
+import blackPlum from '../../../assets/category/blackPlum.png'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 const FeaturesCategory = () => {
     return (
-        <div className='lg:mx-20 my-10'>
+        <div className='my-10'>
             <div className='flex justify-between items-center '>
                 <h1 className='text-2xl font-semibold'>Featured Categories</h1>
                 <div className='flex items-center gap-5'>
