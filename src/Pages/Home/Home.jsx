@@ -59,7 +59,7 @@ const Home = () => {
                 </div>
             </div>
             {/* ecomarce system */}
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5'>
+            <div className='my-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5'>
                 <div className='flex items-center gap-3 border  p-5 rounded-2xl bg-[#f4f6fa]'>
                     <img className='w-12' src={img2} alt="" />
                     <div>
