@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import logo from '../../assets/Header.png'
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { FiShoppingCart } from 'react-icons/fi';
 import { FaAngleDown, FaHeadphones, FaLocationArrow, FaRegUser } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import Flag from 'react-world-flags'
+
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [country, setCountry] = useState("")
+    console.log(country)
 
+    useEffect(() => {
+        fetch(`https://ipinfo.io?token=${import.meta.env.VITE_LOCATION_API_KEY}`)
+            .then(res => res.json())
+            .then(data => {
+                setCountry(data.country)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }, [])
 
 
     return (
@@ -54,8 +68,17 @@ const Navbar = () => {
                     </div>
                     <div className={`${isOpen ? 'translate-x-0 opacity-100 bg-white' : 'opacity-0 -translate-x-full '} hidden  absolute inset-x-0 z-20 w-full transition-all duration-300 ease-in-out  dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center`}>
                         <div className='flex items-center gap-2 border shadow px-3 py-2 rounded-2xl'>
-                            <FaLocationArrow></FaLocationArrow>
-                            <h1>Bangladesh</h1>
+                            {
+                                country ? <>
+                                    <div className='w-10'>
+                                        <Flag code={country} />
+                                    </div>
+                                    <h1>{country}</h1>
+                                </> : <>
+                                    <span className="loading loading-spinner loading-md"></span>
+                                </>
+                            }
+
                         </div>
                         <div className="flex  flex-col md:flex-row md:mx-6 ">
                             <div className='flex items-center gap-1'>
@@ -69,12 +92,14 @@ const Navbar = () => {
                                 <span>Cart</span>
                             </div>
                         </div>
-                        <div className="flex  flex-col md:flex-row md:mx-6 ">
-                            <div className='flex items-center gap-1'>
-                                <FaRegUser className='text-2xl' />
-                                <span>Account</span>
+                        <Link to={"/login"}>
+                            <div className="flex  flex-col md:flex-row md:mx-6 cursor-pointer">
+                                <div className='flex items-center gap-1'>
+                                    <FaRegUser className='text-2xl' />
+                                    <span>Account</span>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -95,27 +120,37 @@ const Navbar = () => {
                             <ul className='flex items-center gap-5'>
                                 <li>
                                     <NavLink to={'/'}
-                                        className="hover:text-[#3bb77e] duration-300 font-[600]"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#3bb77e]  font-[600] border-b-2 border-[#3bb77e] " : "hover:text-[#3bb77e] duration-300 font-[600]"
+                                        }
                                     >Home</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to={'/about'}
-                                        className="hover:text-[#3bb77e]  duration-300 font-[600]"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#3bb77e]  font-[600] border-b-2 border-[#3bb77e] " : "hover:text-[#3bb77e] duration-300 font-[600]"
+                                        }
                                     >About</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to={'/shop'}
-                                        className="hover:text-[#3bb77e]  duration-300 font-[600]"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#3bb77e]  font-[600] border-b-2 border-[#3bb77e] " : "hover:text-[#3bb77e] duration-300 font-[600]"
+                                        }
                                     >Shop</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to={'/blog'}
-                                        className="hover:text-[#3bb77e]  duration-300 font-[600]"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#3bb77e]  font-[600] border-b-2 border-[#3bb77e] " : "hover:text-[#3bb77e] duration-300 font-[600]"
+                                        }
                                     >Blog</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to={'/contact'}
-                                        className="hover:text-[#3bb77e]  duration-300 font-[600]"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-[#3bb77e] font-[600] border-b-2 border-[#3bb77e] " : "hover:text-[#3bb77e] duration-300 font-[600]"
+                                        }
                                     >Contact</NavLink>
                                 </li>
                             </ul>
