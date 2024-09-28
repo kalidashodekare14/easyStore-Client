@@ -1,0 +1,4 @@
+.mySwiper{
+    position: relative !important;
+    z-index: -10 !important;
+}

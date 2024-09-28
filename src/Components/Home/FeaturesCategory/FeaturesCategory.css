@@ -1,0 +1,9 @@
+.mainBg .childBackground:nth-child(1n){
+    background-color: #f2fce4;
+}
+.mainBg .childBackground:nth-child(2n){
+    background-color: #feefea;
+}
+.mainBg .childBackground:nth-child(3n){
+    background-color: #fff3ff;
+}

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import logo from '../../assets/Header.png'
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { FiShoppingCart } from 'react-icons/fi';
-import { FaHeadphones, FaLocationArrow, FaRegUser } from 'react-icons/fa';
+import { FaAngleDown, FaHeadphones, FaLocationArrow, FaRegUser } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -81,29 +81,42 @@ const Navbar = () => {
             <div className={`${isOpen ? 'translate-x-0 opacity-100 bg-white' : 'opacity-0 -translate-x-full '} absolute lg:static inset-x-0 z-20 w-full transition-all duration-300 ease-in-out  dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center`}>
                 <div className='lg:px-20 w-full p-2 border flex flex-col lg:flex-row justify-between items-center'>
                     <div className='flex flex-col lg:flex-row items-center gap-5'>
-                        <details className="dropdown">
-                            <summary className="btn w-52">Browse All Category</summary>
-                            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                <li><a>Item 1</a></li>
-                                <li><a>Item 2</a></li>
-                            </ul>
-                        </details>
+                        <div className='relative'>
+                            <div className='w-52 h-10 border flex justify-center items-center rounded-xl cursor-pointer'>
+                                <h1 className='flex items-center gap-2'>Browse All Categories  <FaAngleDown /></h1>
+                            </div>
+                            <div hidden className='absolute z-50 bg-white w-52 h-auto border p-3'>
+                                <h1>Cake</h1>
+                                <h1>Organic</h1>
+                                <h1>Peach</h1>
+                            </div>
+                        </div>
                         <div>
                             <ul className='flex items-center gap-5'>
                                 <li>
-                                    <NavLink>Home</NavLink>
+                                    <NavLink to={'/'}
+                                        className="hover:text-[#3bb77e] duration-300 font-[600]"
+                                    >Home</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink>About</NavLink>
+                                    <NavLink to={'/about'}
+                                        className="hover:text-[#3bb77e]  duration-300 font-[600]"
+                                    >About</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink>Shop</NavLink>
+                                    <NavLink to={'/shop'}
+                                        className="hover:text-[#3bb77e]  duration-300 font-[600]"
+                                    >Shop</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink>Blog</NavLink>
+                                    <NavLink to={'/blog'}
+                                        className="hover:text-[#3bb77e]  duration-300 font-[600]"
+                                    >Blog</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink>Contact</NavLink>
+                                    <NavLink to={'/contact'}
+                                        className="hover:text-[#3bb77e]  duration-300 font-[600]"
+                                    >Contact</NavLink>
                                 </li>
                             </ul>
                         </div>
@@ -112,8 +125,8 @@ const Navbar = () => {
                     <div className='flex items-center gap-2 p-5 lg:p-0'>
                         <FaHeadphones className='text-3xl'></FaHeadphones>
                         <div>
-                            <h1 className='text-2xl'>5489-8956</h1>
-                            <span className='text-[12px]'>24/7 Support Center</span>
+                            <h1 className='text-2xl text-[#3bb77e] font-[700]'>5489-8956</h1>
+                            <span className='text-[13px] font-[500]'>24/7 Support Center</span>
                         </div>
                     </div>
                 </div>
