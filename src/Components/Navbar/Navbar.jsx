@@ -26,7 +26,7 @@ const Navbar = () => {
 
 
     return (
-        <nav x-data="{ isOpen: false }" className=" relative  dark:bg-gray-800">
+        <nav x-data="{ isOpen: false }" className="relative  dark:bg-gray-800">
             <div className='lg:px-20 border'>
                 <div className="container mx-auto md:flex md:justify-between md:items-center">
                     <div className="flex items-center justify-between">
