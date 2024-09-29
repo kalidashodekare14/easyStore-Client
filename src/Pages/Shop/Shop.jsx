@@ -16,9 +16,6 @@ import card6 from '../../assets/shop/img6.png'
 const Shop = () => {
     return (
         <div className='lg:mx-20 my-10'>
-            <div>
-                <img src={img} alt="" />
-            </div>
             <div className='flex gap-5 w-full min-h-screen mt-10'>
                 <div className='w-80 space-y-5 min-h-screen'>
                     <div className='border shadow rounded-xl'>
