@@ -7,12 +7,31 @@ import { FaAngleDown, FaHeadphones, FaLocationArrow, FaRegUser } from 'react-ico
 import { Link, NavLink } from 'react-router-dom';
 import Flag from 'react-world-flags'
 import { useCart } from 'react-use-cart';
+import useAuth from '../../Hooks/useAuth';
 
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [profileDropdown, setProfileDropdown] = useState(false)
     const [country, setCountry] = useState("")
     const { totalUniqueItems } = useCart()
+    const { user, logoutSystem } = useAuth()
+
+
+    const handleProfileDropdown = () => {
+        setProfileDropdown(!profileDropdown)
+    }
+
+    const handleLogout = () => {
+        logoutSystem()
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
 
     useEffect(() => {
         fetch(`https://ipinfo.io?token=${import.meta.env.VITE_LOCATION_API_KEY}`)
@@ -101,14 +120,36 @@ const Navbar = () => {
                                 </div>
                             </Link>
                         </div>
-                        <Link to={"/login"}>
-                            <div className="flex  flex-col md:flex-row md:mx-6 cursor-pointer">
-                                <div className='flex items-center gap-1'>
-                                    <FaRegUser className='text-2xl' />
-                                    <span>Account</span>
-                                </div>
-                            </div>
-                        </Link>
+                        <div>
+                            {
+                                user?.email ? (
+                                    <div onClick={handleProfileDropdown} className={`relative flex  flex-col md:flex-row md:mx-6 cursor-pointer`}>
+                                        <div className='flex items-center gap-1'>
+                                            <FaRegUser className='text-2xl' />
+                                            <span>Account</span>
+                                        </div>
+                                        <div className={`${profileDropdown ? "" : "hidden"} duration-300 absolute -translate-x-20 translate-y-10`}>
+                                            <ul
+                                                tabIndex={0}
+                                                className="menu menu-sm dropdown-content bg-base-100  z-[1] mt-3 w-52 p-2 shadow">
+                                                <li><a>Profile</a></li>
+                                                <li><a>Settings</a></li>
+                                                <li onClick={handleLogout}><a>Logout</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <Link to={"/login"}>
+                                        <div className="flex  flex-col md:flex-row md:mx-6 cursor-pointer">
+                                            <div className='flex items-center gap-1'>
+                                                <FaRegUser className='text-2xl' />
+                                                <span>Login</span>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

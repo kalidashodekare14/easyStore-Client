@@ -3,45 +3,82 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import google from '../../assets/google.png'
 import facebook from '../../assets/facebook.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
+    const { registerSystem } = useAuth()
     const [phone, setPhone] = useState("")
-    console.log(phone)
+    const navigate = useNavigate()
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => {
+        console.log(data, phone)
+        registerSystem(data.email, data.password)
+            .then(res => {
+                console.log(res.data)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Your register has been successfuly",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate("/")
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
+
+
+
+
 
     return (
         <div className='min-h-screen flex justify-center items-center'>
             <div className='w-96 border p-5 space-y-5 rounded-2xl'>
                 <h1 className='text-3xl font-bold'>Sign Up</h1>
                 <div className='space-y-5'>
-                    <div className='flex flex-col space-y-2'>
-                        <label>Email</label>
-                        <input className='input input-bordered' placeholder='Your Email' type="text" />
-                    </div>
-                    <div className='flex flex-col space-y-2'>
-                        <label>Phone</label>
-                        <div>
+                    <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
+                        <div className='flex flex-col space-y-2'>
+                            <label>Email</label>
+                            <input {...register("email")} className='input input-bordered' placeholder='Your Email' type="email" />
+                        </div>
+                        <div className='flex flex-col space-y-2'>
+                            <label>Phone</label>
                             <div>
-                                <PhoneInput
-                                    country={'us'}
-                                    value={phone}
-                                    onChange={setPhone}
-                                    inputStyle={{
-                                        height: '3rem',
-                                        width: "100%"
-                                    }}
-                                />
+                                <div>
+                                    <PhoneInput
+                                        country={'us'}
+                                        value={phone}
+                                        onChange={setPhone}
+                                        inputStyle={{
+                                            height: '3rem',
+                                            width: "100%"
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className='flex flex-col space-y-2'>
-                        <label>Create Password</label>
-                        <input className='input input-bordered' placeholder='Your Password' type="text" />
-                    </div>
-                    <div>
-                        <button className='btn w-full bg-[#3bb77e] text-white' type='submit'>Sign Up</button>
-                    </div>
+                        <div className='flex flex-col space-y-2'>
+                            <label>Create Password</label>
+                            <input {...register("password")} className='input input-bordered' placeholder='Your Password' type="password" />
+                        </div>
+                        <div>
+                            <button className='btn w-full bg-[#3bb77e] text-white' type='submit'>Sign Up</button>
+                        </div>
+                    </form>
                     <p className='text-center '>or sign up with</p>
                     <div className='flex justify-center items-center gap-5'>
                         <button className='btn 40 flex items-center gap-2'>
