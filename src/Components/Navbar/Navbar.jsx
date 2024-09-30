@@ -6,12 +6,13 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { FaAngleDown, FaHeadphones, FaLocationArrow, FaRegUser } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import Flag from 'react-world-flags'
+import { useCart } from 'react-use-cart';
 
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [country, setCountry] = useState("")
-    console.log(country)
+    const { totalUniqueItems } = useCart()
 
     useEffect(() => {
         fetch(`https://ipinfo.io?token=${import.meta.env.VITE_LOCATION_API_KEY}`)
@@ -26,19 +27,22 @@ const Navbar = () => {
 
 
     return (
-        <nav x-data="{ isOpen: false }" className="relative  dark:bg-gray-800">
+        <nav x-data="{ isOpen: false }" className="relative dark:bg-gray-800">
             <div className='lg:px-20 border'>
-                <div className="container mx-auto md:flex md:justify-between md:items-center">
+                <div className="container p-3 mx-auto md:flex md:justify-between md:items-center">
                     <div className="flex items-center justify-between">
                         <a href="#">
                             <img className="h-10 sm:h-10 my-2 lg:w-80" src={logo} alt="QuickShop Logo" />
                         </a>
                         <div className='lg:hidden flex items-center gap-5'>
-                            <div className="flex  flex-col md:flex-row md:mx-6 ">
-                                <div className='flex items-center gap-1'>
-                                    <FiShoppingCart className='text-2xl' />
-                                    <span>Cart</span>
-                                </div>
+                            <div className="indicator flex  flex-col md:flex-row md:mx-6 ">
+                                <Link to={"/checkout"}>
+                                    <div className='flex items-center gap-1 '>
+                                        <FiShoppingCart className='text-2xl' />
+                                        <span>Cart</span>
+                                    </div>
+                                </Link>
+                                <span className="badge badge-sm indicator-item">8</span>
                             </div>
                             <div className="flex  flex-col md:flex-row md:mx-6 ">
                                 <div className='flex items-center gap-1'>
@@ -87,10 +91,15 @@ const Navbar = () => {
                             </div>
                         </div>
                         <div className="flex  flex-col md:flex-row md:mx-6 ">
-                            <div className='flex items-center gap-1'>
-                                <FiShoppingCart className='text-2xl' />
-                                <span>Cart</span>
-                            </div>
+                            <Link to={"/checkout"}>
+                                <div className='flex items-center gap-1'>
+                                    <div className='indicator'>
+                                        <FiShoppingCart className='text-2xl' />
+                                        <span className="badge -translate-y-6 text-[16px] bg-[#3bb77e] text-white p-2 w-8 h-8 badge-sm indicator-item">{totalUniqueItems}</span>
+                                    </div>
+                                    <span>Cart</span>
+                                </div>
+                            </Link>
                         </div>
                         <Link to={"/login"}>
                             <div className="flex  flex-col md:flex-row md:mx-6 cursor-pointer">

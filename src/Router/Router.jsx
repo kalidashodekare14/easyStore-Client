@@ -16,6 +16,8 @@ import Transaction from "../Pages/Dashboard/Transaction";
 import Account from "../Pages/Dashboard/Account";
 import Brands from "../Pages/Dashboard/Brands";
 import Statistics from "../Pages/Dashboard/Statistics";
+import Details from "../Pages/Details/Details";
+import CartCheckout from "../Pages/CartCheckout/CartCheckout";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,11 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop></Shop>
+            },
+            {
+                path: '/details/:id',
+                element: <Details></Details>,
+                loader: ({ params }) => fetch(`http://localhost:5000/prodcut_details/${params.id}`)
             },
             {
                 path: '/about',
@@ -45,6 +52,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/checkout',
+                element: <CartCheckout></CartCheckout>
             }
         ]
     },

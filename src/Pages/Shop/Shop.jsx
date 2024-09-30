@@ -13,10 +13,13 @@ import card4 from '../../assets/shop/img4.png'
 import card5 from '../../assets/shop/img5.png'
 import card6 from '../../assets/shop/img6.png'
 import useAllProduct from '../../Hooks/useAllProduct';
+import { useCart } from 'react-use-cart';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
 
     const [allProduct] = useAllProduct()
+    const { addItem } = useCart()
 
     console.log(allProduct)
 
@@ -129,7 +132,7 @@ const Shop = () => {
                                     <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
                                         <p>Hot</p>
                                     </div>
-                                    <div className='p-5 flex flex-col justify-center'>
+                                    <div className='p-5 flex flex-col justify-center gap-2'>
                                         <img className='h-32' src={product.image[0]} alt="" />
                                         <span className='text-[#7a7a7a]'>{product.name}</span>
                                         <h1 className='text-[18px] font-medium'>{product.description.slice(0, 30)}...</h1>
@@ -145,8 +148,11 @@ const Shop = () => {
                                             </span>
                                         </h2>
                                         <div className='flex justify-between items-center'>
-                                            <p className='text-[#3bb77e] font-bold text-xl'>${product.price}</p>
-                                            <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
+                                            <Link to={`/details/${product._id}`}>
+                                                <button className='btn border'>Details</button>
+                                            </Link>
+                                            {/* <p className='text-[#3bb77e] font-bold text-xl'>${product.price}</p> */}
+                                            <button onClick={() => addItem({ ...product, id: product._id })} className='btn bg-[#3bb77d34] text-[#3bb77e]'>
                                                 <CiShoppingCart className='text-xl' />
                                                 <span className='font-bold'>Add</span>
                                             </button>
