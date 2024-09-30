@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import upload from '../../assets/upload.png'
 import { useForm } from 'react-hook-form';
 import { RotatingLines } from 'react-loader-spinner';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 const image_hosting_key = import.meta.env.VITE_IMG_API_KEY
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
@@ -9,7 +11,8 @@ const AddProduct = () => {
 
     const [loading, setLoading] = useState(false)
     const [isImage, setIsImage] = useState([])
-    
+    const axiosSecure = useAxiosSecure()
+
     console.log(isImage)
 
     const {
@@ -17,6 +20,7 @@ const AddProduct = () => {
         handleSubmit,
         watch,
         formState: { errors },
+        reset
     } = useForm()
 
 
@@ -54,7 +58,40 @@ const AddProduct = () => {
 
     const onSubmit = (data) => {
         console.log(data)
+        const info = {
+            name: data.product_name,
+            description: data.description,
+            price: data.price,
+            category: data.category,
+            brand_name: data.brand_name,
+            unit_type: data.unit_type,
+            discount: data.discount,
+            availability: data.availability,
+            expiry_date: data.expiry_date,
+            image: isImage
+        }
 
+        try {
+            axiosSecure.post('/all_product', info)
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Your product has been public",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        reset()
+                    }
+                })
+                .catch(error => {
+                    console.log(error.message)
+                })
+        } catch (error) {
+            console.log("Something Rong", error.message)
+        }
     }
 
     return (
@@ -120,30 +157,38 @@ const AddProduct = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='w-[40%]'>
-                        <div className='p-5 bg-white '>
+                    <div className='w-[40%] '>
+                        <div className='p-5 bg-white h-[350px]'>
                             <h1 className='text-xl font-[600]'>Media</h1>
-                            <div onClick={() => document.querySelector('input[type="file"]').click()} className='flex flex-col justify-center items-center'>
+                            <div className='border-b'>
+                                <div onClick={() => document.querySelector('input[type="file"]').click()} className='flex flex-col justify-center items-center'>
+                                    {
+                                        loading && (
+                                            <RotatingLines
+                                                visible={true}
+                                                height="96"
+                                                width="96"
+                                                color="grey"
+                                                strokeWidth="5"
+                                                animationDuration="0.75"
+                                                ariaLabel="rotating-lines-loading"
+                                                wrapperStyle={{}}
+                                                wrapperClass=""
+                                            />
+                                        )
+                                    }
+                                    <img className={`${loading && "hidden"} w-40`} src={upload} alt="" />
+                                    <input onChange={handleImageHosting} type="file" hidden multiple className="file-input file-input-bordered w-full max-w-xs" />
+                                </div>
+                            </div>
+                            <div className='flex items-center gap-5 p-3'>
                                 {
-                                    loading ? (
-                                        <RotatingLines
-                                            visible={true}
-                                            height="96"
-                                            width="96"
-                                            color="grey"
-                                            strokeWidth="5"
-                                            animationDuration="0.75"
-                                            ariaLabel="rotating-lines-loading"
-                                            wrapperStyle={{}}
-                                            wrapperClass=""
-                                        />
-                                    ) : (
-
-                                        <img className='w-40' src={isImage} alt="" />
-                                    )
+                                    isImage.map(image => (
+                                        <div key={image}>
+                                            <img className='w-16 h-20' src={image} alt="" />
+                                        </div>
+                                    ))
                                 }
-                                <img className={` w-40`} src={upload} alt="" />
-                                <input onChange={handleImageHosting} type="file" hidden multiple className="file-input file-input-bordered w-full max-w-xs" />
                             </div>
                         </div>
                     </div>

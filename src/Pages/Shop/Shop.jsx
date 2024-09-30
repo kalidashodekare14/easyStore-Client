@@ -12,8 +12,14 @@ import card3 from '../../assets/shop/img3.png'
 import card4 from '../../assets/shop/img4.png'
 import card5 from '../../assets/shop/img5.png'
 import card6 from '../../assets/shop/img6.png'
+import useAllProduct from '../../Hooks/useAllProduct';
 
 const Shop = () => {
+
+    const [allProduct] = useAllProduct()
+
+    console.log(allProduct)
+
     return (
         <div className='lg:mx-20 my-10'>
             <div className='flex gap-5 w-full min-h-screen mt-10'>
@@ -117,209 +123,39 @@ const Shop = () => {
                         </div>
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-10'>
-                        <div className=' border space-y-2 rounded-2xl'>
-                            <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
-                                <p>Hot</p>
-                            </div>
-                            <div className='p-5'>
-                                <img src={card1} alt="" />
-                                <span className='text-[#7a7a7a]'>Hodo Foods</span>
-                                <h1 className='text-[18px] font-medium'>All Natural Italian-Style Chicken
-                                    Meatballs</h1>
-                                <Rating
-                                    style={{ maxWidth: 100 }}
-                                    value={4}
-                                    readOnly
-                                />
-                                <h2 className='text-[#7a7a7a]'>
-                                    By
-                                    <span className='text-[#3bb77e] font-medium'>
-                                        Stouffer
-                                    </span>
-                                </h2>
-                                <div className='flex justify-between items-center'>
-                                    <p className='text-[#3bb77e] font-bold text-xl'>$52.85</p>
-                                    <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
-                                        <CiShoppingCart className='text-xl' />
-                                        <span className='font-bold'>Add</span>
-                                    </button>
+                        {
+                            allProduct.map(product => (
+                                <div key={product._id} className=' border space-y-2 rounded-2xl'>
+                                    <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
+                                        <p>Hot</p>
+                                    </div>
+                                    <div className='p-5 flex flex-col justify-center'>
+                                        <img className='h-32' src={product.image[0]} alt="" />
+                                        <span className='text-[#7a7a7a]'>{product.name}</span>
+                                        <h1 className='text-[18px] font-medium'>{product.description.slice(0, 30)}...</h1>
+                                        <Rating
+                                            style={{ maxWidth: 100 }}
+                                            value={0}
+                                            readOnly
+                                        />
+                                        <h2 className='text-[#7a7a7a] space-x-2'>
+                                            <span>By:</span>
+                                            <span className='text-[#3bb77e] font-medium'>
+                                                {product.brand_name}
+                                            </span>
+                                        </h2>
+                                        <div className='flex justify-between items-center'>
+                                            <p className='text-[#3bb77e] font-bold text-xl'>${product.price}</p>
+                                            <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
+                                                <CiShoppingCart className='text-xl' />
+                                                <span className='font-bold'>Add</span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className=' border space-y-2 rounded-2xl'>
-                            <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
-                                <p>Hot</p>
-                            </div>
-                            <div className='p-5'>
-                                <img src={card2} alt="" />
-                                <span className='text-[#7a7a7a]'>Hodo Foods</span>
-                                <h1 className='text-[18px] font-medium'>All Natural Italian-Style Chicken
-                                    Meatballs</h1>
-                                <Rating
-                                    style={{ maxWidth: 100 }}
-                                    value={4}
-                                    readOnly
-                                />
-                                <h2 className='text-[#7a7a7a]'>
-                                    By
-                                    <span className='text-[#3bb77e] font-medium'>
-                                        Stouffer
-                                    </span>
-                                </h2>
-                                <div className='flex justify-between items-center'>
-                                    <p className='text-[#3bb77e] font-bold text-xl'>$52.85</p>
-                                    <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
-                                        <CiShoppingCart className='text-xl' />
-                                        <span className='font-bold'>Add</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className=' border space-y-2 rounded-2xl'>
-                            <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
-                                <p>Hot</p>
-                            </div>
-                            <div className='p-5'>
-                                <img src={card3} alt="" />
-                                <span className='text-[#7a7a7a]'>Hodo Foods</span>
-                                <h1 className='text-[18px] font-medium'>All Natural Italian-Style Chicken
-                                    Meatballs</h1>
-                                <Rating
-                                    style={{ maxWidth: 100 }}
-                                    value={4}
-                                    readOnly
-                                />
-                                <h2 className='text-[#7a7a7a]'>
-                                    By
-                                    <span className='text-[#3bb77e] font-medium'>
-                                        Stouffer
-                                    </span>
-                                </h2>
-                                <div className='flex justify-between items-center'>
-                                    <p className='text-[#3bb77e] font-bold text-xl'>$52.85</p>
-                                    <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
-                                        <CiShoppingCart className='text-xl' />
-                                        <span className='font-bold'>Add</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className=' border space-y-2 rounded-2xl'>
-                            <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
-                                <p>Hot</p>
-                            </div>
-                            <div className='p-5'>
-                                <img src={card4} alt="" />
-                                <span className='text-[#7a7a7a]'>Hodo Foods</span>
-                                <h1 className='text-[18px] font-medium'>All Natural Italian-Style Chicken
-                                    Meatballs</h1>
-                                <Rating
-                                    style={{ maxWidth: 100 }}
-                                    value={4}
-                                    readOnly
-                                />
-                                <h2 className='text-[#7a7a7a]'>
-                                    By
-                                    <span className='text-[#3bb77e] font-medium'>
-                                        Stouffer
-                                    </span>
-                                </h2>
-                                <div className='flex justify-between items-center'>
-                                    <p className='text-[#3bb77e] font-bold text-xl'>$52.85</p>
-                                    <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
-                                        <CiShoppingCart className='text-xl' />
-                                        <span className='font-bold'>Add</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className=' border space-y-2 rounded-2xl'>
-                            <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
-                                <p>Hot</p>
-                            </div>
-                            <div className='p-5'>
-                                <img src={card5} alt="" />
-                                <span className='text-[#7a7a7a]'>Hodo Foods</span>
-                                <h1 className='text-[18px] font-medium'>All Natural Italian-Style Chicken
-                                    Meatballs</h1>
-                                <Rating
-                                    style={{ maxWidth: 100 }}
-                                    value={4}
-                                    readOnly
-                                />
-                                <h2 className='text-[#7a7a7a]'>
-                                    By
-                                    <span className='text-[#3bb77e] font-medium'>
-                                        Stouffer
-                                    </span>
-                                </h2>
-                                <div className='flex justify-between items-center'>
-                                    <p className='text-[#3bb77e] font-bold text-xl'>$52.85</p>
-                                    <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
-                                        <CiShoppingCart className='text-xl' />
-                                        <span className='font-bold'>Add</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className=' border space-y-2 rounded-2xl'>
-                            <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
-                                <p>Hot</p>
-                            </div>
-                            <div className='p-5'>
-                                <img src={card6} alt="" />
-                                <span className='text-[#7a7a7a]'>Hodo Foods</span>
-                                <h1 className='text-[18px] font-medium'>All Natural Italian-Style Chicken
-                                    Meatballs</h1>
-                                <Rating
-                                    style={{ maxWidth: 100 }}
-                                    value={4}
-                                    readOnly
-                                />
-                                <h2 className='text-[#7a7a7a]'>
-                                    By
-                                    <span className='text-[#3bb77e] font-medium'>
-                                        Stouffer
-                                    </span>
-                                </h2>
-                                <div className='flex justify-between items-center'>
-                                    <p className='text-[#3bb77e] font-bold text-xl'>$52.85</p>
-                                    <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
-                                        <CiShoppingCart className='text-xl' />
-                                        <span className='font-bold'>Add</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className=' border space-y-2 rounded-2xl'>
-                            <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
-                                <p>Hot</p>
-                            </div>
-                            <div className='p-5'>
-                                <img src={card1} alt="" />
-                                <span className='text-[#7a7a7a]'>Hodo Foods</span>
-                                <h1 className='text-[18px] font-medium'>All Natural Italian-Style Chicken
-                                    Meatballs</h1>
-                                <Rating
-                                    style={{ maxWidth: 100 }}
-                                    value={4}
-                                    readOnly
-                                />
-                                <h2 className='text-[#7a7a7a]'>
-                                    By
-                                    <span className='text-[#3bb77e] font-medium'>
-                                        Stouffer
-                                    </span>
-                                </h2>
-                                <div className='flex justify-between items-center'>
-                                    <p className='text-[#3bb77e] font-bold text-xl'>$52.85</p>
-                                    <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
-                                        <CiShoppingCart className='text-xl' />
-                                        <span className='font-bold'>Add</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                            ))
+                        }
+
                     </div>
                 </div>
             </div>
