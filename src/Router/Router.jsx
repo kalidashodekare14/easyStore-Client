@@ -18,6 +18,7 @@ import Brands from "../Pages/Dashboard/Brands";
 import Statistics from "../Pages/Dashboard/Statistics";
 import Details from "../Pages/Details/Details";
 import CartCheckout from "../Pages/CartCheckout/CartCheckout";
+import UserProfile from "../Pages/UserProfile/UserProfile";
 
 const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
             {
                 path: '/checkout',
                 element: <CartCheckout></CartCheckout>
+            },
+            {
+                path: '/profile',
+                element: <UserProfile></UserProfile>
             }
         ]
     },

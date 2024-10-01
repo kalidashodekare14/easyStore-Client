@@ -7,10 +7,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Register = () => {
 
     const { registerSystem } = useAuth()
+    const axiosPublic = useAxiosPublic()
     const [phone, setPhone] = useState("")
     const navigate = useNavigate()
 
@@ -26,14 +28,32 @@ const Register = () => {
         registerSystem(data.email, data.password)
             .then(res => {
                 console.log(res.data)
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Your register has been successfuly",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate("/")
+
+                const info = {
+                    email: data.email,
+                    password: data.password,
+                    mobile: phone
+                }
+
+                axiosPublic.post("/user-register", info)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Your register has been successfuly",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            navigate("/")
+                        }
+
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                    })
+
             })
             .catch(error => {
                 console.log(error.message)
