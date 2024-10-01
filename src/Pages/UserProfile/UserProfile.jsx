@@ -6,6 +6,9 @@ import { useForm } from 'react-hook-form';
 import { MdOutlineCancel } from 'react-icons/md';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
+import { RotatingLines } from 'react-loader-spinner';
+const image_hosting_key = import.meta.env.VITE_IMG_API_KEY
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 
 const UserProfile = () => {
@@ -15,6 +18,7 @@ const UserProfile = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const [userInfo, refetch] = useUser()
+    const [imageLoading, setImageLoading] = useState(false)
 
     // toggle System conditional
     const handleToggleInformation = () => {
@@ -24,6 +28,51 @@ const UserProfile = () => {
         setToggleAddress(!toggleInAddress)
     }
     //==================================
+
+
+
+
+    // image upload
+
+    const handleImageHosting = async (event) => {
+        const ImageSelected = event.target.files[0]
+        setImageLoading(true)
+        const formData = new FormData()
+        formData.append("image", ImageSelected)
+
+        try {
+            const res = await fetch(`${image_hosting_api}`, {
+                method: "POST",
+                body: formData
+            })
+            const data = await res.json()
+            if (data.success) {
+                console.log(data.data.url)
+                const imageUrl = {
+                    image: data.data.url
+                }
+                axiosSecure.patch(`/profile_image/${user?.email}`, imageUrl)
+                    .then(res => {
+                        console.log(res.data)
+                        if(res.data.modifiedCount > 0){
+                            refetch()
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                    })
+            }
+        } catch (error) {
+            console.log(error.message)
+        } finally {
+            setImageLoading(false)
+        }
+
+    }
+
+
+
+    // information and address update
 
     const {
         register: registerOne,
@@ -87,16 +136,40 @@ const UserProfile = () => {
                         <h1 className='text-3xl font-[600] text-[#e2e2e2]'>My Profile</h1>
                     </div>
                     <div className='-mt-10 ms-5 flex  items-center gap-5'>
-                        <div className="avatar">
-                            <div className="w-40 rounded-full">
-                                <img
-                                    alt="Tailwind CSS Navbar component"
-                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                        <div className='' onClick={() => document.querySelector('input[type="file"]').click()}>
+                            <div className="avatar border-4 border-[#3bb77e] rounded-full">
+                                {
+                                    imageLoading ? (
+                                        <div className='w-40 bg-white rounded-full'>
+                                            <RotatingLines
+                                                visible={true}
+                                                height="96"
+                                                width="140"
+                                                color="grey"
+                                                strokeWidth="5"
+                                                animationDuration="0.75"
+                                                ariaLabel="rotating-lines-loading"
+                                                wrapperStyle={{}}
+                                                wrapperClass=""
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div className="w-40 rounded-full">
+
+                                            <img
+                                                alt="Tailwind CSS Navbar component"
+                                                src={userInfo?.image} />
+
+                                        </div>
+                                    )
+                                }
+
                             </div>
+                            <input onChange={handleImageHosting} hidden type="file" className="file-input file-input-bordered w-full max-w-xs" />
                         </div>
                         <div>
-                            <h1 className='text-3xl font-[600]'>Kalidash Odekare</h1>
-                            <p>Customar</p>
+                            <h1 className='text-3xl font-[600]'>{userInfo?.name}</h1>
+                            <p>{userInfo?.bio}</p>
                         </div>
                     </div>
                 </div>
