@@ -8,6 +8,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Flag from 'react-world-flags'
 import { useCart } from 'react-use-cart';
 import useAuth from '../../Hooks/useAuth';
+import useUser from '../../Hooks/useUser';
 
 
 const Navbar = () => {
@@ -16,6 +17,7 @@ const Navbar = () => {
     const [country, setCountry] = useState("")
     const { totalUniqueItems } = useCart()
     const { user, logoutSystem } = useAuth()
+    const [userInfo] = useUser()
 
 
     const handleProfileDropdown = () => {
@@ -125,7 +127,16 @@ const Navbar = () => {
                                 user?.email ? (
                                     <div onClick={handleProfileDropdown} className={`relative flex  flex-col md:flex-row md:mx-6 cursor-pointer`}>
                                         <div className='flex items-center gap-1'>
-                                            <FaRegUser className='text-2xl' />
+                                            <div>
+                                                <div className=" avatar">
+                                                    <div className="w-10 rounded-full">
+                                                        <img
+                                                            alt="Tailwind CSS Navbar component"
+                                                            src={userInfo?.image} />
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
                                             <span>Account</span>
                                         </div>
                                         <div className={`${profileDropdown ? "" : "hidden"} duration-300 absolute -translate-x-20 translate-y-10`}>

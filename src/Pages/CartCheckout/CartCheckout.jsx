@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaDeleteLeft } from 'react-icons/fa6';
 import { useCart } from 'react-use-cart';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useUser from '../../Hooks/useUser';
 
 const CartCheckout = () => {
 
+    const axiosSecure = useAxiosSecure()
+    const [userInfo] = useUser()
 
     const salesTextRate = 0.1
 
@@ -42,6 +46,28 @@ const CartCheckout = () => {
             }
         });
     }
+
+
+    const handlePaymentSystem = () => {
+
+        const paymentInfo = {
+            customar_name: userInfo?.name,
+            customar_email: userInfo?.email,
+            amount: grandTotal,
+            currency: "BDT"
+        }
+
+        axiosSecure.post('/payment-create', paymentInfo)
+            .then(res => {
+                console.log(res)
+                const redirecUrl = res.data.paymentUrl
+                if (redirecUrl) {
+                    window.location.replace(redirecUrl)
+                }
+            })
+
+    }
+
 
 
     return (
@@ -117,7 +143,7 @@ const CartCheckout = () => {
                             </div>
                         </div>
                         <div className='flex justify-center items-center'>
-                            <button className='btn w-32'>Checkout</button>
+                            <button onClick={handlePaymentSystem} className='btn w-32'>Checkout</button>
                         </div>
 
                     </div>

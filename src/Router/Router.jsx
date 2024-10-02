@@ -19,6 +19,9 @@ import Statistics from "../Pages/Dashboard/Statistics";
 import Details from "../Pages/Details/Details";
 import CartCheckout from "../Pages/CartCheckout/CartCheckout";
 import UserProfile from "../Pages/UserProfile/UserProfile";
+import PaymentSuccess from "../Components/PaymentSuccess/PaymentSuccess";
+import PaymentFail from "../Components/PaymentFail/PaymentFail";
+import PaymentCancel from "../Components/PaymentCancel/PaymentCancel";
 
 const router = createBrowserRouter([
     {
@@ -61,7 +64,19 @@ const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <UserProfile></UserProfile>
-            }
+            },
+            {
+                path: '/payment-success',
+                element: <PaymentSuccess></PaymentSuccess>
+            },
+            {
+                path: '/payment-fail',
+                element: <PaymentFail></PaymentFail>
+            },
+            {
+                path: '/payment-cancel',
+                element: <PaymentCancel></PaymentCancel>
+            },
         ]
     },
     {
