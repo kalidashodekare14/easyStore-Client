@@ -50,10 +50,26 @@ const CartCheckout = () => {
 
     const handlePaymentSystem = () => {
 
+        const prodcuts = items.map(product => ({
+            prodcut_name: product.name,
+            product_category: product.category,
+            prodcut_brand_name: product.brand_name,
+            prodcut_quantity: product.quantity,
+            prodcut_image: product.image
+        }))
+
         const paymentInfo = {
             customar_name: userInfo?.name,
             customar_email: userInfo?.email,
             amount: grandTotal,
+            prodcuts,
+            addressInfo: {
+                country: userInfo.country,
+                address: userInfo.address,
+                current_address: userInfo.current_address,
+                postal_code: userInfo.postal_code,
+                phone_number: userInfo.mobile
+            },
             currency: "BDT"
         }
 
