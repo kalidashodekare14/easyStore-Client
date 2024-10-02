@@ -50,6 +50,11 @@ const CartCheckout = () => {
 
     const handlePaymentSystem = () => {
 
+        if (!userInfo.name || !userInfo.country || !userInfo.postal_code || !userInfo.mobile || !userInfo.current_address || !userInfo.address) {
+            alert("Please Update Your Profile")
+            return
+        }
+
         const prodcuts = items.map(product => ({
             prodcut_name: product.name,
             product_category: product.category,
