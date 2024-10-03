@@ -4,8 +4,48 @@ import { MdDelete } from 'react-icons/md';
 import { TiDocumentText } from 'react-icons/ti';
 import Select from 'react-select';
 import img from '../../assets/shop/img1.png'
+import useTotalProduct from '../../Hooks/useTotalProduct';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const AllProducts = () => {
+
+    const [useAllProduct, refetch] = useTotalProduct()
+    const axiosSecure = useAxiosSecure()
+    console.log(useAllProduct)
+
+    const handleProductDelete = (product) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/all-product/${product?._id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            refetch()
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                    })
+
+            }
+        });
+
+    }
+
     return (
         <div className='mx-10 my-5'>
             <div className='flex justify-between items-center'>
@@ -45,34 +85,48 @@ const AllProducts = () => {
                             <tr>
                                 <th></th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Brand Name</th>
+                                <th>Unit Type</th>
+                                <th>Price</th>
+                                <th>Availability</th>
+                                <th>Expiry date</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody className='text-[14px]'>
                             {/* row 1 */}
-                            <tr className="">
-                                <th>1</th>
-                                <th>
-                                    <img className='w-20' src={img} alt="" />
-                                </th>
-                                <td>Cy Ganderton</td>
-                                <td>$5845</td>
-                                <td>Active</td>
-                                <td>09/29/2024</td>
-                                <td>
-                                    <div>
-                                        <button className='btn rounded-none bg-[#3bb77e] text-white'>
-                                            <CiEdit />
-                                            <span>Edit</span>
-                                        </button>
-                                        <button className='btn rounded-none bg-[#3bb77e] text-white'>
-                                            <MdDelete />
-                                            <span>Delete</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            {
+                                useAllProduct.map(product => (
+                                    <tr key={product._id} className="">
+                                        <th>1</th>
+                                        <th>
+                                            <img className='w-20' src={product.image[0]} alt="" />
+                                        </th>
+                                        <td>{product.name}</td>
+                                        <td>{product.category}</td>
+                                        <td>{product.brand_name}</td>
+                                        <td>{product.unit_type}</td>
+                                        <td>${product.price}</td>
+                                        <td>{product.availability}</td>
+                                        <td>{product.expiry_date}</td>
+                                        <td>
+                                            <div className='flex items-center'>
+                                                <button className='btn rounded-none bg-[#3bb77e] text-white'>
+                                                    <CiEdit />
+                                                    <span>Edit</span>
+                                                </button>
+                                                <button onClick={() => handleProductDelete(product)} className='btn rounded-none bg-[#3bb77e] text-white'>
+                                                    <MdDelete />
+                                                    <span>Delete</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+
                         </tbody>
                     </table>
                 </div>
