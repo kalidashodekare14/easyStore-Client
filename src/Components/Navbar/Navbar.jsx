@@ -9,6 +9,7 @@ import Flag from 'react-world-flags'
 import { useCart } from 'react-use-cart';
 import useAuth from '../../Hooks/useAuth';
 import useUser from '../../Hooks/useUser';
+import { HiUserCircle } from 'react-icons/hi';
 
 
 const Navbar = () => {
@@ -18,6 +19,7 @@ const Navbar = () => {
     const { totalUniqueItems } = useCart()
     const { user, logoutSystem } = useAuth()
     const [userInfo] = useUser()
+    const isAdmin = false
 
 
     const handleProfileDropdown = () => {
@@ -130,12 +132,19 @@ const Navbar = () => {
                                             <div>
                                                 <div className=" avatar">
                                                     <div className="w-10 rounded-full">
-                                                        <img
-                                                            alt="Tailwind CSS Navbar component"
-                                                            src={userInfo?.image} />
+                                                        {
+                                                            userInfo.image ? (
+                                                                <img
+                                                                    alt="Tailwind CSS Navbar component"
+                                                                    src={userInfo?.image} />
+                                                            ) : (
+                                                                <HiUserCircle className='w-full text-5xl' />
+                                                            )
+                                                        }
+
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                             <span>Account</span>
                                         </div>
@@ -144,9 +153,18 @@ const Navbar = () => {
                                                 tabIndex={0}
                                                 className="menu menu-sm dropdown-content bg-base-100  z-[1] mt-3 w-52 p-2 shadow">
                                                 <li>
-                                                    <Link to={"/profile"}>
-                                                        Profile
-                                                    </Link>
+                                                    {
+                                                        isAdmin ? (
+                                                            <Link to={"/dashboard/info"}>
+                                                                Dashboard
+                                                            </Link>
+                                                        ) : (
+                                                            <Link to={"/profile"}>
+                                                                Profile
+                                                            </Link>
+                                                        )
+                                                    }
+
                                                 </li>
                                                 <li><a>Settings</a></li>
                                                 <li onClick={handleLogout}><a>Logout</a></li>
