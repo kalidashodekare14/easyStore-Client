@@ -10,6 +10,7 @@ import { useCart } from 'react-use-cart';
 import useAuth from '../../Hooks/useAuth';
 import useUser from '../../Hooks/useUser';
 import { HiUserCircle } from 'react-icons/hi';
+import useAdmin from '../../Hooks/useAdmin';
 
 
 const Navbar = () => {
@@ -19,7 +20,9 @@ const Navbar = () => {
     const { totalUniqueItems } = useCart()
     const { user, logoutSystem } = useAuth()
     const [userInfo] = useUser()
-    const isAdmin = false
+    // const isAdmin = false
+    const [isAdmin] = useAdmin()
+    console.log(isAdmin)
 
 
     const handleProfileDropdown = () => {
