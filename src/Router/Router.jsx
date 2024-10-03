@@ -22,6 +22,7 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import PaymentSuccess from "../Components/PaymentSuccess/PaymentSuccess";
 import PaymentFail from "../Components/PaymentFail/PaymentFail";
 import PaymentCancel from "../Components/PaymentCancel/PaymentCancel";
+import PrivateRoute from "../Routes/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                element: <Details></Details>,
+                element: <PrivateRoute><Details></Details></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/prodcut_details/${params.id}`)
             },
             {
@@ -59,23 +60,23 @@ const router = createBrowserRouter([
             },
             {
                 path: '/checkout',
-                element: <CartCheckout></CartCheckout>
+                element: <PrivateRoute><CartCheckout></CartCheckout></PrivateRoute>
             },
             {
                 path: '/profile',
-                element: <UserProfile></UserProfile>
+                element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>
             },
             {
                 path: '/payment-success',
-                element: <PaymentSuccess></PaymentSuccess>
+                element: <PrivateRoute><PaymentSuccess></PaymentSuccess></PrivateRoute>
             },
             {
                 path: '/payment-fail',
-                element: <PaymentFail></PaymentFail>
+                element: <PrivateRoute><PaymentFail></PaymentFail></PrivateRoute>
             },
             {
                 path: '/payment-cancel',
-                element: <PaymentCancel></PaymentCancel>
+                element: <PrivateRoute><PaymentCancel></PaymentCancel></PrivateRoute>
             },
         ]
     },

@@ -24,13 +24,6 @@ const Login = () => {
         loginSystem(data.email, data.password)
             .then(res => {
                 console.log(res.data)
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Your login has been successfuly",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
                 navigate("/")
             })
             .catch(error => {
