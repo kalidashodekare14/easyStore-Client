@@ -4,6 +4,8 @@ import { useCart } from 'react-use-cart';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useUser from '../../Hooks/useUser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CartCheckout = () => {
 
@@ -20,6 +22,8 @@ const CartCheckout = () => {
         removeItem,
         cartTotal
     } = useCart();
+
+
 
     const salesTax = cartTotal * salesTextRate
     const grandTotal = cartTotal + salesTax
@@ -51,8 +55,12 @@ const CartCheckout = () => {
     const handlePaymentSystem = () => {
 
         if (!userInfo.name || !userInfo.country || !userInfo.postal_code || !userInfo.mobile || !userInfo.current_address || !userInfo.address) {
-            alert("Please Update Your Profile")
+            toast.warning("Your Profile Update")
             return
+        }
+
+        if (totalUniqueItems <= 0) {
+            return  toast.warning("Your Cart Empty")
         }
 
         const prodcuts = items.map(product => ({
@@ -170,6 +178,7 @@ const CartCheckout = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
