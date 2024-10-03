@@ -9,13 +9,13 @@ const useAdmin = () => {
     const axiosPublic = useAxiosPublic()
     const { user, loading } = useAuth()
 
-    const { data: isAdmin = [], refetch, isLoading: usrLoading } = useQuery({
+    const { data: isAdmin, refetch, isLoading: usrLoading } = useQuery({
         queryKey: ["isAdmin", user?.email],
         enabled: !loading && !!user?.email,
         queryFn: async () => {
             const res = await axiosSecure.get(`/isAdmin/${user?.email}`)
             console.log(res.data)
-            return res.data
+            return res.data.admin
         }
     })
     return [isAdmin, refetch, loading]

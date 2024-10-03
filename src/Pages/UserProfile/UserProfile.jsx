@@ -143,8 +143,8 @@ const UserProfile = () => {
                                         <div className='w-40 bg-white rounded-full'>
                                             <RotatingLines
                                                 visible={true}
-                                                height="96"
-                                                width="140"
+                                                height="140"
+                                                width="150"
                                                 color="grey"
                                                 strokeWidth="5"
                                                 animationDuration="0.75"
