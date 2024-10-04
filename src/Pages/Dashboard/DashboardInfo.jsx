@@ -15,75 +15,52 @@ import {
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 
-export const datas = [
-    [
-        "Month",
-        "Bolivia",
-        "Ecuador",
-        "Madagascar",
-        "Papua New Guinea",
-        "Rwanda",
-        "Average",
-    ],
-    ["2004/05", 165, 938, 522, 998, 450, 614.6],
-    ["2005/06", 135, 1120, 599, 1268, 288, 682],
-    ["2006/07", 157, 1167, 587, 807, 397, 623],
-    ["2007/08", 139, 1110, 615, 968, 215, 609.4],
-    ["2008/09", 136, 691, 629, 1026, 366, 569.6],
-];
 
-const options = {
-    title: "Monthly Coffee Production by Country",
-    hAxis: { title: "Month" },
-    seriesType: "bars",
-    series: { 5: { type: "line" } },
-    legend: { position: "top", alignment: "center" }
-};
+// const data = [
+//     {
+//         name: 'SAT',
+//         Revenue: 4000,
+//         Customar: 2400,
+//         Order: 2000,
+//         Products: 3000,
+//     },
+//     {
+//         name: 'SUN',
+//         Revenue: 3000,
+//         Customar: 1398,
+//         Order: 2210,
+//         Products: 4000,
+//     },
+//     {
+//         name: 'MON',
+//         Revenue: 2000,
+//         Customar: 9800,
+//         Order: 2290,
+//         Products: 2200,
+//     },
+//     {
+//         name: 'TUES',
+//         Revenue: 2780,
+//         Customar: 3908,
+//         Order: 2000,
+//         Products: 3400,
+//     },
+//     {
+//         name: 'THAS',
+//         Revenue: 1890,
+//         Customar: 4800,
+//         Order: 2181,
+//         Products: 5200,
+//     },
+//     {
+//         name: 'FRI',
+//         Revenue: 2390,
+//         Customar: 3800,
+//         Order: 2500,
+//         Products: 5400,
+//     },
 
-const data = [
-    {
-        name: 'Page A',
-        Sales: 4000,
-        Visitors: 2400,
-        Products: 2000,
-    },
-    {
-        name: 'Page B',
-        Sales: 3000,
-        Visitors: 1398,
-        Products: 2210,
-    },
-    {
-        name: 'Page C',
-        Sales: 2000,
-        Visitors: 9800,
-        Products: 2290,
-    },
-    {
-        name: 'Page D',
-        Sales: 2780,
-        Visitors: 3908,
-        Products: 2000,
-    },
-    {
-        name: 'Page E',
-        Sales: 1890,
-        Visitors: 4800,
-        Products: 2181,
-    },
-    {
-        name: 'Page F',
-        Sales: 2390,
-        Visitors: 3800,
-        Products: 2500,
-    },
-    {
-        name: 'Page G',
-        Sales: 3490,
-        Visitors: 4300,
-        Products: 2100,
-    },
-];
+// ];
 
 
 const data2 = [
@@ -139,13 +116,19 @@ const DashboardInfo = () => {
 
     const { data: overviewData = {} } = useQuery({
         queryKey: ["overview"],
-        queryFn: async() =>{
+        queryFn: async () => {
             const res = await axiosSecure.get("/dashboard-overview")
             return res.data
         },
     })
 
-    console.log(overviewData)
+    const data = overviewData?.weeksData?.weeklyData.map(dayData => ({
+        name: dayData.day,
+        Revenue: dayData.revenue,
+        Orders: dayData.orders,
+        Products: dayData.products
+    }))
+
 
 
     return (
@@ -237,9 +220,10 @@ const DashboardInfo = () => {
                                             <YAxis domain={[5, 'auto']} tickCount={6} />
                                             <Tooltip />
                                             <Legend />
-                                            <Area type="monotone" dataKey="Sales" stackId="1" stroke="#8884d8" fill="#8884d8" />
-                                            <Area type="monotone" dataKey="Visitors" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-                                            <Area type="monotone" dataKey="Products" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                                            <Area type="monotone" dataKey="Revenue" stackId="1" stroke="#8884d8" fill="#8884d8" />
+                                            <Area type="monotone" dataKey="Customar" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+                                            <Area type="monotone" dataKey="Order" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                                            <Area type="monotone" dataKey="Products" stackId="1" stroke="#58ff95" fill="#58ff95" />
                                         </AreaChart>
                                     </ResponsiveContainer>
                                 </div>
