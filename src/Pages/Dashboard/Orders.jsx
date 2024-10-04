@@ -3,8 +3,16 @@ import { MdDelete } from 'react-icons/md';
 import { TiDocumentText } from 'react-icons/ti';
 import Select from 'react-select';
 import img from '../../assets/shop/img1.png'
+import UseAllOrders from '../../Hooks/UseAllOrders';
 
 const Orders = () => {
+
+    const [allOrders] = UseAllOrders()
+    console.log(allOrders)
+
+
+
+
     return (
         <div className='mx-10 my-5'>
             <div className='flex justify-between items-center'>
@@ -46,25 +54,34 @@ const Orders = () => {
                         </thead>
                         <tbody className='text-[14px]'>
                             {/* row 1 */}
-                            <tr className="">
-                                <th>584fdrews54df</th>
-                                <td>Cy Ganderton</td>
-                                <td>kalidashodekare14@gmail.com</td>
-                                <td>$5845</td>
-                                <td>Active</td>
-                                <td>09/29/2024</td>
-                                <td>
-                                    <div>
-                                        <button className='btn rounded-none bg-[#3bb77e] text-white'>
-                                            <span>Details</span>
-                                        </button>
-                                        <button className='btn rounded-none  border'>
-                                            <span>...</span>
-                                        </button>
-                                        
-                                    </div>
-                                </td>
-                            </tr>
+                            {
+                                allOrders.map(order => (
+                                    <tr key={order._id} className="">
+                                        <th>{order?.customar_name ? order?.transaction_id : "N/A"}</th>
+                                        <td>{order?.customar_name ? order?.customar_name : "N/A"}</td>
+                                        <td>{order?.customar_email ? order?.customar_email : "N/A"}</td>
+                                        <td>${order?.amount ? order?.amount : "N/A"}</td>
+                                        <td>
+                                            <div className={`${order?.status === "Success" && "bg-[#3bb77e] p-1 rounded-2xl text-white"} ${order?.status === "Pending" && "bg-[#db1a2af8] p-1 rounded-2xl text-white"} `}>
+                                                {order?.status ? order?.status : "N/A"}
+                                            </div>
+                                        </td>
+                                        <td>{order?.date ? order?.date : "N/A"}</td>
+                                        <td>
+                                            <div>
+                                                <button className='btn rounded-none bg-[#3bb77e] text-white'>
+                                                    <span>Details</span>
+                                                </button>
+                                                <button className='btn rounded-none  border'>
+                                                    <span>...</span>
+                                                </button>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+
                         </tbody>
                     </table>
                 </div>

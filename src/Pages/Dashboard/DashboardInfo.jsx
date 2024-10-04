@@ -5,6 +5,32 @@ import { FaCartShopping } from 'react-icons/fa6';
 import { RiMoneyDollarBoxFill } from 'react-icons/ri';
 import { TiDocumentText } from 'react-icons/ti';
 import { AreaChart, BarChart, Bar, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Chart } from "react-google-charts";
+
+export const datas = [
+    [
+        "Month",
+        "Bolivia",
+        "Ecuador",
+        "Madagascar",
+        "Papua New Guinea",
+        "Rwanda",
+        "Average",
+    ],
+    ["2004/05", 165, 938, 522, 998, 450, 614.6],
+    ["2005/06", 135, 1120, 599, 1268, 288, 682],
+    ["2006/07", 157, 1167, 587, 807, 397, 623],
+    ["2007/08", 139, 1110, 615, 968, 215, 609.4],
+    ["2008/09", 136, 691, 629, 1026, 366, 569.6],
+];
+
+const options = {
+    title: "Monthly Coffee Production by Country",
+    hAxis: { title: "Month" },
+    seriesType: "bars",
+    series: { 5: { type: "line" } },
+    legend: { position: "top", alignment: "center" }
+};
 
 const data = [
     {
@@ -123,9 +149,17 @@ const DashboardInfo = () => {
                         <AiFillDollarCircle className='text-3xl text-[#3bb77e]' />
                     </div>
                     <div className='space-y-1'>
-                        <h3 className='text-xl font-[500]'>Revenue</h3>
+                        <h3 className='text-xl font-[500]'>Total Revenue</h3>
                         <h1 className='text-2xl font-[600]'>$154526.5</h1>
-                        <p>Shopping fees are not included</p>
+                    </div>
+                </div>
+                <div className='flex items-center gap-3 border  p-5'>
+                    <div className='border p-5 rounded-full bg-[#d8f1e5]'>
+                        <AiFillDollarCircle className='text-3xl text-[#3bb77e]' />
+                    </div>
+                    <div className='space-y-1'>
+                        <h3 className='text-xl font-[500]'>Total Customar</h3>
+                        <h1 className='text-2xl font-[600]'>15452</h1>
                     </div>
                 </div>
                 <div className='flex items-center gap-3 border  p-5'>
@@ -133,9 +167,8 @@ const DashboardInfo = () => {
                         <FaCarSide className='text-3xl text-[#3bb77e]' />
                     </div>
                     <div className='space-y-1'>
-                        <h3 className='text-xl font-[500]'>Orders</h3>
+                        <h3 className='text-xl font-[500]'>Total Orders</h3>
                         <h1 className='text-2xl font-[600]'>56894</h1>
-                        <p>Excluding orders in transit</p>
                     </div>
                 </div>
                 <div className='flex items-center gap-3 border  p-5'>
@@ -143,9 +176,8 @@ const DashboardInfo = () => {
                         <FaCartShopping className='text-3xl text-[#3bb77e]' />
                     </div>
                     <div className='space-y-1'>
-                        <h3 className='text-xl font-[500]'>Products</h3>
+                        <h3 className='text-xl font-[500]'>All Product</h3>
                         <h1 className='text-2xl font-[600]'>78956</h1>
-                        <p>In 19 Categories</p>
                     </div>
                 </div>
                 <div className='flex items-center gap-3 border  p-5'>
@@ -153,9 +185,8 @@ const DashboardInfo = () => {
                         <RiMoneyDollarBoxFill className='text-3xl text-[#3bb77e]' />
                     </div>
                     <div className='space-y-1'>
-                        <h3 className='text-xl font-[500]'>Month Earning</h3>
+                        <h3 className='text-xl font-[500]'>Total Sales</h3>
                         <h1 className='text-2xl font-[600]'>$5964</h1>
-                        <p>Based in your local time</p>
                     </div>
                 </div>
             </div>
@@ -187,7 +218,7 @@ const DashboardInfo = () => {
                         </ResponsiveContainer>
                     </div>
                 </div>
-                <div className='w-[70%] border p-2 bg-white shadow-lg rounded-2xl'>
+                <div className='w-[80%] border p-2 bg-white shadow-lg rounded-2xl'>
                     <h1 className='text-xl p-2'>Sales Statistics</h1>
                     <div className='h-96'>
                         <ResponsiveContainer width="100%" height="100%">
