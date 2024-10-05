@@ -12,7 +12,7 @@ import { FaFacebook, FaFacebookF, FaInstagram, FaPinterest, FaTwitter, FaYoutube
 const Footer = () => {
     return (
         <div>
-            <footer className="footer bg-base-200 text-base-content p-10 px-20">
+            <footer className="footer bg-base-200 text-base-content p-10 lg:px-20">
                 <nav className='space-y-3'>
                     <img src={logo} alt="" />
                     <a className="link link-hover text-[16px] font-medium">Awesome grocery store website
@@ -89,7 +89,7 @@ const Footer = () => {
                     </div>
                 </nav>
             </footer>
-            <footer className="px-20 footer bg-base-200 text-base-content border-base-300 border-t py-4">
+            <footer className="lg:px-20 p-2 footer bg-base-200 text-base-content border-base-300 border-t py-4">
                 <aside className="grid-flow-col items-center">
 
                     <p className='w-80 text-[16px]'>2022, Nest - HTML Ecommerce Template

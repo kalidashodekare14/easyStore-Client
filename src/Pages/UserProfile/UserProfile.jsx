@@ -54,7 +54,7 @@ const UserProfile = () => {
                 axiosSecure.patch(`/profile_image/${user?.email}`, imageUrl)
                     .then(res => {
                         console.log(res.data)
-                        if(res.data.modifiedCount > 0){
+                        if (res.data.modifiedCount > 0) {
                             refetch()
                         }
                     })
@@ -287,7 +287,15 @@ const UserProfile = () => {
                                 <label htmlFor="">Country</label>
                                 {
                                     toggleInAddress ? (
-                                        <input {...registerTwo("country")} defaultValue={userInfo?.country} className='input input-bordered' type="text" />
+                                        <div>
+                                            {/* <input   className='input input-bordered' type="text" /> */}
+                                            <select {...registerTwo("country")} defaultValue={userInfo?.country} className="select select-bordered w-full">
+                                                <option disabled selected>Country</option>
+                                                <option>Bangladesh</option>
+                                                <option>India</option>
+                                                <option>United State</option>
+                                            </select>
+                                        </div>
                                     ) : (
                                         <div>
                                             <h1 className='font-[600]'>{userInfo?.country ? userInfo?.country : "N/A"}</h1>

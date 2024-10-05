@@ -15,54 +15,6 @@ import {
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 
-
-// const data = [
-//     {
-//         name: 'SAT',
-//         Revenue: 4000,
-//         Customar: 2400,
-//         Order: 2000,
-//         Products: 3000,
-//     },
-//     {
-//         name: 'SUN',
-//         Revenue: 3000,
-//         Customar: 1398,
-//         Order: 2210,
-//         Products: 4000,
-//     },
-//     {
-//         name: 'MON',
-//         Revenue: 2000,
-//         Customar: 9800,
-//         Order: 2290,
-//         Products: 2200,
-//     },
-//     {
-//         name: 'TUES',
-//         Revenue: 2780,
-//         Customar: 3908,
-//         Order: 2000,
-//         Products: 3400,
-//     },
-//     {
-//         name: 'THAS',
-//         Revenue: 1890,
-//         Customar: 4800,
-//         Order: 2181,
-//         Products: 5200,
-//     },
-//     {
-//         name: 'FRI',
-//         Revenue: 2390,
-//         Customar: 3800,
-//         Order: 2500,
-//         Products: 5400,
-//     },
-
-// ];
-
-
 const data2 = [
     {
         name: 'Page A',
@@ -128,6 +80,8 @@ const DashboardInfo = () => {
         Orders: dayData.orders,
         Products: dayData.products
     }))
+
+    console.log(overviewData)
 
 
 

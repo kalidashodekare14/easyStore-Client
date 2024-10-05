@@ -22,8 +22,8 @@ const About = () => {
 
     return (
         <div className='lg:mx-20'>
-            <div className='flex justify-between items-center gap-5'>
-                <img className='w-[500px]' src={img} alt="" />
+            <div className='flex flex-col lg:flex-row justify-between items-center gap-5'>
+                <img className='lg:w-[500px]' src={img} alt="" />
                 <div className='p-3 my-5 '>
                     <h1 className='text-3xl font-bold my-3'>Welcome to Nest</h1>
                     <div className='space-y-3 text-[16px] font-lato text-[#707070]'>
@@ -36,10 +36,10 @@ const About = () => {
                             ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
                             reprehenderit in voluptate id est laborum.</p>
                     </div>
-                    <div className='flex items-center gap-3 mt-5'>
-                        <img className='max-w-sm' src={img1} alt="" />
-                        <img className='max-w-sm' src={img2} alt="" />
-                        <img className='max-w-sm' src={img3} alt="" />
+                    <div className='flex flex-col lg:flex-row items-center gap-3 mt-5'>
+                        <img className='lg:max-w-sm w-full' src={img1} alt="" />
+                        <img className='lg:max-w-sm w-full' src={img2} alt="" />
+                        <img className='lg:max-w-sm w-full' src={img3} alt="" />
                     </div>
                 </div>
             </div>
@@ -102,8 +102,8 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex justify-center items-center gap-5 my-10'>
-                <img className='max-w-xl' src={towImage} alt="" />
+            <div className='flex flex-col lg:flex-row justify-center items-center gap-5 my-10'>
+                <img className='lg:max-w-xl' src={towImage} alt="" />
                 <div className='space-y-3'>
                     <p>Our performance</p>
                     <h1 className='text-4xl font-bold'>Your Partner for e-
@@ -116,7 +116,7 @@ const About = () => {
                         ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia</p>
                 </div>
             </div>
-            <div className='my-10 flex justify-between items-center'>
+            <div className='my-10 flex flex-col lg:flex-row justify-between items-center'>
                 <div className=' space-y-2'>
                     <h1 className='text-2xl font-[600]'>Who we are</h1>
                     <p>Volutpat diam ut venenatis tellus in metus. Nec dui nunc
@@ -136,7 +136,7 @@ const About = () => {
                         ellus eros donec ac odio orci ultrices in.</p>
                 </div>
             </div>
-            <div className='flex justify-between px-10 items-center my-10 count h-40 bg-cover bg-no-repeat bg-center'>
+            <div className='flex flex-col lg:flex-row justify-between px-10 items-center gap-5 my-10 count lg:h-40 bg-cover bg-no-repeat bg-center'>
                 <div className='flex flex-col justify-center items-center'>
                     <h1 className='text-4xl font-bold text-white'><CountUp end={20} />+</h1>
                     <p className='text-white'>Glorious years</p>
@@ -160,11 +160,11 @@ const About = () => {
             </div>
             <div>
                 <div className="my-10 subscribe-banner h-[300px] bg-center bg-no-repeat bg-cover">
-                    <div className='w-96 space-y-3 flex flex-col justify-center h-[300px] lg:mx-10 mx-5'>
+                    <div className='lg:w-96 space-y-3 flex flex-col justify-center h-[300px] lg:mx-10 mx-5'>
                         <h1 className='text-3xl font-bold'>Stay home & get your daily
                             needs from our shop</h1>
                         <p className='text-[#8a8a8a] font-medium'>Start You'r Daily Shopping with Nest Mart</p>
-                        <div className='border'>
+                        <div className=''>
                             <input className='input rounded-3xl' placeholder='Your emaill address' type="text" />
                             <button className='btn bg-[#3bb77e] text-white rounded-3xl -ms-10'>Subscribe</button>
                         </div>
