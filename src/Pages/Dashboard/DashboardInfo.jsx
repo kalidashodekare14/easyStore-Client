@@ -14,6 +14,52 @@ import {
 } from '@tanstack/react-query'
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
+const data = [
+    {
+      name: 'SAT',
+      Revenue: 4000,
+      Customar: 2400,
+      Order: 2400,
+    },
+    {
+      name: 'SUN',
+      Revenue: 3000,
+      Customar: 1398,
+      Order: 2210,
+    },
+    {
+      name: 'MON',
+      Revenue: 2000,
+      Customar: 9800,
+      Order: 2290,
+    },
+    {
+      name: 'TUES',
+      Revenue: 2780,
+      Customar: 3908,
+      Order: 2000,
+    },
+    {
+      name: 'WEN',
+      Revenue: 1890,
+      Customar: 4800,
+      Order: 2181,
+    },
+    {
+      name: 'THUS',
+      Revenue: 2390,
+      Customar: 3800,
+      Order: 2500,
+    },
+    {
+      name: 'FRI',
+      Revenue: 3490,
+      Customar: 4300,
+      Order: 2100,
+    },
+  ];
+  
+
 
 const data2 = [
     {
@@ -74,14 +120,7 @@ const DashboardInfo = () => {
         },
     })
 
-    const data = overviewData?.weeksData?.weeklyData.map(dayData => ({
-        name: dayData.day,
-        Revenue: dayData.revenue,
-        Orders: dayData.orders,
-        Products: dayData.products
-    }))
 
-    console.log(overviewData)
 
 
 
