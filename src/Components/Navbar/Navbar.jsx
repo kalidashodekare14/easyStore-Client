@@ -169,7 +169,12 @@ const Navbar = () => {
                                                     }
 
                                                 </li>
-                                                <li><a>Settings</a></li>
+                                                <li>
+                                                    {
+                                                        isAdmin || <Link to={"/payment-history"}>Payment History</Link>
+                                                    }
+
+                                                </li>
                                                 <li onClick={handleLogout}><a>Logout</a></li>
                                             </ul>
                                         </div>

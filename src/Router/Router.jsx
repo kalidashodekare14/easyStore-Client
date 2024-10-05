@@ -23,6 +23,7 @@ import PaymentSuccess from "../Components/PaymentSuccess/PaymentSuccess";
 import PaymentFail from "../Components/PaymentFail/PaymentFail";
 import PaymentCancel from "../Components/PaymentCancel/PaymentCancel";
 import PrivateRoute from "../Routes/PrivateRoute/PrivateRoute";
+import UserPaymentHistory from "../Pages/UserPaymentHistory/UserPaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>
+            },
+            {
+                path: '/payment-history',
+                element: <UserPaymentHistory></UserPaymentHistory>
             },
             {
                 path: '/payment-success',
