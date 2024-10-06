@@ -13,6 +13,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import './FeaturesCategory.css'
 
 const FeaturesCategory = () => {
+
     return (
         <div className='my-10'>
             <div className='flex justify-between items-center '>
