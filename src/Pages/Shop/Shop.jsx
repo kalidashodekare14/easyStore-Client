@@ -22,7 +22,9 @@ const Shop = () => {
     const { addItem } = useCart()
     const [selectedCategory, setSelectedCategory] = useState(null)
     const [selectedBrandName, setSelectedBrandName] = useState(null)
+    const [sortOrder, setSortOrder] = useState(null)
     const [priceRange, setPriceRange] = useState([0, 1000])
+
 
     console.log(priceRange)
 
@@ -52,8 +54,7 @@ const Shop = () => {
     }))
 
     // ==================================================
-
-
+    // category, brand_name, price range filtering
     const categoryFiltering = allProduct.filter((product) => {
         const matchedCategories = selectedCategory ? product.category === selectedCategory.value : true;
         const matchedBrandName = selectedBrandName ? product.brand_name === selectedBrandName.value : true;
@@ -63,6 +64,19 @@ const Shop = () => {
             matchedCategories && matchedBrandName && matchedPriceRange
         )
     })
+
+    // price sort
+    const shortProducts = (products) => {
+        if (sortOrder === "lowToHigh") {
+            return products.sort((a, b) => a.price - b.price);
+        }
+        else if (sortOrder === "highToLow") {
+            return products.sort((a, b) => b.price - a.price)
+        }
+        return products
+    }
+
+    const shortedProduct = shortProducts([...categoryFiltering])
 
 
     return (
@@ -172,27 +186,29 @@ const Shop = () => {
                 </div>
                 <div className='w-full min-h-screen'>
                     <div className='flex justify-between items-center'>
-                        <h1>We found 29 items for you!</h1>
-                        <div className='space-x-5'>
-                            <details className="dropdown">
-                                <summary className="btn rounded-none">Show:</summary>
-                                <ul className="menu dropdown-content bg-base-100  w-52 p-2 shadow">
-                                    <li><a>One Collumn</a></li>
-                                    <li><a>Two Collumn</a></li>
-                                </ul>
-                            </details>
-                            <details className="dropdown">
-                                <summary className="btn rounded-none">Sort By: Price</summary>
-                                <ul className="menu dropdown-content bg-base-100  w-52 p-2 shadow">
-                                    <li><a>Item 1</a></li>
-                                    <li><a>Item 2</a></li>
-                                </ul>
-                            </details>
+                        <div className='w-72'>
+                            <input className='input input-bordered w-full' placeholder='Search Here' type="text" />
+                        </div>
+                        <div className='space-x-5 flex'>
+                            {/* <Select
+                            className='w-full'
+                            placeholder="Select sort order"
+                            /> */}
+                            <Select
+                                options={[
+                                    { value: "lowToHigh", label: "Price: Low to Hight" },
+                                    { value: "highToLow", label: "Price: High to Low" },
+                                ]}
+                                onChange={(selectedOption) => setSortOrder(selectedOption.value)}
+                                isClearable
+                                className='w-full'
+                                placeholder="Select sort order"
+                            />
                         </div>
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-10'>
                         {
-                            categoryFiltering.map(product => (
+                            shortedProduct.map(product => (
                                 <div key={product._id} className=' border space-y-2 rounded-2xl'>
                                     <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
                                         <p>Hot</p>
