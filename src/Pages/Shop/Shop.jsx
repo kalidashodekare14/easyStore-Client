@@ -24,7 +24,7 @@ const Shop = () => {
     const [selectedBrandName, setSelectedBrandName] = useState(null)
     const [sortOrder, setSortOrder] = useState(null)
     const [priceRange, setPriceRange] = useState([0, 1000])
-
+    const [searchName, setSearchName] = useState("")
 
     console.log(priceRange)
 
@@ -59,9 +59,10 @@ const Shop = () => {
         const matchedCategories = selectedCategory ? product.category === selectedCategory.value : true;
         const matchedBrandName = selectedBrandName ? product.brand_name === selectedBrandName.value : true;
         const matchedPriceRange = product.price >= priceRange[0] && product.price <= priceRange[1]
+        const matchedName = product.name.toLowerCase().includes(searchName.toLowerCase())
 
         return (
-            matchedCategories && matchedBrandName && matchedPriceRange
+            matchedCategories && matchedBrandName && matchedPriceRange && matchedName
         )
     })
 
@@ -187,7 +188,7 @@ const Shop = () => {
                 <div className='w-full min-h-screen'>
                     <div className='flex justify-between items-center'>
                         <div className='w-72'>
-                            <input className='input input-bordered w-full' placeholder='Search Here' type="text" />
+                            <input onChange={(e) => setSearchName(e.target.value)} className='input input-bordered w-full' placeholder='Search Here' type="text" />
                         </div>
                         <div className='space-x-5 flex'>
                             {/* <Select
