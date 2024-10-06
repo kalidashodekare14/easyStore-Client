@@ -31,6 +31,7 @@ const UserPaymentHistory = () => {
                     <thead>
                         <tr className="bg-base-200">
                             <th>Transaction id</th>
+                            <th>Date and Time</th>
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Status</th>
@@ -44,8 +45,17 @@ const UserPaymentHistory = () => {
                             paymentHistory.map(product => (
                                 <tr key={product._id}>
                                     <th>{product.transaction_id}</th>
+                                    <th>{new Date(product.createdAt).toLocaleDateString('en-DB',{
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        second: '2-digit',
+                                        hour12: true,
+                                    })}</th>
                                     <td>{product.customar_name}</td>
-                                    <td>{product.amount}</td>
+                                    <td>${product.amount}</td>
                                     <td>
                                         <div className={`${product.status === "Success" && "bg-green-300 rounded-2xl"} ${product.status === "Pending" && "bg-red-300 rounded-2xl"}`}>
                                             <h1>{product.status}</h1>
