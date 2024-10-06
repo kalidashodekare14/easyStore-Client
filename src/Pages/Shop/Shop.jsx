@@ -21,21 +21,47 @@ const Shop = () => {
     const [allProduct] = useAllProduct()
     const { addItem } = useCart()
     const [selectedCategory, setSelectedCategory] = useState(null)
+    const [selectedBrandName, setSelectedBrandName] = useState(null)
     const [priceRange, setPriceRange] = useState([0, 1000])
 
+    console.log(priceRange)
 
+    const handlePriceChange = (v) => {
+        setPriceRange(v)
+    }
 
+    // product category find ===========================
     const categories = Array.from(
         new Set(allProduct.map(res => res.category))
     )
+
     const categoryOptions = categories.map(category => ({
         value: category,
         label: category
     }))
 
+    // ==================================================
+    // product brand name find ==========================
+
+    const brandName = Array.from(
+        new Set(allProduct.map(res => res.brand_name))
+    )
+    const brandNameOption = brandName.map(brand => ({
+        value: brand,
+        label: brand
+    }))
+
+    // ==================================================
+
+
     const categoryFiltering = allProduct.filter((product) => {
         const matchedCategories = selectedCategory ? product.category === selectedCategory.value : true;
-        return matchedCategories
+        const matchedBrandName = selectedBrandName ? product.brand_name === selectedBrandName.value : true;
+        const matchedPriceRange = product.price >= priceRange[0] && product.price <= priceRange[1]
+
+        return (
+            matchedCategories && matchedBrandName && matchedPriceRange
+        )
     })
 
 
@@ -51,28 +77,43 @@ const Shop = () => {
                             </div>
                             <div className='mt-5'>
                                 <RangeSlider
+                                    min={0}
+                                    max={1000}
+                                    step={10}
                                     value={priceRange}
-                                    
+                                    onInput={handlePriceChange}
                                 />
                                 <div className='flex justify-between items-center my-5'>
                                     <div className='flex justify-center items-center border w-20 h-10'>
-                                        <h1>458</h1>
+                                        <input value={priceRange[0]} className='input input-bordered w-20' readOnly type="text" />
                                     </div>
                                     <div className='flex justify-center items-center border  w-20 h-10'>
-                                        <h1>586</h1>
+                                        <input value={priceRange[1]} className='input input-bordered w-20' readOnly type="text" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className='p-3'>
                             <div className='border-b pb-2'>
-                                <h1 className='text-2xl font-[600]'>Category</h1>
+                                <h1 className='text-xl font-[600]'>Category</h1>
                             </div>
                             <div className='mt-5'>
                                 <Select
                                     isClearable
                                     options={categoryOptions}
                                     onChange={(seletedOption) => setSelectedCategory(seletedOption)}
+                                />
+                            </div>
+                        </div>
+                        <div className='p-3'>
+                            <div className='border-b pb-2'>
+                                <h1 className='text-xl font-[600]'>Brand Name</h1>
+                            </div>
+                            <div className='mt-5'>
+                                <Select
+                                    isClearable
+                                    options={brandNameOption}
+                                    onChange={(seletedOption) => setSelectedBrandName(seletedOption)}
                                 />
                             </div>
                         </div>
