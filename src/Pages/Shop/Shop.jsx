@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import img from '../../assets/main.png'
 import Select from 'react-select';
 import RangeSlider from 'react-range-slider-input';
@@ -20,28 +20,40 @@ const Shop = () => {
 
     const [allProduct] = useAllProduct()
     const { addItem } = useCart()
+    const [selectedCategory, setSelectedCategory] = useState(null)
+    const [priceRange, setPriceRange] = useState([0, 1000])
 
-    console.log(allProduct)
+
+
+    const categories = Array.from(
+        new Set(allProduct.map(res => res.category))
+    )
+    const categoryOptions = categories.map(category => ({
+        value: category,
+        label: category
+    }))
+
+    const categoryFiltering = allProduct.filter((product) => {
+        const matchedCategories = selectedCategory ? product.category === selectedCategory.value : true;
+        return matchedCategories
+    })
+
 
     return (
         <div className='lg:mx-20 my-10'>
             <div className='flex gap-5 w-full min-h-screen mt-10'>
                 <div className='w-80 space-y-5 min-h-screen'>
                     <div className='border shadow rounded-xl'>
-                        <div className='p-3'>
-                            <div className='border-b pb-2'>
-                                <h1 className='text-2xl font-[600]'>Category</h1>
-                            </div>
-                            <div className='mt-5'>
-                                <Select />
-                            </div>
-                        </div>
+
                         <div className='p-3'>
                             <div className='border-b pb-2'>
                                 <h1 className='text-2xl font-[600]'>Fill By Prices</h1>
                             </div>
                             <div className='mt-5'>
-                                <RangeSlider />
+                                <RangeSlider
+                                    value={priceRange}
+                                    
+                                />
                                 <div className='flex justify-between items-center my-5'>
                                     <div className='flex justify-center items-center border w-20 h-10'>
                                         <h1>458</h1>
@@ -50,6 +62,18 @@ const Shop = () => {
                                         <h1>586</h1>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div className='p-3'>
+                            <div className='border-b pb-2'>
+                                <h1 className='text-2xl font-[600]'>Category</h1>
+                            </div>
+                            <div className='mt-5'>
+                                <Select
+                                    isClearable
+                                    options={categoryOptions}
+                                    onChange={(seletedOption) => setSelectedCategory(seletedOption)}
+                                />
                             </div>
                         </div>
                         <div className='p-3'>
@@ -127,7 +151,7 @@ const Shop = () => {
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-10'>
                         {
-                            allProduct.map(product => (
+                            categoryFiltering.map(product => (
                                 <div key={product._id} className=' border space-y-2 rounded-2xl'>
                                     <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
                                         <p>Hot</p>
