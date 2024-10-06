@@ -10,6 +10,8 @@ const UserPaymentHistory = () => {
     const axiosPublic = useAxiosPublic()
     const { user } = useAuth()
 
+    console.log(user?.email)
+
     const { data: paymentHistory = [] } = useQuery({
         queryKey: ["paymentHistory"],
         queryFn: async () => {
@@ -44,7 +46,11 @@ const UserPaymentHistory = () => {
                                     <th>{product.transaction_id}</th>
                                     <td>{product.customar_name}</td>
                                     <td>{product.amount}</td>
-                                    <td>{product.status}</td>
+                                    <td>
+                                        <div className={`${product.status === "Success" && "bg-green-300 rounded-2xl"} ${product.status === "Pending" && "bg-red-300 rounded-2xl"}`}>
+                                            <h1>{product.status}</h1>
+                                        </div>
+                                    </td>
                                     <td>{product.userInfo.current_address}</td>
                                     <td>
                                         <div>
