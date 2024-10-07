@@ -5,6 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import image from '../../assets/det.jpeg'
 import ImageZoom from "react-image-zooom";
 import { useLoaderData } from 'react-router-dom';
+import './Details.css'
 
 const Details = () => {
 
@@ -24,7 +25,7 @@ const Details = () => {
                         {
                             images.map((image, index) => (
                                 <div className='border'>
-                                    <ImageZoom onClickThumb src={image} alt="A image to apply the ImageZoom plugin" zoom="200" />
+                                    <ImageZoom onClickThumb src={image} className={'w-full h-96'} alt="A image to apply the ImageZoom plugin" zoom="200" />
                                 </div>
                             ))
                         }
