@@ -22,7 +22,7 @@ const Navbar = () => {
     const [userInfo] = useUser()
     // const isAdmin = false
     const [isAdmin] = useAdmin()
-    console.log(isAdmin)
+    // console.log(isAdmin)
 
 
     const handleProfileDropdown = () => {
@@ -57,9 +57,9 @@ const Navbar = () => {
             <div className='lg:px-20 border'>
                 <div className="container p-3 mx-auto md:flex md:justify-between md:items-center">
                     <div className="flex items-center justify-between">
-                        <a href="#">
+                        <p>
                             <img className="h-10 sm:h-10 my-2 lg:w-80" src={logo} alt="QuickShop Logo" />
-                        </a>
+                        </p>
                         <div className='lg:hidden flex items-center gap-5'>
                             <div className="indicator flex  flex-col md:flex-row md:mx-6 ">
                                 <Link to={"/checkout"}>
