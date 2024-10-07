@@ -12,9 +12,13 @@ import banner2 from '../../../assets/banner2.png'
 import './Banner.css'
 
 const Banner = () => {
+    
     return (
         <div className='relative z-0'>
-            <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+            <Swiper
+                pagination={true}
+                modules={[Pagination]}
+                className="mySwiper">
                 <SwiperSlide>
                     <div className=''>
                         <img className='lg:h-[400px] h-[200px] w-full' src={banner} alt="" />

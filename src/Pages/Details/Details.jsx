@@ -1,31 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import image from '../../assets/shop/img1.png'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 import image from '../../assets/det.jpeg'
-import ReactImageMagnify from 'react-image-magnify';
+import ImageZoom from "react-image-zooom";
+import { useLoaderData } from 'react-router-dom';
 
 const Details = () => {
+
+
+    const productDetails = useLoaderData()
+    const images = productDetails.image
+    const [selectedIndex, setSelectedIndex] = useState(0)
+
+
+
     return (
         <div className='lg:mx-20 min-h-screen'>
-            <div style={{ width: "400px" }}>
-                <ReactImageMagnify {...{
-                    smallImage: {
-                        alt: 'Wristwatch by Ted Baker London',
-                        isFluidWidth: true,
-                        src: image
-                    },
-                    largeImage: {
-                        src: image,
-                        width: 1200,
-                        height: 1000
-                    },
-                    enlargedImageContainerDimensions: {
-                        width: '200%',
-                        height: '200%',
-                    },
-                }} />
+
+            <div className='w-[500px] h-[10vh]'>
+                <div>
+                    <Carousel selectedItem={selectedIndex} onChange={setSelectedIndex} >
+                        {
+                            images.map((image, index) => (
+                                <div className='border'>
+                                    <ImageZoom onClickThumb src={image} alt="A image to apply the ImageZoom plugin" zoom="200" />
+                                </div>
+                            ))
+                        }
+                    </Carousel>
+                </div>
+                <div className='flex'>
+                    {
+                        images.map((image, index) => (
+                            <img key={index} onClick={() => setSelectedIndex(index)} className={`w-20 h-20 object-cover cursor-pointer rounded ${selectedIndex === index ? 'border-2 border-blue-500' : 'border-2 border-gray-300'}`} src={image} alt='' />
+                        ))
+                    }
+                </div>
             </div>
         </div>
     );
-};
+}
 
 export default Details;
