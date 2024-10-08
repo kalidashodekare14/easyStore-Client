@@ -10,11 +10,16 @@ import blackPlum from '../../../assets/category/blackPlum.png'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import useAllProduct from '../../../Hooks/useAllProduct';
 
 // css import
 import './FeaturesCategory.css'
+import { Link } from 'react-router-dom';
 
 const FeaturesCategory = () => {
+
+    const [allProduct] = useAllProduct()
+    console.log(allProduct)
 
 
     const responsive = {
@@ -37,23 +42,18 @@ const FeaturesCategory = () => {
         }
     };
 
-    const handleLeftArrow = () => {
-        
-    }
-    const handleRightArrow = () => {
 
-    }
 
 
     return (
         <div className='my-10'>
             <div className='flex justify-between items-center '>
-                <h1 className='text-2xl font-semibold'>Featured Categories</h1>
+                <h1 className='text-2xl font-semibold'>Top Categories</h1>
                 <div className='flex items-center gap-5'>
-                    <div onClick={handleLeftArrow}>
+                    <div>
                         <FaArrowLeft />
                     </div>
-                    <div onClick={handleRightArrow}>
+                    <div>
                         <FaArrowRight />
                     </div>
                 </div>
@@ -61,77 +61,19 @@ const FeaturesCategory = () => {
             <div className='mainBg my-5'>
 
                 <Carousel responsive={responsive}>
-                    <div className='childBackground flex flex-col mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-                    <div className='childBackground flex flex-col  mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-                    <div className='childBackground flex flex-col  mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-                    <div className='childBackground flex flex-col  mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-                    <div className='childBackground flex flex-col  mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-                    <div className='childBackground flex flex-col  mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-                    <div className='childBackground flex flex-col  mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-                    <div className='childBackground flex flex-col  mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-                    <div className='childBackground flex flex-col  mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-                    <div className='childBackground flex flex-col  mr-5 items-center border  space-y-2 p-3 rounded-lg'>
-                        <img src={cake} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h3 className='font-[600]'>Cake & Milk</h3>
-                            <p>26 Items</p>
-                        </div>
-                    </div>
-
+                    {
+                        allProduct.map(category => (
+                            <Link to={`/shop?category=${category.category}`}>
+                                <div className='childBackground flex flex-col mr-5 items-center border  space-y-2 p-3 rounded-lg'>
+                                    <img className='w-20 h-20' src={category.image[0]} alt="" />
+                                    <div className='flex flex-col items-center'>
+                                        <h3 className='font-[600]'>{category.category}</h3>
+                                        <p>26 Items</p>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))
+                    }
                 </Carousel>;
 
             </div>
