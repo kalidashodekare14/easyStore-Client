@@ -16,7 +16,7 @@ import useAllProduct from '../../../Hooks/useAllProduct';
 
 
 
-const PopularProduct = () => {
+const NewProduct = () => {
 
     const [allProduct] = useAllProduct()
 
@@ -25,14 +25,14 @@ const PopularProduct = () => {
     return (
         <div className='my-5'>
             <div className='my-10'>
-                <h1 className='text-2xl font-semibold'>Popular Products</h1>
+                <h1 className='text-2xl font-semibold'>New Products</h1>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
                 {
-                    allProduct.slice(0, 8).map(product => (
-                        <div className=' border space-y-2 rounded-2xl'>
-                            <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
-                                <p>Hot</p>
+                    allProduct.slice(0, 5).map(product => (
+                        <div className=' border space-y-2'>
+                            <div className='flex justify-center items-center bg-[#dc2626] text-white border w-16 h-9 '>
+                                <p>{product.discount}%</p>
                             </div>
                             <div className='p-5 flex flex-col justify-center'>
                                 <img className='h-52 w-full' src={product.image[0]} alt="" />
@@ -43,10 +43,9 @@ const PopularProduct = () => {
                                     value={0}
                                     readOnly
                                 />
-                                <h2 className='text-[#7a7a7a]'>By <span className='text-[#3bb77e] font-medium'>NestFood</span></h2>
                                 <div className='flex justify-between items-center'>
-                                    <p className='text-[#3bb77e] font-bold text-xl'>${product.price}</p>
-                                    <button className='btn bg-[#3bb77d34] text-[#3bb77e]'>
+                                    <p className='font-bold text-xl text-[#3bb77e]'>${product.price}</p>
+                                    <button className='btn bg-[#1acc5b3f] text-[#16a34a]'>
                                         <CiShoppingCart className='text-xl' />
                                         <span className='font-bold'>Add</span>
                                     </button>
@@ -61,4 +60,4 @@ const PopularProduct = () => {
     );
 };
 
-export default PopularProduct;
+export default NewProduct;

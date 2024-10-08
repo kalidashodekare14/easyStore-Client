@@ -7,16 +7,16 @@ import snack from '../../../assets/category/snak.png'
 import vagitables from '../../../assets/category/vagitables.png'
 import strawberry from '../../../assets/category/strawberry.png'
 import blackPlum from '../../../assets/category/blackPlum.png'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaArrowCircleRight, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import useAllProduct from '../../../Hooks/useAllProduct';
 
 // css import
-import './FeaturesCategory.css'
+import './TopCategories.css'
 import { Link } from 'react-router-dom';
 
-const FeaturesCategory = () => {
+const TopCategories = () => {
 
     const [allProduct] = useAllProduct()
     console.log(allProduct)
@@ -49,14 +49,12 @@ const FeaturesCategory = () => {
         <div className='my-10'>
             <div className='flex justify-between items-center '>
                 <h1 className='text-2xl font-semibold'>Top Categories</h1>
-                <div className='flex items-center gap-5'>
-                    <div>
-                        <FaArrowLeft />
+                <Link to={"/shop"}>
+                    <div className='flex items-center gap-2 border p-2 rounded-2xl'>
+                        <span className='font-[500]'>All Items </span>
+                        <FaArrowCircleRight />
                     </div>
-                    <div>
-                        <FaArrowRight />
-                    </div>
-                </div>
+                </Link>
             </div>
             <div className='mainBg my-5'>
 
@@ -64,11 +62,10 @@ const FeaturesCategory = () => {
                     {
                         allProduct.map(category => (
                             <Link to={`/shop?category=${category.category}`}>
-                                <div className='childBackground flex flex-col mr-5 items-center border  space-y-2 p-3 rounded-lg'>
+                                <div className='flex flex-col mr-5 items-center border  space-y-2 p-3 rounded-lg'>
                                     <img className='w-20 h-20' src={category.image[0]} alt="" />
                                     <div className='flex flex-col items-center'>
                                         <h3 className='font-[600]'>{category.category}</h3>
-                                        <p>26 Items</p>
                                     </div>
                                 </div>
                             </Link>
@@ -81,4 +78,4 @@ const FeaturesCategory = () => {
     );
 };
 
-export default FeaturesCategory;
+export default TopCategories;

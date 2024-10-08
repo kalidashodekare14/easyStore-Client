@@ -3,8 +3,8 @@ import banner from '../../assets/homeBanner/Main.png'
 import banner1 from '../../assets/homeBanner/Main-1.png'
 import banner2 from '../../assets/homeBanner/Main-2.png'
 import Banner from '../../Components/Home/Banner/Banner';
-import FeaturesCategory from '../../Components/Home/FeaturesCategory/FeaturesCategory';
-import PopularProduct from '../../Components/Home/PopularProduct/PopularProduct';
+import TopCategories from '../../Components/Home/TopCategories/TopCategories';
+import NewProduct from '../../Components/Home/NewProduct/NewProduct';
 import DailySales from '../../Components/Home/DailySales/DailySales';
 import DealsOfDay from '../../Components/Home/DealsOfDay/DealsOfDay';
 import ProductReview from '../../Components/Home/ProductReview/ProductReview';
@@ -27,7 +27,7 @@ const Home = () => {
         <div className='lg:mx-20'>
             <Banner></Banner>
             {/* Category */}
-            <FeaturesCategory></FeaturesCategory>
+            <TopCategories></TopCategories>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5'>
                 <div>
                     <img src={banner} alt="" />
@@ -40,7 +40,7 @@ const Home = () => {
                 </div>
             </div>
             {/* popular product */}
-            <PopularProduct></PopularProduct>
+            <NewProduct></NewProduct>
             {/* daily sales */}
             <DailySales></DailySales>
             {/* Deals Of Day */}
