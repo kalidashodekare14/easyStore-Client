@@ -8,6 +8,10 @@ import { useLoaderData } from 'react-router-dom';
 import './Details.css'
 import { Rating } from '@smastrom/react-rating';
 import { useCart } from 'react-use-cart';
+import { TbBrandAppgallery, TbCategoryFilled } from "react-icons/tb";
+import { MdEventAvailable } from "react-icons/md";
+
+
 
 const Details = () => {
 
@@ -26,8 +30,6 @@ const Details = () => {
         removeItem,
     } = useCart();
 
-    console.log(quantity)
-
     const handleAddToCart = () => {
         addItem({ ...productDetails, id: productDetails._id }, parseInt(quantity))
     }
@@ -41,7 +43,7 @@ const Details = () => {
                             {
                                 images.map((image, index) => (
                                     <div key={index} className='border'>
-                                        <ImageZoom onClickThumb src={image} className={'w-full h-96'} alt="A image to apply the ImageZoom plugin" zoom="200" />
+                                        <ImageZoom onClickThumb src={image} className={'w-full h-[450px]'} alt="A image to apply the ImageZoom plugin" zoom="200" />
                                     </div>
                                 ))
                             }
@@ -55,7 +57,10 @@ const Details = () => {
                         }
                     </div>
                 </div>
-                <div className='space-y-5'>
+                <div className='w-[50%] space-y-5'>
+                    <div className='border w-20 px-2 rounded bg-[#fde0e9] text-[#f74b81] font-[600]'>
+                        <h1>10 Off</h1>
+                    </div>
                     <h1 className='text-4xl font-[500]'>{productDetails.name}</h1>
 
                     <Rating
@@ -65,9 +70,19 @@ const Details = () => {
                     />
                     <p className='text-4xl font-bold'>${productDetails.price}</p>
                     <p className='line-clamp-2'>{productDetails.description}</p>
-                    <div>
-                        <p>{productDetails.category}</p>
-                        <p>{productDetails.brand_name}</p>
+                    <div className='flex items-center gap-5'>
+                        <div className='flex items-center text-xl gap-2'>
+                            <TbCategoryFilled className='font-[600]' />
+                            <span >{productDetails.category}</span>
+                        </div>
+                        <div className='flex items-center text-xl gap-2'>
+                            <TbBrandAppgallery className='font-[600] text-[22px]' />
+                            <span className='text-[#2c2c2c]'>{productDetails.brand_name}</span>
+                        </div>
+                        <div className='flex items-center text-xl gap-2'>
+                            <MdEventAvailable className='font-[600] text-[22px]' />
+                            <span className='text-[#2c2c2c]'>{productDetails.availability}</span>
+                        </div>
                     </div>
                     <div className='flex items-center gap-5'>
                         <div className='flex items-center border w-[170px] rounded-xl'>
