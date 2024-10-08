@@ -15,7 +15,7 @@ const Details = () => {
     const productDetails = useLoaderData()
     const images = productDetails.image
     const [selectedIndex, setSelectedIndex] = useState(0)
-    const [isQuantity, setIsQuantity] = useState(1)
+    const [quantity, setQuantity] = useState(1)
 
     const {
         isEmpty,
@@ -26,10 +26,10 @@ const Details = () => {
         removeItem,
     } = useCart();
 
-    console.log(isQuantity)
+    console.log(quantity)
 
     const handleAddToCart = () => {
-        addItem({ ...productDetails, ...productDetails.quantity, isQuantity, id: productDetails._id })
+        addItem({ ...productDetails, id: productDetails._id }, parseInt(quantity))
     }
 
     return (
@@ -71,9 +71,9 @@ const Details = () => {
                     </div>
                     <div className='flex items-center gap-5'>
                         <div className='flex items-center border w-[170px] rounded-xl'>
-                            <span className='text-xl btn bg-opacity-0'>+</span>
-                            <input onChange={(e) => setIsQuantity(e.target.value)} value={isQuantity} className='input w-20' type="text" />
-                            <span className='text-xl btn bg-opacity-0'>-</span>
+                            <span onClick={() => setQuantity(Math.max(1, quantity - 1))} className='text-xl btn bg-opacity-0'>-</span>
+                            <input onChange={(e) => setQuantity(e.target.value)} value={quantity} className='input w-20' type="text" />
+                            <span onClick={() => setQuantity(quantity + 1)} className='text-xl btn bg-opacity-0'>+</span>
                         </div>
                         <button onClick={handleAddToCart} className='btn bg-[#3bb77e] text-white'>Add to Cart</button>
                     </div>
