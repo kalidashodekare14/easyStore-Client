@@ -36,14 +36,14 @@ const Details = () => {
 
     return (
         <div className='lg:mx-20 min-h-screen'>
-            <div className='flex gap-5'>
-                <div className='w-[500px] h-[10vh]'>
+            <div className='flex flex-col lg:flex-row gap-5'>
+                <div className='lg:w-[500px] lg:h-[10vh]'>
                     <div>
                         <Carousel selectedItem={selectedIndex} onChange={setSelectedIndex} >
                             {
                                 images.map((image, index) => (
                                     <div key={index} className='border'>
-                                        <ImageZoom onClickThumb src={image} className={'w-full h-[450px]'} alt="A image to apply the ImageZoom plugin" zoom="200" />
+                                        <ImageZoom onClickThumb src={image} className={'lg:w-full h-[450px]'} alt="A image to apply the ImageZoom plugin" zoom="200" />
                                     </div>
                                 ))
                             }
@@ -57,11 +57,11 @@ const Details = () => {
                         }
                     </div>
                 </div>
-                <div className='w-[50%] space-y-5'>
+                <div className='lg:w-[50%] space-y-5 p-5'>
                     <div className='border w-20 px-2 rounded bg-[#fde0e9] text-[#f74b81] font-[600]'>
                         <h1>10 Off</h1>
                     </div>
-                    <h1 className='text-4xl font-[500]'>{productDetails.name}</h1>
+                    <h1 className='lg:text-4xl text-2xl font-[500]'>{productDetails.name}</h1>
 
                     <Rating
                         style={{ maxWidth: 100 }}
@@ -70,7 +70,7 @@ const Details = () => {
                     />
                     <p className='text-4xl font-bold'>${productDetails.price}</p>
                     <p className='line-clamp-2'>{productDetails.description}</p>
-                    <div className='flex items-center gap-5'>
+                    <div className='grid grid-cols-2 md:grid-cols-3 gap-5'>
                         <div className='flex items-center text-xl gap-2'>
                             <TbCategoryFilled className='font-[600]' />
                             <span >{productDetails.category}</span>
