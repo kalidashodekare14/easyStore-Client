@@ -170,27 +170,10 @@ const Navbar = () => {
                             }
 
                         </div>
-                        <div className="flex  flex-col md:flex-row md:mx-6 ">
-                            <div className='flex items-center gap-1'>
-                                <MdOutlineFavoriteBorder className='text-2xl' />
-                                <span>Wishlist</span>
-                            </div>
-                        </div>
-                        <div className="flex  flex-col md:flex-row md:mx-6 ">
-                            <Link to={"/checkout"}>
-                                <div className='flex items-center gap-1'>
-                                    <div className='indicator'>
-                                        <FiShoppingCart className='text-2xl' />
-                                        <span className="badge -translate-y-6 text-[16px] bg-[#3bb77e] text-white p-2 w-8 h-8 badge-sm indicator-item">{totalUniqueItems}</span>
-                                    </div>
-                                    <span>Cart</span>
-                                </div>
-                            </Link>
-                        </div>
                         <div>
                             {
                                 user?.email ? (
-                                    <div onClick={handleProfileDropdown} className={`relative flex  flex-col md:flex-row md:mx-6 cursor-pointer`}>
+                                    <div onClick={handleProfileDropdown} className={`relative flex  flex-col md:flex-row md:mx-3 cursor-pointer`}>
                                         <div className='flex items-center gap-1'>
                                             <div>
                                                 <div className=" avatar">
@@ -241,7 +224,7 @@ const Navbar = () => {
                                     </div>
                                 ) : (
                                     <Link to={"/login"}>
-                                        <div className="flex  flex-col md:flex-row md:mx-6 cursor-pointer">
+                                        <div className="flex  flex-col md:flex-row md:mx-3 cursor-pointer">
                                             <div className='flex items-center gap-1'>
                                                 <FaRegUser className='text-2xl' />
                                                 <span>Login</span>
@@ -251,22 +234,30 @@ const Navbar = () => {
                                 )
                             }
                         </div>
+                        <div className="flex  flex-col md:flex-row md:mx-3 ">
+                            <div className='flex items-center gap-1'>
+                                <MdOutlineFavoriteBorder className='text-2xl' />
+                                <span>Wishlist</span>
+                            </div>
+                        </div>
+                        <div className="flex  flex-col md:flex-row md:mx-3 ">
+                            <Link to={"/checkout"}>
+                                <div className='flex items-center gap-1'>
+                                    <div className='indicator'>
+                                        <FiShoppingCart className='text-2xl' />
+                                        <span className="badge -translate-y-6 text-[16px] bg-[#3bb77e] text-white p-2 w-8 h-8 badge-sm indicator-item">{totalUniqueItems}</span>
+                                    </div>
+                                    <span>Cart</span>
+                                </div>
+                            </Link>
+                        </div>
+
                     </div>
                 </div>
             </div>
             <div className={`${isOpen ? 'translate-x-0 opacity-100 bg-white' : 'opacity-0 -translate-x-full '} absolute lg:static inset-x-0 z-20 w-full transition-all duration-300 ease-in-out  dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center`}>
                 <div className='lg:px-20 w-full p-2 border flex flex-col lg:flex-row justify-between items-center'>
                     <div className='flex flex-col lg:flex-row items-center gap-5'>
-                        <div className='relative'>
-                            <div className='w-52 h-10 border flex justify-center items-center rounded-xl cursor-pointer'>
-                                <h1 className='flex items-center gap-2'>Browse All Categories  <FaAngleDown /></h1>
-                            </div>
-                            <div hidden className='absolute z-50 bg-white w-52 h-auto border p-3'>
-                                <h1>Cake</h1>
-                                <h1>Organic</h1>
-                                <h1>Peach</h1>
-                            </div>
-                        </div>
                         <div>
                             <ul className='flex items-center gap-5'>
                                 <li>
