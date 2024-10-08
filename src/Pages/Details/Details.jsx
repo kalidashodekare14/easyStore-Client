@@ -68,7 +68,7 @@ const Details = () => {
                         value={4}
                         readOnly
                     />
-                    <p className='text-4xl font-bold'>${productDetails.price}</p>
+                    <p className='text-4xl font-bold text-[#3bb77e]'>${productDetails.price}</p>
                     <p className='line-clamp-2'>{productDetails.description}</p>
                     <div className='grid grid-cols-2 md:grid-cols-3 gap-5'>
                         <div className='flex items-center text-xl gap-2'>

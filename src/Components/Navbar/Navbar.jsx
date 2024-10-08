@@ -61,20 +61,80 @@ const Navbar = () => {
                             <img className="h-10 sm:h-10 my-2 lg:w-80" src={logo} alt="QuickShop Logo" />
                         </p>
                         <div className='lg:hidden flex items-center gap-5'>
-                            <div className="indicator flex  flex-col md:flex-row md:mx-6 ">
+                            <div className="flex  flex-col md:flex-row md:mx-6 ">
                                 <Link to={"/checkout"}>
-                                    <div className='flex items-center gap-1 '>
-                                        <FiShoppingCart className='text-2xl' />
+                                    <div className='flex items-center gap-1'>
+                                        <div className='indicator'>
+                                            <FiShoppingCart className='text-2xl' />
+                                            <span className="badge -translate-y-6 text-[16px] bg-[#3bb77e] text-white p-2 w-8 h-8 badge-sm indicator-item">{totalUniqueItems}</span>
+                                        </div>
                                         <span>Cart</span>
                                     </div>
                                 </Link>
-                                <span className="badge badge-sm indicator-item">8</span>
                             </div>
-                            <div className="flex  flex-col md:flex-row md:mx-6 ">
-                                <div className='flex items-center gap-1'>
-                                    <FaRegUser className='text-2xl' />
-                                    <span>Account</span>
-                                </div>
+                            <div>
+                                {
+                                    user?.email ? (
+                                        <div onClick={handleProfileDropdown} className={`relative flex  flex-col md:flex-row md:mx-6 cursor-pointer`}>
+                                            <div className='flex items-center gap-1'>
+                                                <div>
+                                                    <div className=" avatar">
+                                                        <div className="w-10 rounded-full">
+                                                            {
+                                                                userInfo.image ? (
+                                                                    <img
+                                                                        alt="Tailwind CSS Navbar component"
+                                                                        src={userInfo?.image} />
+                                                                ) : (
+                                                                    <HiUserCircle className='w-full text-5xl' />
+                                                                )
+                                                            }
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <span>Account</span>
+                                            </div>
+                                            <div className={`${profileDropdown ? "" : "hidden"} duration-300 absolute -translate-x-20 translate-y-10`}>
+                                                <ul
+                                                    tabIndex={0}
+                                                    className="menu menu-sm dropdown-content bg-base-100  z-[1] mt-3 w-52 p-2 shadow">
+                                                    <li>
+                                                        {
+                                                            isAdmin ? (
+                                                                <Link to={"/dashboard/info"}>
+                                                                    Dashboard
+                                                                </Link>
+                                                            ) : (
+                                                                <Link to={"/profile"}>
+                                                                    Profile
+                                                                </Link>
+                                                            )
+                                                        }
+
+                                                    </li>
+                                                    <li>
+                                                        {
+                                                            isAdmin || <Link to={"/payment-history"}>Payment History</Link>
+                                                        }
+
+                                                    </li>
+                                                    <li onClick={handleLogout}><a>Logout</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <Link to={"/login"}>
+                                            <div className="flex  flex-col md:flex-row md:mx-6 cursor-pointer">
+                                                <div className='flex items-center gap-1'>
+                                                    <FaRegUser className='text-2xl' />
+                                                    <span>Login</span>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )
+                                }
                             </div>
                         </div>
                         <div className="flex lg:hidden">
