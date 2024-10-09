@@ -26,8 +26,10 @@ const Shop = () => {
     const [priceRange, setPriceRange] = useState([0, 1000])
     const [searchName, setSearchName] = useState("")
     const query = new URLSearchParams(location.search)
+    const queryParams = new URLSearchParams(location.search)
     const searchCategory = query.get('category')
-    console.log(searchCategory)
+    const searchInput = queryParams.get('search')
+    console.log(searchInput)
 
     console.log(priceRange)
 
@@ -60,13 +62,29 @@ const Shop = () => {
     // category, brand_name, price range filtering
     const categoryFiltering = allProduct.filter((product) => {
         const matchedCategories = selectedCategory ? product.category === selectedCategory.value : true;
+        // product name, category, brand name search filtering start
+        const matchedSearchInput = searchInput ? (
+            product.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+            product.category.toLowerCase().includes(searchInput.toLowerCase()) ||
+            product.brand_name.toLowerCase().includes(searchInput.toLowerCase())
+
+        )
+            : true
+
+        // product name, category, brand name search filtering end
         const matchedSearchCategory = searchCategory ? product.category === searchCategory : true
         const matchedBrandName = selectedBrandName ? product.brand_name === selectedBrandName.value : true;
         const matchedPriceRange = product.price >= priceRange[0] && product.price <= priceRange[1]
         const matchedName = product.name.toLowerCase().includes(searchName.toLowerCase())
 
         return (
-            matchedCategories && matchedBrandName && matchedPriceRange && matchedName && matchedSearchCategory
+            matchedCategories &&
+            matchedBrandName &&
+            matchedPriceRange &&
+            matchedName &&
+            matchedSearchCategory &&
+            matchedSearchInput &&
+            matchedSearchInput
         )
     })
 
