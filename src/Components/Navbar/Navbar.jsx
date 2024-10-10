@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import logo from '../../assets/Header.png'
+// import logo from '../../assets/Header.png'
+import logo from '/logo.png'
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { FiSearch, FiShoppingCart } from 'react-icons/fi';
 import { FaAngleDown, FaHeadphones, FaLocationArrow, FaRegUser } from 'react-icons/fa';
@@ -46,6 +47,7 @@ const Navbar = () => {
         e.preventDefault()
         if (searchSystem.trim()) {
             navigate(`/shop?search=${searchSystem}`)
+            setSearchSystem("")
         }
     }
 
@@ -163,6 +165,19 @@ const Navbar = () => {
                             </button>
                         </div>
                     </div>
+                    <div className='hidden lg:flex items-center gap-2 border shadow px-3 py-2 rounded-2xl'>
+                        {
+                            country ? <>
+                                <div className='w-10'>
+                                    <Flag code={country} />
+                                </div>
+                                <h1>{country}</h1>
+                            </> : <>
+                                <span className="loading loading-spinner loading-md"></span>
+                            </>
+                        }
+
+                    </div>
                     <form onSubmit={handleSearch} className='w-full lg:px-10'>
                         <div className='flex items-center'>
                             <input
@@ -175,19 +190,7 @@ const Navbar = () => {
                         </div>
                     </form>
                     <div className={`${isOpen ? 'translate-x-0 opacity-100 bg-white' : 'opacity-0 -translate-x-full '} hidden  absolute inset-x-0 z-20 w-full transition-all duration-300 ease-in-out  dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center`}>
-                        <div className='flex items-center gap-2 border shadow px-3 py-2 rounded-2xl'>
-                            {
-                                country ? <>
-                                    <div className='w-10'>
-                                        <Flag code={country} />
-                                    </div>
-                                    <h1>{country}</h1>
-                                </> : <>
-                                    <span className="loading loading-spinner loading-md"></span>
-                                </>
-                            }
 
-                        </div>
                         <div>
                             {
                                 user?.email ? (

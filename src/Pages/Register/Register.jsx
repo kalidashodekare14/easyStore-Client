@@ -11,7 +11,7 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Register = () => {
 
-    const { registerSystem } = useAuth()
+    const { registerSystem, googleAuthSystem } = useAuth()
     const axiosPublic = useAxiosPublic()
     const [phone, setPhone] = useState("")
     const navigate = useNavigate()
@@ -60,6 +60,31 @@ const Register = () => {
             })
     }
 
+    const handleGoogleRegister = () => {
+        googleAuthSystem()
+            .then(res => {
+                console.log(res.data)
+                const regiInfo = {
+                    name: res?.user?.displayName,
+                    email: res?.user?.email,
+                    image: res?.user?.photoURL
+                }
+
+                axiosPublic.post("/user-register", regiInfo)
+                    .then(res => {
+                        console.log(res.data)
+
+
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                    })
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
 
 
 
@@ -101,7 +126,7 @@ const Register = () => {
                     </form>
                     <p className='text-center '>or sign up with</p>
                     <div className='flex justify-center items-center gap-5'>
-                        <button className='btn 40 flex items-center gap-2'>
+                        <button onClick={handleGoogleRegister} className='btn 40 flex items-center gap-2'>
                             <img className='w-5' src={google} alt="" />
                             Google
                         </button>

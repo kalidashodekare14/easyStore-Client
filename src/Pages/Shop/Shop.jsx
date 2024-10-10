@@ -14,12 +14,13 @@ import card5 from '../../assets/shop/img5.png'
 import card6 from '../../assets/shop/img6.png'
 import useAllProduct from '../../Hooks/useAllProduct';
 import { useCart } from 'react-use-cart';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Shop = () => {
 
     const [allProduct] = useAllProduct()
     const { addItem } = useCart()
+    const location = useLocation()
     const [selectedCategory, setSelectedCategory] = useState(null)
     const [selectedBrandName, setSelectedBrandName] = useState(null)
     const [sortOrder, setSortOrder] = useState(null)

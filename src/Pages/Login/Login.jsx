@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const Login = () => {
 
 
-    const { loginSystem } = useAuth()
+    const { loginSystem, googleAuthSystem } = useAuth()
     const navigate = useNavigate()
 
     const {
@@ -32,6 +32,18 @@ const Login = () => {
 
     }
 
+
+    const handleGoogleRegister = () => {
+        googleAuthSystem()
+            .then(res => {
+                console.log(res.data)
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
     return (
         <div className='min-h-screen flex justify-center items-center'>
             <div className='w-96 border p-5 space-y-5 rounded-2xl'>
@@ -51,7 +63,7 @@ const Login = () => {
                     </form>
                     <p className='text-center '>or sign up with</p>
                     <div className='flex justify-center items-center gap-5'>
-                        <button className='btn 40 flex items-center gap-2'>
+                        <button onClick={handleGoogleRegister} className='btn 40 flex items-center gap-2'>
                             <img className='w-5' src={google} alt="" />
                             Google
                         </button>
