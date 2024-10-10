@@ -21,17 +21,17 @@ const Dashboard = () => {
                             <div className='p-3 border-b'>
                                 <img className='w-32' src={logo} alt="" />
                             </div>
-                            <div className='p-5'>
+                            <div className='p-2'>
                                 <ul className='space-y-5'>
                                     <li>
                                         <NavLink
                                             to="/dashboard/info"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <FaHome className='text-[#686666]'></FaHome>
+                                                <FaHome className=''></FaHome>
                                                 <h1 className='font-[500]'>Dashboard</h1>
                                             </div>
                                         </NavLink>
@@ -40,11 +40,11 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/all-product"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <FaShoppingBag className='text-[#686666]'></FaShoppingBag>
+                                                <FaShoppingBag className=''></FaShoppingBag>
                                                 <h1 className='font-[500]'>Products</h1>
                                             </div>
                                         </NavLink>
@@ -53,11 +53,11 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/orders"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <FaShoppingCart className='text-[#686666]'></FaShoppingCart>
+                                                <FaShoppingCart className=''></FaShoppingCart>
                                                 <h1 className='font-[500]'>Orders</h1>
                                             </div>
                                         </NavLink>
@@ -66,11 +66,11 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/Sellers"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <MdAddHomeWork className='text-[#686666]'></MdAddHomeWork>
+                                                <MdAddHomeWork className=''></MdAddHomeWork>
                                                 <h1 className='font-[500]'>Sellers</h1>
                                             </div>
                                         </NavLink>
@@ -79,11 +79,11 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/add-product"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <MdAddBox className='text-[#686666]'></MdAddBox>
+                                                <MdAddBox className=''></MdAddBox>
                                                 <h1 className='font-[500]'>Add Product</h1>
                                             </div>
                                         </NavLink>
@@ -92,11 +92,11 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/transaction"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <AiFillDollarCircle className='text-[#686666]'></AiFillDollarCircle>
+                                                <AiFillDollarCircle className=''></AiFillDollarCircle>
                                                 <h1 className='font-[500]'>Transaction</h1>
                                             </div>
                                         </NavLink>
@@ -105,11 +105,11 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/account"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <FaUser className='text-[#686666]'></FaUser>
+                                                <FaUser className=''></FaUser>
                                                 <h1 className='font-[500]'>Account</h1>
                                             </div>
                                         </NavLink>
@@ -118,11 +118,11 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/reviews"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <MdMessage className='text-[#686666]'></MdMessage>
+                                                <MdMessage className=''></MdMessage>
                                                 <h1 className='font-[500]'>Reviews</h1>
                                             </div>
                                         </NavLink>
@@ -131,11 +131,11 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/brands"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <FaStar className='text-[#686666]'></FaStar>
+                                                <FaStar className=''></FaStar>
                                                 <h1 className='font-[500]'>Brands</h1>
                                             </div>
                                         </NavLink>
@@ -144,11 +144,11 @@ const Dashboard = () => {
                                         <NavLink
                                             to="/dashboard/statistics"
                                             className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "active" : ""
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }
                                         >
                                             <div className='flex items-center gap-2 text-[18px]'>
-                                                <GiOrange className='text-[#686666]'></GiOrange>
+                                                <GiOrange className=''></GiOrange>
                                                 <h1 className='font-[500]'>Statistics</h1>
                                             </div>
                                         </NavLink>
