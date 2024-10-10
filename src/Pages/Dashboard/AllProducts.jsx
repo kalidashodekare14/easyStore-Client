@@ -59,7 +59,7 @@ const AllProducts = () => {
                 </button>
             </div>
             <div className='my-10 bg-white p-5'>
-                <div className='flex justify-between items-center'>
+                <div className='flex justify-between items-center mb-5'>
                     <div className=''>
                         <select className="select select-bordered w-52">
                             <option disabled selected>All Category</option>
@@ -102,7 +102,7 @@ const AllProducts = () => {
                                     <tr key={product._id} className="">
                                         <th>1</th>
                                         <th>
-                                            <img className='w-20' src={product.image[0]} alt="" />
+                                            <img className='w-52' src={product.image[0]} alt="" />
                                         </th>
                                         <td>{product.name}</td>
                                         <td>{product.category}</td>

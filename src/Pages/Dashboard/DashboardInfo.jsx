@@ -126,7 +126,7 @@ const DashboardInfo = () => {
 
     return (
         <div className='mx-10 my-5'>
-            <div className='flex justify-between items-center'>
+            <div className='flex justify-between items-center mb-5'>
                 <div>
                     <h1 className='text-3xl font-[600]'>Dashboard</h1>
                     <p className='font-[400]'>Whole data about your business here</p>

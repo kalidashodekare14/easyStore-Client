@@ -13,14 +13,14 @@ import img7 from '../../../assets/popular/img8.png'
 import img8 from '../../../assets/popular/img9.png'
 import img9 from '../../../assets/popular/img10.png'
 import useAllProduct from '../../../Hooks/useAllProduct';
+import { useCart } from 'react-use-cart';
 
 
 
 const NewProduct = () => {
 
     const [allProduct] = useAllProduct()
-
-
+    const { addItem } = useCart();
 
     return (
         <div className='my-5'>
@@ -45,7 +45,7 @@ const NewProduct = () => {
                                 />
                                 <div className='flex justify-between items-center'>
                                     <p className='font-bold text-xl text-[#3bb77e]'>${product.price}</p>
-                                    <button className='btn bg-[#1acc5b3f] text-[#16a34a]'>
+                                    <button onClick={() => addItem({ ...product, id: product._id })} className='btn bg-[#1acc5b3f] text-[#16a34a]'>
                                         <CiShoppingCart className='text-xl' />
                                         <span className='font-bold'>Add</span>
                                     </button>

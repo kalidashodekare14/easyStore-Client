@@ -8,11 +8,13 @@ import img3 from '../../../assets/dailySales/img3.png'
 import img4 from '../../../assets/dailySales/img4.png'
 import { CiShoppingCart } from 'react-icons/ci';
 import UseAllProduct from '../../../Hooks/useAllProduct';
+import { useCart } from 'react-use-cart';
 
 const DailySales = () => {
 
 
     const [useAllProduct] = UseAllProduct()
+    const { addItem } = useCart();
 
 
     const responsive = {
@@ -53,9 +55,8 @@ const DailySales = () => {
                                 </div>
                                 <div className='p-5 space-y-2'>
                                     <img className='w-full h-40' src={product.image[0]} alt="" />
-                                    <span className='text-[#7a7a7a]'>Snak</span>
-                                    <h1 className='text-xl font-medium'>Seeds of Change Organic
-                                        Quinoa, Brown, & Red Rice</h1>
+                                    <span className='text-[#7a7a7a]'>{product.name}</span>
+                                    <h1 className='text-xl font-medium'>{product.description.slice(0,50)}...</h1>
                                     <Rating
                                         style={{ maxWidth: 100 }}
                                         value={2}
@@ -67,7 +68,7 @@ const DailySales = () => {
                                     </div>
                                     <div>
                                         <h2 className='font-medium'>Sold: 90/120</h2>
-                                        <button className='btn w-full bg-[#3bb77e] text-white'>Add To Cart</button>
+                                        <button onClick={() => addItem({ ...product, id: product._id })} className='btn w-full bg-[#3bb77e] text-white'>Add To Cart</button>
                                     </div>
                                 </div>
                             </div>

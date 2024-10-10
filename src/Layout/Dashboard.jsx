@@ -3,7 +3,7 @@ import { AiFillDollarCircle } from 'react-icons/ai';
 import { FaHome, FaSearch, FaShoppingBag, FaShoppingCart, FaStar, FaUser } from 'react-icons/fa';
 import { GiOrange } from 'react-icons/gi';
 import { MdAddBox, MdAddHomeWork, MdMessage } from 'react-icons/md';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import logo from '/logo.png'
 import { IoMdNotifications } from 'react-icons/io';
 
@@ -153,6 +153,8 @@ const Dashboard = () => {
                                             </div>
                                         </NavLink>
                                     </li>
+                                    <div className="divider">OR</div>
+                                    <li><Link to={'/'} className='text-xl'>Home</Link></li>
                                 </ul>
                             </div>
                         </div>
