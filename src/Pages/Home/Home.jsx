@@ -1,7 +1,7 @@
 import React from 'react';
-import banner from '../../assets/homeBanner/Main.png'
-import banner1 from '../../assets/homeBanner/Main-1.png'
-import banner2 from '../../assets/homeBanner/Main-2.png'
+import banner from '../../assets/homeBanner/banner.png'
+import banner1 from '../../assets/homeBanner/banner1.png'
+import banner2 from '../../assets/homeBanner/banner2.png'
 import Banner from '../../Components/Home/Banner/Banner';
 import TopCategories from '../../Components/Home/TopCategories/TopCategories';
 import NewProduct from '../../Components/Home/NewProduct/NewProduct';
@@ -18,6 +18,7 @@ import img2 from '../../assets/system/img2.png'
 import img3 from '../../assets/system/img3.png'
 import img4 from '../../assets/system/img4.png'
 import img5 from '../../assets/system/img5.png'
+import { Link } from 'react-router-dom';
 
 
 
@@ -29,14 +30,23 @@ const Home = () => {
             {/* Category */}
             <TopCategories></TopCategories>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5'>
-                <div>
-                    <img src={banner} alt="" />
+                <div className={`flex flex-col justify-center gap-5  banner1 bg-center bg-no-repeat bg-cover  h-72 w-full px-5`}>
+                    <h1 className='text-[22px] w-52 font-[600]'>Fresh and Organic Vegetables for a Healthy Life</h1>
+                    <Link to={"/shop"}>
+                        <button className='btn w-32 bg-[#3bb77e] text-white'>Shop</button>
+                    </Link>
                 </div>
-                <div>
-                    <img src={banner1} alt="" />
+                <div className={`flex flex-col justify-center gap-5  banner2 bg-center bg-no-repeat bg-cover  h-72 w-full px-5`}>
+                    <h1 className='text-[22px] w-52 font-[600]'>Delicious Instant Noodles – Ready in Minutes!</h1>
+                    <Link to={"/shop"}>
+                        <button className='btn w-32 bg-[#3bb77e] text-white'>Shop</button>
+                    </Link>
                 </div>
-                <div>
-                    <img src={banner2} alt="" />
+                <div className={`flex flex-col justify-center gap-5  banner3 bg-center bg-no-repeat bg-cover  h-72 w-full px-5`}>
+                    <h1 className='text-[22px] w-52 font-[600]'>Farm-Fresh Vegetables for Every Meal</h1>
+                    <Link to={"/shop"}>
+                        <button className='btn w-32 bg-[#3bb77e] text-white'>Shop</button>
+                    </Link>
                 </div>
             </div>
             {/* popular product */}

@@ -1,3 +1,13 @@
 .subscribe-banner {
     background-image: url(../../assets/subscribe.png)
 }
+
+.banner1{
+    background-image: url(../../assets/homeBanner/banner.png);
+}
+.banner2{
+    background-image: url(../../assets/homeBanner/banner1.png);
+}
+.banner3{
+    background-image: url(../../assets/homeBanner/banner2.png);
+}
