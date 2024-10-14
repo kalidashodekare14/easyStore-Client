@@ -25,6 +25,7 @@ import PaymentCancel from "../Components/PaymentCancel/PaymentCancel";
 import PrivateRoute from "../Routes/PrivateRoute/PrivateRoute";
 import UserPaymentHistory from "../Pages/UserPaymentHistory/UserPaymentHistory";
 import UserPaymentHistoryDetail from "../Pages/UserPaymentHistory/UserPaymentHistoryDetail";
+import BlogPost from "../Pages/Dashboard/BlogPost";
 
 const router = createBrowserRouter([
     {
@@ -130,6 +131,10 @@ const router = createBrowserRouter([
                 path: '/dashboard/statistics',
                 element: <Statistics></Statistics>
             },
+            {
+                path: '/dashboard/blog-post',
+                element: <BlogPost></BlogPost>
+            }
         ]
     }
 ])

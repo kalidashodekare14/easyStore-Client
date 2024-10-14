@@ -31,19 +31,19 @@ const Home = () => {
             <TopCategories></TopCategories>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5'>
                 <div className={`flex flex-col justify-center gap-5  banner1 bg-center bg-no-repeat bg-cover  h-72 w-full px-5`}>
-                    <h1 className='text-[22px] w-52 font-[600]'>Fresh and Organic Vegetables for a Healthy Life</h1>
+                    <h1 className='text-[22px] w-60 font-[600]'>Fresh and Organic Vegetables for a Healthy Life</h1>
                     <Link to={"/shop"}>
                         <button className='btn w-32 bg-[#3bb77e] text-white'>Shop</button>
                     </Link>
                 </div>
                 <div className={`flex flex-col justify-center gap-5  banner2 bg-center bg-no-repeat bg-cover  h-72 w-full px-5`}>
-                    <h1 className='text-[22px] w-52 font-[600]'>Delicious Instant Noodles – Ready in Minutes!</h1>
+                    <h1 className='text-[22px] w-60 font-[600]'>Delicious Instant Noodles – Ready in Minutes!</h1>
                     <Link to={"/shop"}>
                         <button className='btn w-32 bg-[#3bb77e] text-white'>Shop</button>
                     </Link>
                 </div>
                 <div className={`flex flex-col justify-center gap-5  banner3 bg-center bg-no-repeat bg-cover  h-72 w-full px-5`}>
-                    <h1 className='text-[22px] w-52 font-[600]'>Farm-Fresh Vegetables for Every Meal</h1>
+                    <h1 className='text-[22px] w-60 font-[600]'>Farm-Fresh Vegetables for Every Meal</h1>
                     <Link to={"/shop"}>
                         <button className='btn w-32 bg-[#3bb77e] text-white'>Shop</button>
                     </Link>

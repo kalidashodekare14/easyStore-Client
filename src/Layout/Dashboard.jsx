@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiFillDollarCircle } from 'react-icons/ai';
-import { FaHome, FaSearch, FaShoppingBag, FaShoppingCart, FaStar, FaUser } from 'react-icons/fa';
+import { FaBloggerB, FaHome, FaSearch, FaShoppingBag, FaShoppingCart, FaStar, FaUser } from 'react-icons/fa';
 import { GiOrange } from 'react-icons/gi';
 import { MdAddBox, MdAddHomeWork, MdMessage } from 'react-icons/md';
 import { Link, NavLink, Outlet } from 'react-router-dom';
@@ -150,6 +150,19 @@ const Dashboard = () => {
                                             <div className='flex items-center gap-2 text-[18px]'>
                                                 <GiOrange className=''></GiOrange>
                                                 <h1 className='font-[500]'>Statistics</h1>
+                                            </div>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/dashboard/blog-post"
+                                            className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+                                            }
+                                        >
+                                            <div className='flex items-center gap-2 text-[18px]'>
+                                                <FaBloggerB ></FaBloggerB>
+                                                <h1 className='font-[500]'>Blogs</h1>
                                             </div>
                                         </NavLink>
                                     </li>
