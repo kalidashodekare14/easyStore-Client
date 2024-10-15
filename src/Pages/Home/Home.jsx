@@ -16,7 +16,7 @@ import './Home.css'
 import img1 from '../../assets/system/img1.png'
 import img2 from '../../assets/system/img2.png'
 import img3 from '../../assets/system/img3.png'
-import img4 from '../../assets/system/img4.png'
+// import img4 from '../../assets/system/img4.png'
 import img5 from '../../assets/system/img5.png'
 import { Link } from 'react-router-dom';
 
@@ -92,7 +92,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='flex items-center gap-3 border  p-5 rounded-2xl bg-[#f4f6fa]'>
-                    <img className='w-12' src={img4} alt="" />
+                    {/* <img className='w-12' src={img4} alt="" /> */}
                     <div>
                         <h1 className='text-xl font-medium'>Wide assortment</h1>
                         <p className='text-[#6b6969]'>Mega Discounts</p>

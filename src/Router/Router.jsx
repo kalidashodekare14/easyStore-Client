@@ -26,6 +26,7 @@ import PrivateRoute from "../Routes/PrivateRoute/PrivateRoute";
 import UserPaymentHistory from "../Pages/UserPaymentHistory/UserPaymentHistory";
 import UserPaymentHistoryDetail from "../Pages/UserPaymentHistory/UserPaymentHistoryDetail";
 import BlogPost from "../Pages/Dashboard/BlogPost";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop></Shop>
+            },
+            {
+                path: '/blogs',
+                element: <Blogs></Blogs>
             },
             {
                 path: '/details/:id',

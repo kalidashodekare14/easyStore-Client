@@ -6,12 +6,6 @@ import 'react-range-slider-input/dist/style.css';
 import img1 from '../../assets/food.png'
 import { Rating } from '@smastrom/react-rating';
 import { CiShoppingCart } from 'react-icons/ci';
-import card1 from '../../assets/shop/img1.png'
-import card2 from '../../assets/shop/img2.png'
-import card3 from '../../assets/shop/img3.png'
-import card4 from '../../assets/shop/img4.png'
-import card5 from '../../assets/shop/img5.png'
-import card6 from '../../assets/shop/img6.png'
 import useAllProduct from '../../Hooks/useAllProduct';
 import { useCart } from 'react-use-cart';
 import { Link, useLocation } from 'react-router-dom';

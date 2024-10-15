@@ -304,7 +304,7 @@ const Navbar = () => {
                                 </li>
 
                                 <li>
-                                    <NavLink to={'/blog'}
+                                    <NavLink to={'/blogs'}
                                         className={({ isActive, isPending }) =>
                                             isPending ? "pending" : isActive ? "text-[#3bb77e]  font-[600] border-b-2 border-[#3bb77e] " : "hover:text-[#3bb77e] duration-300 font-[600]"
                                         }

@@ -1,8 +1,4 @@
 import React from 'react';
-import img from '../../../assets/dealsDay/img1.png'
-import img1 from '../../../assets/dealsDay/img2.png'
-import img2 from '../../../assets/dealsDay/img3.png'
-import img3 from '../../../assets/dealsDay/img4.png'
 import { Rating } from '@smastrom/react-rating';
 import { CiShoppingCart } from 'react-icons/ci';
 import useAllProduct from '../../../Hooks/useAllProduct';

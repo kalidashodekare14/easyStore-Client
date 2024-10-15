@@ -2,16 +2,7 @@ import React from 'react';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { CiShoppingCart } from 'react-icons/ci';
-import img from '../../../assets/popular/img3.png'
-import img1 from '../../../assets/popular/img2.png'
-import img2 from '../../../assets/popular/img3.png'
-import img3 from '../../../assets/popular/img4.png'
-import img4 from '../../../assets/popular/img5.png'
-import img5 from '../../../assets/popular/img6.png'
-import img6 from '../../../assets/popular/img7.png'
-import img7 from '../../../assets/popular/img8.png'
-import img8 from '../../../assets/popular/img9.png'
-import img9 from '../../../assets/popular/img10.png'
+
 import useAllProduct from '../../../Hooks/useAllProduct';
 import { useCart } from 'react-use-cart';
 

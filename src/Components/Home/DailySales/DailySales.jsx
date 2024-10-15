@@ -2,10 +2,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Rating } from '@smastrom/react-rating';
 
-import img1 from '../../../assets/dailySales/img1.png'
-import img2 from '../../../assets/dailySales/img2.png'
-import img3 from '../../../assets/dailySales/img3.png'
-import img4 from '../../../assets/dailySales/img4.png'
+
 import { CiShoppingCart } from 'react-icons/ci';
 import UseAllProduct from '../../../Hooks/useAllProduct';
 import { useCart } from 'react-use-cart';

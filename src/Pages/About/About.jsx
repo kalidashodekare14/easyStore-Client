@@ -1,10 +1,10 @@
-import img from '../../assets/shopImage/img.png'
+// import img from '../../assets/shopImage/img.png'
 import img1 from '../../assets/shopImage/about-1.png'
 import img2 from '../../assets/shopImage/about-2.png'
 import img3 from '../../assets/shopImage/about-3.png'
 import prodiver1 from '../../assets/about/p1.png'
 import prodiver2 from '../../assets/about/p2.png'
-import prodiver3 from '../../assets/about/p3.png'
+// import prodiver3 from '../../assets/about/p3.png'
 import prodiver4 from '../../assets/about/p4.png'
 import prodiver5 from '../../assets/about/p5.png'
 import prodiver6 from '../../assets/about/p6.png'
@@ -23,7 +23,7 @@ const About = () => {
     return (
         <div className='lg:mx-20'>
             <div className='flex flex-col lg:flex-row justify-between items-center gap-5'>
-                <img className='lg:w-[500px]' src={img} alt="" />
+                {/* <img className='lg:w-[500px]' src={img} alt="" /> */}
                 <div className='p-3 my-5 '>
                     <h1 className='text-3xl font-bold my-3'>Welcome to Nest</h1>
                     <div className='space-y-3 text-[16px] font-lato text-[#707070]'>
@@ -65,7 +65,7 @@ const About = () => {
                         <span className='text-[#3bb77e] font-[400] cursor-pointer'>Read More</span>
                     </div>
                     <div className='border flex flex-col justify-center items-center p-5 space-y-3'>
-                        <img src={prodiver3} alt="" />
+                        {/* <img src={prodiver3} alt="" /> */}
                         <h3 className='text-[20px]'>Free Delivery</h3>
                         <p className='text-center text-[15px]'>There are many variations of passages of Lorem
                             Ipsum available, but the majority have suffered
