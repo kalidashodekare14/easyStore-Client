@@ -55,7 +55,7 @@ const Blogs = () => {
 
 
     return (
-        <div className='lg:mx-20'>
+        <div className='lg:mx-20 my-20'>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                 {
                     blogsData.map(blog => (
