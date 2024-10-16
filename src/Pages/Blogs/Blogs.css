@@ -1,0 +1,8 @@
+/* ol {
+    list-style: decimal;
+} */
+
+.blogs-container ol,
+.blogs-container ul {  
+    list-style: decimal;
+}
