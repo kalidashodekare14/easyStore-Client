@@ -26,6 +26,7 @@ import PrivateRoute from "../Routes/PrivateRoute/PrivateRoute";
 import UserPaymentHistory from "../Pages/UserPaymentHistory/UserPaymentHistory";
 import UserPaymentHistoryDetail from "../Pages/UserPaymentHistory/UserPaymentHistoryDetail";
 import BlogPost from "../Pages/Dashboard/BlogPost";
+import BlogDetails from "../Pages/BlogsDetails/BlogsDetails";
 import Blogs from "../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>
+            },
+            {
+                path: '/blogs_details/:id',
+                element: <BlogDetails></BlogDetails>
             },
             {
                 path: '/details/:id',

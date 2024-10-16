@@ -1,0 +1,15 @@
+.blogs-container ol,
+.blogs-container ul {
+    list-style: decimal;
+
+}
+
+.blogs-container ol li,
+.blogs-container ul li {
+    margin-left: 40px;
+
+}
+
+.blogs-container a {
+    color: #3c69f7;
+}

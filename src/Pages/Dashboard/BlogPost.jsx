@@ -14,7 +14,7 @@ const BlogPost = () => {
     const axiosSecure = useAxiosSecure()
     const [blogImage, setBlogImage] = useState("")
     const [uploading, setUploading] = useState(false)
-
+    const [blogTitle, setBlogTitle] = useState("")
 
     console.log(blogImage)
 
@@ -51,7 +51,16 @@ const BlogPost = () => {
 
     const handleSubmitContent = (e) => {
         e.preventDefault()
-        axiosSecure.post('/blogs-post', { content })
+
+        const contentData = {
+            blogTitle: blogTitle,
+            blogThumbnail: blogImage,
+            content
+        }
+
+        console.log(contentData)
+
+        axiosSecure.post('/blogs-post', contentData)
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {
@@ -73,7 +82,7 @@ const BlogPost = () => {
         <div className='min-h-screen m-5'>
             <div className='flex justify-between items-center my-5'>
                 <div className=''>
-                    <input className='w-96 input input-bordered' placeholder='Blog Title' type="text" />
+                    <input onChange={(e) => setBlogTitle(e.target.value)} className='w-96 input input-bordered' placeholder='Blog Title' type="text" />
                 </div>
                 <div className='flex items-center gap-3'>
                     {
@@ -93,8 +102,8 @@ const BlogPost = () => {
                             <div>
                                 {
                                     blogImage ? (
-                                        <img className = 'w-20 h-10' src = { blogImage } alt = "" />
-                                    ): (
+                                        <img className='w-20 h-10' src={blogImage} alt="" />
+                                    ) : (
                                         <FaImage className='text-4xl' />
                                     )
                                 }
