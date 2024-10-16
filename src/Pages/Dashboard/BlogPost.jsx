@@ -3,47 +3,46 @@ import 'react-quill/dist/quill.snow.css';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { Editor } from '@tinymce/tinymce-react';
 import Swal from 'sweetalert2';
-
+import { FaFileImport, FaImage } from 'react-icons/fa';
+import { RotatingLines } from 'react-loader-spinner';
+const image_hosting_key = import.meta.env.VITE_IMG_API_KEY
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const BlogPost = () => {
 
     const [content, setContent] = useState("")
     const axiosSecure = useAxiosSecure()
-
-    console.log("check", content)
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     console.log(content)
-    //     axiosSecure.post('/blogs-post', { content })
-    //         .then(res => {
-    //             console.log(res.data)
-    //         })
-    //         .catch(error => {
-    //             console.log(error.message)
-    //         })
-    // }
+    const [blogImage, setBlogImage] = useState("")
+    const [uploading, setUploading] = useState(false)
 
 
-    // const modules = {
-    //     toolbar: [
-    //         [{ 'header': '1' }, { 'header': '2' }, { 'header': '3' }, { 'font': [] }],
-    //         [{ "align": [] }],
-    //         [{ size: [] }],
-    //         ["bold", 'italic', 'underline', 'strike', 'blockquote'],
-    //         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-    //         ['link', 'image'],
-    //         ['clean']
-    //     ],
-    // }
+    console.log(blogImage)
 
-    // const formats = [
-    //     'header', 'font', 'size',
-    //     'bold', 'italic', 'underline', 'strike', 'blockquote',
-    //     'list', 'bullet',
-    //     'align',
-    //     'link', 'image'
-    // ];
+    // image hosting 
+    const handleImageHosting = async (event) => {
+        const ImageSelected = event.target.files[0]
+        setUploading(true)
+        const formData = new FormData()
+        formData.append("image", ImageSelected)
+
+        try {
+            const res = await fetch(`${image_hosting_api}`, {
+                method: "POST",
+                body: formData
+            })
+            const data = await res.json()
+            if (data.success) {
+                setBlogImage(data.data.url)
+            }
+        } catch (error) {
+            console.log(error.message)
+        } finally {
+            setUploading(false)
+        }
+
+    }
+
+
 
     const handleEditorChange = (content, editor) => {
         console.log(content)
@@ -72,9 +71,49 @@ const BlogPost = () => {
 
     return (
         <div className='min-h-screen m-5'>
+            <div className='flex justify-between items-center my-5'>
+                <div className=''>
+                    <input className='w-96 input input-bordered' placeholder='Blog Title' type="text" />
+                </div>
+                <div className='flex items-center gap-3'>
+                    {
+                        uploading ? (
+                            <RotatingLines
+                                visible={true}
+                                height="50"
+                                width="40"
+                                color="grey"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                ariaLabel="rotating-lines-loading"
+                                wrapperStyle={{}}
+                                wrapperClass=""
+                            />
+                        ) : (
+                            <div>
+                                {
+                                    blogImage ? (
+                                        <img className = 'w-20 h-10' src = { blogImage } alt = "" />
+                                    ): (
+                                        <FaImage className='text-4xl' />
+                                    )
+                                }
+                            </div>
+                        )
+                    }
+                    <div className='cursor-pointer flex' onClick={() => document.querySelector('input[type="file"]').click()}>
+                        <div className='border p-2'>
+                            <h1 className='text-xl flex items-center gap-2'>
+                                <span>Blog Thumbnail</span>
+                                <FaFileImport />
+                            </h1>
+                        </div>
+                        <input onChange={handleImageHosting} hidden type="file" className="file-input file-input-bordered w-full max-w-xs" />
+                    </div>
+                </div>
+            </div>
             <form onSubmit={handleSubmitContent}>
                 <Editor
-
                     apiKey={import.meta.env.VITE_CONTENT_EDITOR_API_KEY}
                     initialValue='<p>Hello, World</p>'
                     init={{
@@ -106,12 +145,6 @@ const BlogPost = () => {
                 />
                 <button type='submit' className='btn w-32 mt-5 bg-[#3bb77e] text-white'>Post</button>
             </form>
-            <div>
-                <div
-                    className='blog-content mt-10'
-                    dangerouslySetInnerHTML={{ __html: content }}
-                />
-            </div>
         </div>
     );
 };
