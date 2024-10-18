@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillDollarCircle } from 'react-icons/ai';
 import { FaBloggerB, FaHome, FaSearch, FaShoppingBag, FaShoppingCart, FaStar, FaUser } from 'react-icons/fa';
 import { GiOrange } from 'react-icons/gi';
@@ -6,11 +6,69 @@ import { MdAddBox, MdAddHomeWork, MdMessage } from 'react-icons/md';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import logo from '/logo.png'
 import { IoMdNotifications } from 'react-icons/io';
+import { useQuery } from '@tanstack/react-query';
+import { IoNotificationsCircleSharp } from "react-icons/io5";
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { io } from 'socket.io-client';
 
 
 const Dashboard = () => {
 
     const isAdmin = true
+    const [isOpenNoti, setIsOpenNoti] = useState(false)
+    const [notifications, setNotifications] = useState([])
+    const axiosSecure = useAxiosSecure()
+
+    const handleOpenNotification = () => {
+        setIsOpenNoti(!isOpenNoti)
+
+        axiosSecure.patch('/notification-unread-update')
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    notificationRefetch()
+                }
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
+    }
+    useEffect(() => {
+        axiosSecure.get('/notification')
+            // .then(res => res.json())
+            .then(res => {
+                console.log(res.data)
+                setNotifications(res.data)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
+        const socket = io('http://localhost:5000')
+
+        socket.on('newUser', (notification) => {
+            setNotifications(prev => [notification, ...prev])
+        })
+
+        // socket.on('newOrder', (data) => {
+        //     setNotifications(prev => [...prev, data.message])
+        // })
+
+        return () => {
+            socket.disconnect()
+        }
+
+    }, [])
+
+    const { data: unReadNotifications = 0, isLoading, refetch: notificationRefetch } = useQuery({
+        queryKey: ["unReadNotifications"],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/notification/unread`);
+            return res.data;
+        },
+    });
+
+
 
     return (
         <div>
@@ -178,9 +236,39 @@ const Dashboard = () => {
                                     <button className='btn rounded-none'><FaSearch></FaSearch></button>
                                 </div>
                                 <div className='flex items-center gap-5'>
-                                    <div className='indicator'>
-                                        <span className="badge bg-red-400 text-white badge-sm indicator-item">10</span>
-                                        <IoMdNotifications className='text-3xl'></IoMdNotifications>
+                                    <div className="indicator">
+                                        <span className="indicator-item badge bg-[#de192e] text-white">{unReadNotifications?.totalUnreadNotificaton}+</span>
+                                        <div className='relative'>
+                                            <IoNotificationsCircleSharp onClick={handleOpenNotification} className='text-4xl' />
+                                            <div className={`${isOpenNoti ? 'visible' : 'hidden'} rounded-xl absolute lg:right-0 z-10 w-96 h-80 border bg-white`}>
+                                                <ul className='space-y-5 p-2 overflow-y-auto scroll-smooth h-full'>
+                                                    {
+                                                        notifications.map((notification, index) => (
+                                                            <li className='border-b p-1 space-x-1' key={index}>
+                                                                <div className='flex space-x-3 items-center'>
+                                                                    <div className="dropdown dropdown-end">
+                                                                        <div className="btn btn-ghost btn-circle avatar">
+                                                                            <div className="w-10 rounded-full">
+                                                                                <img
+                                                                                    alt="Tailwind CSS Navbar component"
+                                                                                    src={notification?.image ? notification?.image : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div className='flex flex-col'>
+                                                                        <h1 className='text-[#3a4966]'><span className='font-medium'>{notification?.name}</span> {notification.message}</h1>
+                                                                        <span className='font-bold'>{notification.user.email}</span>
+                                                                        <span className='font-semibold'>{notification.transaction_id}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        ))
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div className="dropdown dropdown-end">
                                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

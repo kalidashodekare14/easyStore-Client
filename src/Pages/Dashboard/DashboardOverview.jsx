@@ -363,7 +363,7 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>Total Revenue</h3>
-                                    <h1 className='text-2xl font-[600]'>${overviewData?.totalRevenue?.last24Hours}</h1>
+                                    <h1 className='text-2xl font-[600]'>${overviewData?.totalRevenue?.lasWeeks}</h1>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3 border  p-5'>
@@ -372,7 +372,7 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>Total Customar</h3>
-                                    <h1 className='text-2xl font-[600]'>15452</h1>
+                                    <h1 className='text-2xl font-[600]'>{overviewData?.totalCustomar?.lasWeeks}</h1>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3 border  p-5'>
@@ -381,7 +381,7 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>Total Orders</h3>
-                                    <h1 className='text-2xl font-[600]'>56894</h1>
+                                    <h1 className='text-2xl font-[600]'>{overviewData?.totalOrder?.lasWeeks}</h1>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3 border  p-5'>
@@ -390,10 +390,10 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>All Product</h3>
-                                    <h1 className='text-2xl font-[600]'>78956</h1>
+                                    <h1 className='text-2xl font-[600]'>{overviewData?.totalProducts?.lasWeeks}</h1>
                                 </div>
                             </div>
-                            <div className='flex items-center gap-3 border  p-5'>
+                            {/* <div className='flex items-center gap-3 border  p-5'>
                                 <div className='border p-5 rounded-full bg-[#d8f1e5]'>
                                     <RiMoneyDollarBoxFill className='text-3xl text-[#3bb77e]' />
                                 </div>
@@ -401,7 +401,7 @@ const DashboardOverview = () => {
                                     <h3 className='text-xl font-[500]'>Total Sales</h3>
                                     <h1 className='text-2xl font-[600]'>$5964</h1>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='my-10 flex justify-between items-center gap-5'>
                             <div className='w-full bg-white shadow-lg rounded-2xl p-3'>
@@ -411,7 +411,7 @@ const DashboardOverview = () => {
                                         <AreaChart
                                             width={500}
                                             height={400}
-                                            data={data}
+                                            data={formatedData}
                                             margin={{
                                                 top: 10,
                                                 right: 30,
@@ -424,9 +424,10 @@ const DashboardOverview = () => {
                                             <YAxis domain={[5, 'auto']} tickCount={6} />
                                             <Tooltip />
                                             <Legend />
-                                            <Area type="monotone" dataKey="Sales" stackId="1" stroke="#8884d8" fill="#8884d8" />
-                                            <Area type="monotone" dataKey="Visitors" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-                                            <Area type="monotone" dataKey="Products" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                                            <Area type="monotone" dataKey="Revenue" stackId="1" stroke="#8884d8" fill="#8884d8" />
+                                            <Area type="monotone" dataKey="Customar" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+                                            <Area type="monotone" dataKey="Order" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                                            <Area type="monotone" dataKey="Products" stackId="1" stroke="#58ff95" fill="#58ff95" />
                                         </AreaChart>
                                     </ResponsiveContainer>
                                 </div>
@@ -438,7 +439,7 @@ const DashboardOverview = () => {
                                         <BarChart
                                             width={500}
                                             height={300}
-                                            data={data2}
+                                            data={processedData}
                                             margin={{
                                                 top: 20,
                                                 right: 30,
@@ -452,7 +453,7 @@ const DashboardOverview = () => {
                                             <Tooltip />
                                             <Legend />
                                             <Bar dataKey="Bangladesh" stackId="a" fill="#5897fb" />
-                                            <Bar dataKey="US" stackId="a" fill="#7bcf86" />
+                                            <Bar dataKey="United State" stackId="a" fill="#7bcf86" />
                                             <Bar dataKey="India" stackId="a" fill="#ff9076" />
                                         </BarChart>
                                     </ResponsiveContainer>
@@ -470,7 +471,7 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>Total Revenue</h3>
-                                    <h1 className='text-2xl font-[600]'>$154526.5</h1>
+                                    <h1 className='text-2xl font-[600]'>${overviewData?.totalRevenue?.lastMonth}</h1>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3 border  p-5'>
@@ -479,7 +480,7 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>Total Customar</h3>
-                                    <h1 className='text-2xl font-[600]'>15452</h1>
+                                    <h1 className='text-2xl font-[600]'>{overviewData?.totalCustomar?.lastMonth}</h1>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3 border  p-5'>
@@ -488,7 +489,7 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>Total Orders</h3>
-                                    <h1 className='text-2xl font-[600]'>56894</h1>
+                                    <h1 className='text-2xl font-[600]'>{overviewData?.totalOrder?.lastMonth}</h1>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3 border  p-5'>
@@ -497,10 +498,10 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>All Product</h3>
-                                    <h1 className='text-2xl font-[600]'>78956</h1>
+                                    <h1 className='text-2xl font-[600]'>{overviewData?.totalProducts?.lastMonth}</h1>
                                 </div>
                             </div>
-                            <div className='flex items-center gap-3 border  p-5'>
+                            {/* <div className='flex items-center gap-3 border  p-5'>
                                 <div className='border p-5 rounded-full bg-[#d8f1e5]'>
                                     <RiMoneyDollarBoxFill className='text-3xl text-[#3bb77e]' />
                                 </div>
@@ -508,7 +509,7 @@ const DashboardOverview = () => {
                                     <h3 className='text-xl font-[500]'>Total Sales</h3>
                                     <h1 className='text-2xl font-[600]'>$5964</h1>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='my-10 flex justify-between items-center gap-5'>
                             <div className='w-full bg-white shadow-lg rounded-2xl p-3'>
@@ -518,7 +519,7 @@ const DashboardOverview = () => {
                                         <AreaChart
                                             width={500}
                                             height={400}
-                                            data={data}
+                                            data={formatedData}
                                             margin={{
                                                 top: 10,
                                                 right: 30,
@@ -531,9 +532,10 @@ const DashboardOverview = () => {
                                             <YAxis domain={[5, 'auto']} tickCount={6} />
                                             <Tooltip />
                                             <Legend />
-                                            <Area type="monotone" dataKey="Sales" stackId="1" stroke="#8884d8" fill="#8884d8" />
-                                            <Area type="monotone" dataKey="Visitors" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-                                            <Area type="monotone" dataKey="Products" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                                            <Area type="monotone" dataKey="Revenue" stackId="1" stroke="#8884d8" fill="#8884d8" />
+                                            <Area type="monotone" dataKey="Customar" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+                                            <Area type="monotone" dataKey="Order" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                                            <Area type="monotone" dataKey="Products" stackId="1" stroke="#58ff95" fill="#58ff95" />
                                         </AreaChart>
                                     </ResponsiveContainer>
                                 </div>
@@ -545,7 +547,7 @@ const DashboardOverview = () => {
                                         <BarChart
                                             width={500}
                                             height={300}
-                                            data={data2}
+                                            data={processedData}
                                             margin={{
                                                 top: 20,
                                                 right: 30,
@@ -559,7 +561,7 @@ const DashboardOverview = () => {
                                             <Tooltip />
                                             <Legend />
                                             <Bar dataKey="Bangladesh" stackId="a" fill="#5897fb" />
-                                            <Bar dataKey="US" stackId="a" fill="#7bcf86" />
+                                            <Bar dataKey="United State" stackId="a" fill="#7bcf86" />
                                             <Bar dataKey="India" stackId="a" fill="#ff9076" />
                                         </BarChart>
                                     </ResponsiveContainer>
@@ -577,7 +579,7 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>Total Revenue</h3>
-                                    <h1 className='text-2xl font-[600]'>$154526.5</h1>
+                                    <h1 className='text-2xl font-[600]'>${overviewData?.totalRevenue?.lastYear}</h1>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3 border  p-5'>
@@ -586,7 +588,7 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>Total Customar</h3>
-                                    <h1 className='text-2xl font-[600]'>15452</h1>
+                                    <h1 className='text-2xl font-[600]'>{overviewData?.totalCustomar?.lastYear}</h1>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3 border  p-5'>
@@ -595,7 +597,7 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>Total Orders</h3>
-                                    <h1 className='text-2xl font-[600]'>56894</h1>
+                                    <h1 className='text-2xl font-[600]'>{overviewData?.totalOrder?.lastYear}</h1>
                                 </div>
                             </div>
                             <div className='flex items-center gap-3 border  p-5'>
@@ -604,10 +606,10 @@ const DashboardOverview = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <h3 className='text-xl font-[500]'>All Product</h3>
-                                    <h1 className='text-2xl font-[600]'>78956</h1>
+                                    <h1 className='text-2xl font-[600]'>{overviewData?.totalProducts?.lastYear}</h1>
                                 </div>
                             </div>
-                            <div className='flex items-center gap-3 border  p-5'>
+                            {/* <div className='flex items-center gap-3 border  p-5'>
                                 <div className='border p-5 rounded-full bg-[#d8f1e5]'>
                                     <RiMoneyDollarBoxFill className='text-3xl text-[#3bb77e]' />
                                 </div>
@@ -615,7 +617,7 @@ const DashboardOverview = () => {
                                     <h3 className='text-xl font-[500]'>Total Sales</h3>
                                     <h1 className='text-2xl font-[600]'>$5964</h1>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='my-10 flex justify-between items-center gap-5'>
                             <div className='w-full bg-white shadow-lg rounded-2xl p-3'>
@@ -625,7 +627,7 @@ const DashboardOverview = () => {
                                         <AreaChart
                                             width={500}
                                             height={400}
-                                            data={data}
+                                            data={formatedData}
                                             margin={{
                                                 top: 10,
                                                 right: 30,
@@ -638,9 +640,10 @@ const DashboardOverview = () => {
                                             <YAxis domain={[5, 'auto']} tickCount={6} />
                                             <Tooltip />
                                             <Legend />
-                                            <Area type="monotone" dataKey="Sales" stackId="1" stroke="#8884d8" fill="#8884d8" />
-                                            <Area type="monotone" dataKey="Visitors" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-                                            <Area type="monotone" dataKey="Products" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                                            <Area type="monotone" dataKey="Revenue" stackId="1" stroke="#8884d8" fill="#8884d8" />
+                                            <Area type="monotone" dataKey="Customar" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+                                            <Area type="monotone" dataKey="Order" stackId="1" stroke="#ffc658" fill="#ffc658" />
+                                            <Area type="monotone" dataKey="Products" stackId="1" stroke="#58ff95" fill="#58ff95" />
                                         </AreaChart>
                                     </ResponsiveContainer>
                                 </div>
@@ -652,7 +655,7 @@ const DashboardOverview = () => {
                                         <BarChart
                                             width={500}
                                             height={300}
-                                            data={data2}
+                                            data={processedData}
                                             margin={{
                                                 top: 20,
                                                 right: 30,
@@ -666,7 +669,7 @@ const DashboardOverview = () => {
                                             <Tooltip />
                                             <Legend />
                                             <Bar dataKey="Bangladesh" stackId="a" fill="#5897fb" />
-                                            <Bar dataKey="US" stackId="a" fill="#7bcf86" />
+                                            <Bar dataKey="United State" stackId="a" fill="#7bcf86" />
                                             <Bar dataKey="India" stackId="a" fill="#ff9076" />
                                         </BarChart>
                                     </ResponsiveContainer>

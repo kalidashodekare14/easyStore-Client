@@ -60,7 +60,7 @@ const CartCheckout = () => {
         }
 
         if (totalUniqueItems <= 0) {
-            return  toast.warning("Your Cart Empty")
+            return toast.warning("Your Cart Empty")
         }
 
         const prodcuts = items.map(product => ({
@@ -74,6 +74,7 @@ const CartCheckout = () => {
         const paymentInfo = {
             customar_name: userInfo?.name,
             customar_email: userInfo?.email,
+            image: userInfo?.image,
             amount: grandTotal,
             prodcuts,
             addressInfo: {
