@@ -16,49 +16,79 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const data = [
     {
-      name: 'SAT',
-      Revenue: 4000,
-      Customar: 2400,
-      Order: 2400,
+        name: 'JAN',
+        Revenue: 4000,
+        Customar: 2400,
+        Order: 2400,
     },
     {
-      name: 'SUN',
-      Revenue: 3000,
-      Customar: 1398,
-      Order: 2210,
+        name: 'FEB',
+        Revenue: 3000,
+        Customar: 1398,
+        Order: 2210,
     },
     {
-      name: 'MON',
-      Revenue: 2000,
-      Customar: 9800,
-      Order: 2290,
+        name: 'MAR',
+        Revenue: 2000,
+        Customar: 9800,
+        Order: 2290,
     },
     {
-      name: 'TUES',
-      Revenue: 2780,
-      Customar: 3908,
-      Order: 2000,
+        name: 'APR',
+        Revenue: 2780,
+        Customar: 3908,
+        Order: 2000,
     },
     {
-      name: 'WEN',
-      Revenue: 1890,
-      Customar: 4800,
-      Order: 2181,
+        name: 'MAY',
+        Revenue: 1890,
+        Customar: 4800,
+        Order: 2181,
     },
     {
-      name: 'THUS',
-      Revenue: 2390,
-      Customar: 3800,
-      Order: 2500,
+        name: 'JUN',
+        Revenue: 2390,
+        Customar: 3800,
+        Order: 2500,
     },
     {
-      name: 'FRI',
-      Revenue: 3490,
-      Customar: 4300,
-      Order: 2100,
+        name: 'JULY',
+        Revenue: 3490,
+        Customar: 4300,
+        Order: 2100,
     },
-  ];
-  
+    {
+        name: 'AUG',
+        Revenue: 3490,
+        Customar: 4700,
+        Order: 2700,
+    },
+    {
+        name: 'SEP',
+        Revenue: 3590,
+        Customar: 4600,
+        Order: 2400,
+    },
+    {
+        name: 'OCT',
+        Revenue: 3590,
+        Customar: 4600,
+        Order: 2400,
+    },
+    {
+        name: 'NOV',
+        Revenue: 3590,
+        Customar: 4600,
+        Order: 2400,
+    },
+    {
+        name: 'DIS',
+        Revenue: 3590,
+        Customar: 4600,
+        Order: 2400,
+    },
+];
+
 
 
 const data2 = [
@@ -121,6 +151,47 @@ const DashboardInfo = () => {
     })
 
 
+
+
+    const getMonthName = (monthNumber) => {
+        const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JULY", "AUGU", "SEP", "OCT", "NOV", "DEC"];
+        return monthNames[monthNumber - 1]
+    }
+
+
+
+    const { data: overviewMonthlyData = {} } = useQuery({
+        queryKey: ["overviewMonthlyData"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/monthly-data")
+            return res.data
+        },
+    })
+
+
+    // chart month data map
+    const formatedData = overviewMonthlyData.revenue?.map((item, index) => {
+        const month = item._id.month;
+        // month name function
+        const monthName = getMonthName(month)
+        // others data match
+        const matchingCustomar = overviewMonthlyData.totalCustomar?.find(cust => cust._id.month === month)
+        const matchingProduct = overviewMonthlyData.allProduct?.find(cust => cust._id.month === month)
+        const matchingOrder = overviewMonthlyData.totalOrder?.find(cust => cust._id.month === month)
+
+
+        return {
+            name: monthName,
+            Revenue: item.totalRevenue || 0,
+            Customar: matchingCustomar ? matchingCustomar.totalCustomar : 0,
+            Products: matchingProduct ? matchingProduct.totalProduct : 0,
+            Order: matchingOrder ? matchingOrder.totalOrder : 0,
+        }
+    }) || []
+
+
+
+    console.log(formatedData)
 
 
 
@@ -200,7 +271,7 @@ const DashboardInfo = () => {
                                         <AreaChart
                                             width={500}
                                             height={400}
-                                            data={data}
+                                            data={formatedData}
                                             margin={{
                                                 top: 10,
                                                 right: 30,
