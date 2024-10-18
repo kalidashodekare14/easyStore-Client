@@ -7,7 +7,6 @@ import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
-import DashboardInfo from "../Pages/Dashboard/DashboardInfo";
 import AllProducts from "../Pages/Dashboard/AllProducts";
 import Orders from "../Pages/Dashboard/Orders";
 import Sellers from "../Pages/Dashboard/Sellers";
@@ -24,10 +23,10 @@ import PaymentFail from "../Components/PaymentFail/PaymentFail";
 import PaymentCancel from "../Components/PaymentCancel/PaymentCancel";
 import PrivateRoute from "../Routes/PrivateRoute/PrivateRoute";
 import UserPaymentHistory from "../Pages/UserPaymentHistory/UserPaymentHistory";
-import UserPaymentHistoryDetail from "../Pages/UserPaymentHistory/UserPaymentHistoryDetail";
 import BlogPost from "../Pages/Dashboard/BlogPost";
 import BlogDetails from "../Pages/BlogsDetails/BlogsDetails";
 import Blogs from "../Pages/Blogs/Blogs";
+import DashboardOverview from "../Pages/Dashboard/DashboardOverview";
 
 const router = createBrowserRouter([
     {
@@ -103,8 +102,8 @@ const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
             {
-                path: '/dashboard/info',
-                element: <DashboardInfo></DashboardInfo>
+                path: '/dashboard/overview',
+                element: <DashboardOverview></DashboardOverview>
             },
             {
                 path: '/dashboard/all-product',

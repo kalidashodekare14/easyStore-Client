@@ -77,8 +77,8 @@ const CartCheckout = () => {
             amount: grandTotal,
             prodcuts,
             addressInfo: {
-                country: userInfo.country,
-                address: userInfo.address,
+                country: userInfo?.country,
+                address: userInfo?.address,
                 current_address: userInfo.current_address,
                 postal_code: userInfo.postal_code,
                 phone_number: userInfo.mobile

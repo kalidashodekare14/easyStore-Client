@@ -233,7 +233,7 @@ const UserProfile = () => {
                                         <input {...registerOne("email")} defaultValue={userInfo?.email} className='input input-bordered' type="text" />
                                     ) : (
                                         <div>
-                                            <h1 className='font-[600]'>{userInfo?.email ? userInfo?.email : "N/A"}@gmail.com</h1>
+                                            <h1 className='font-[600]'>{userInfo?.email ? userInfo?.email : "N/A"}</h1>
                                         </div>
                                     )
                                 }

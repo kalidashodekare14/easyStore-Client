@@ -137,13 +137,13 @@ const data2 = [
 ];
 
 
-const DashboardInfo = () => {
+const DashboardOverview = () => {
 
     const axiosSecure = useAxiosSecure()
 
 
     const { data: overviewData = {} } = useQuery({
-        queryKey: ["overview"],
+        queryKey: ["overviewData"],
         queryFn: async () => {
             const res = await axiosSecure.get("/dashboard-overview")
             return res.data
@@ -169,20 +169,30 @@ const DashboardInfo = () => {
     })
 
 
+    const allMonths = [
+        ...new Set([
+            ...overviewMonthlyData.revenue?.map(item => item._id.month) || [],
+            ...overviewMonthlyData.totalCustomar?.map(item => item._id.month) || [],
+            ...overviewMonthlyData.allProduct?.map(item => item._id.month) || [],
+            ...overviewMonthlyData.totalOrder?.map(item => item._id.month) || [],
+        ])
+    ]
+
     // chart month data map
-    const formatedData = overviewMonthlyData.revenue?.map((item, index) => {
-        const month = item._id.month;
+    const formatedData = allMonths?.map((month, index) => {
+
         // month name function
         const monthName = getMonthName(month)
         // others data match
+        const matchingRevenue = overviewMonthlyData.revenue?.find(item => item._id.month === month)
         const matchingCustomar = overviewMonthlyData.totalCustomar?.find(cust => cust._id.month === month)
-        const matchingProduct = overviewMonthlyData.allProduct?.find(cust => cust._id.month === month)
-        const matchingOrder = overviewMonthlyData.totalOrder?.find(cust => cust._id.month === month)
+        const matchingProduct = overviewMonthlyData.allProduct?.find(prod => prod._id.month === month)
+        const matchingOrder = overviewMonthlyData.totalOrder?.find(order => order._id.month === month)
 
 
         return {
             name: monthName,
-            Revenue: item.totalRevenue || 0,
+            Revenue: matchingRevenue ? matchingRevenue.totalRevenue : 0,
             Customar: matchingCustomar ? matchingCustomar.totalCustomar : 0,
             Products: matchingProduct ? matchingProduct.totalProduct : 0,
             Order: matchingOrder ? matchingOrder.totalOrder : 0,
@@ -191,7 +201,29 @@ const DashboardInfo = () => {
 
 
 
-    console.log(formatedData)
+    // Country Data 
+
+    const processData = (salesData = []) => {
+        const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JULY", "AUGU", "SEP", "OCT", "NOV", "DEC"];
+        const groupedData = {}
+
+        salesData.forEach((item) => {
+            const month = monthNames[item._id.month - 1]
+            const country = item._id.country;
+            const sales = item.totalSales
+
+            if (!groupedData[month]) {
+                groupedData[month] = { name: month, Bangladesh: 0, US: 0, India: 0 }
+
+            }
+            groupedData[month][country] = (groupedData[month][country] || 0) + sales
+        });
+
+        return Object.values(groupedData);
+    }
+
+    const processedData = processData(overviewMonthlyData.countrySales);
+
 
 
 
@@ -253,7 +285,7 @@ const DashboardInfo = () => {
                                     <h1 className='text-2xl font-[600]'>{overviewData?.totalProducts?.last24Hours}</h1>
                                 </div>
                             </div>
-                            <div className='flex items-center gap-3 border  p-5'>
+                            {/* <div className='flex items-center gap-3 border  p-5'>
                                 <div className='border p-5 rounded-full bg-[#d8f1e5]'>
                                     <RiMoneyDollarBoxFill className='text-3xl text-[#3bb77e]' />
                                 </div>
@@ -261,7 +293,7 @@ const DashboardInfo = () => {
                                     <h3 className='text-xl font-[500]'>Total Sales</h3>
                                     <h1 className='text-2xl font-[600]'>$5964</h1>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='my-10 flex justify-between items-center gap-5'>
                             <div className='w-full bg-white shadow-lg rounded-2xl p-3'>
@@ -299,7 +331,7 @@ const DashboardInfo = () => {
                                         <BarChart
                                             width={500}
                                             height={300}
-                                            data={data2}
+                                            data={processedData}
                                             margin={{
                                                 top: 20,
                                                 right: 30,
@@ -313,7 +345,7 @@ const DashboardInfo = () => {
                                             <Tooltip />
                                             <Legend />
                                             <Bar dataKey="Bangladesh" stackId="a" fill="#5897fb" />
-                                            <Bar dataKey="US" stackId="a" fill="#7bcf86" />
+                                            <Bar dataKey="United State" stackId="a" fill="#7bcf86" />
                                             <Bar dataKey="India" stackId="a" fill="#ff9076" />
                                         </BarChart>
                                     </ResponsiveContainer>
@@ -649,4 +681,4 @@ const DashboardInfo = () => {
     );
 };
 
-export default DashboardInfo;
+export default DashboardOverview;

@@ -25,7 +25,7 @@ const Dashboard = () => {
                                 <ul className='space-y-5'>
                                     <li>
                                         <NavLink
-                                            to="/dashboard/info"
+                                            to="/dashboard/overview"
                                             className={({ isActive, isPending }) =>
                                                 isPending ? "pending" : isActive ? "flex items-center px-1 py-2 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 text-[#00bba6] hover:text-[#00bba6] border border-[#00bba6] dark:hover:bg-gray-800 dark:hover:text-gray-200 " : "flex items-center px-1 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                                             }

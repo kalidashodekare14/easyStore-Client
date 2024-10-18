@@ -222,7 +222,7 @@ const Navbar = () => {
                                                 <li>
                                                     {
                                                         isAdmin ? (
-                                                            <Link to={"/dashboard/info"}>
+                                                            <Link to={"/dashboard/overview"}>
                                                                 Dashboard
                                                             </Link>
                                                         ) : (
