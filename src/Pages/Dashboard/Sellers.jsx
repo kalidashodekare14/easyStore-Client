@@ -6,11 +6,11 @@ import img from '../../assets/shop/img1.png'
 
 const Sellers = () => {
     return (
-        <div className='mx-10 my-5'>
-            <div className='flex justify-between items-center'>
+        <div className='lg:mx-10  my-5'>
+            <div className='flex justify-between items-center px-2'>
                 <div>
                     <h1 className='text-3xl font-[600]'>Product Selles</h1>
-                    <p className='font-[400]'>Whole data about your business here</p>
+                    {/* <p className='font-[400]'>Whole data about your business here</p> */}
                 </div>
                 <button className='flex items-center btn bg-[#3bb77e] text-white'>
                     <TiDocumentText className='text-xl' />

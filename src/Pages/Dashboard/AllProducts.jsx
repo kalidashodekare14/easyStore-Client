@@ -47,11 +47,11 @@ const AllProducts = () => {
     }
 
     return (
-        <div className='mx-10 my-5'>
-            <div className='flex justify-between items-center'>
+        <div className='lg:mx-10 my-5'>
+            <div className='flex justify-between items-center mx-5'>
                 <div>
                     <h1 className='text-3xl font-[600]'>Product List</h1>
-                    <p className='font-[400]'>Whole data about your business here</p>
+                    {/* <p className='font-[400]'>Whole data about your business here</p> */}
                 </div>
                 <button className='flex items-center btn bg-[#3bb77e] text-white'>
                     <TiDocumentText className='text-xl' />
@@ -59,7 +59,7 @@ const AllProducts = () => {
                 </button>
             </div>
             <div className='my-10 bg-white p-5'>
-                <div className='flex justify-between items-center mb-5'>
+                <div className='flex flex-col lg:flex-row justify-between items-center gap-5 mb-10'>
                     <div className=''>
                         <select className="select select-bordered w-52">
                             <option disabled selected>All Category</option>

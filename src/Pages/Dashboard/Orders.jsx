@@ -14,11 +14,11 @@ const Orders = () => {
 
 
     return (
-        <div className='mx-10 my-5'>
-            <div className='flex justify-between items-center'>
+        <div className='lg:mx-10 my-5'>
+            <div className='flex justify-between items-center px-5'>
                 <div>
                     <h1 className='text-3xl font-[600]'>Order List</h1>
-                    <p className='font-[400]'>Whole data about your business here</p>
+                    {/* <p className='font-[400]'>Whole data about your business here</p> */}
                 </div>
                 <button className='flex items-center btn bg-[#3bb77e] text-white'>
                     <TiDocumentText className='text-xl' />
@@ -26,7 +26,7 @@ const Orders = () => {
                 </button>
             </div>
             <div className='my-10 bg-white p-5'>
-                <div className='flex justify-between items-center'>
+                <div className='flex justify-between items-center gap-5'>
                     <input className='input input-bordered w-80' placeholder='Searh...' type="text" />
                     <div className='flex items-center gap-5'>
                         <div>

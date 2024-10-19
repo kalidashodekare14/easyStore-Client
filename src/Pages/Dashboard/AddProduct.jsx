@@ -95,16 +95,16 @@ const AddProduct = () => {
     }
 
     return (
-        <div className='mx-10'>
+        <div className='lg:mx-10'>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='flex justify-between items-center my-5'>
+                <div className='flex flex-col lg:flex-row justify-between items-center gap-5 my-5'>
                     <h1 className='text-2xl'>Add New Product</h1>
                     <div className='space-x-3'>
                         <button className='btn'>Save  to Draft</button>
                         <button type='submit' className='btn bg-[#3bb77e] text-white'>Public</button>
                     </div>
                 </div>
-                <div className='flex gap-3'>
+                <div className='flex flex-col-reverse lg:flex-row gap-3'>
                     <div className='border p-5 bg-white space-y-3'>
                         <div className='flex flex-col'>
                             <label htmlFor="">Product Name</label>
@@ -157,7 +157,7 @@ const AddProduct = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='w-[40%] '>
+                    <div className='lg:w-[40%] w-full'>
                         <div className='p-5 bg-white h-[350px]'>
                             <h1 className='text-xl font-[600]'>Media</h1>
                             <div className='border-b'>

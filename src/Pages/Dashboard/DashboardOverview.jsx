@@ -232,7 +232,7 @@ const DashboardOverview = () => {
             <div className='flex justify-between items-center mb-5'>
                 <div>
                     <h1 className='text-3xl font-[600]'>Dashboard</h1>
-                    <p className='font-[400]'>Whole data about your business here</p>
+                    {/* <p className='font-[400] hidden lg:visible'>Whole data about your business here</p> */}
                 </div>
                 <button className='flex items-center btn bg-[#3bb77e] text-white'>
                     <TiDocumentText className='text-xl' />
@@ -295,7 +295,7 @@ const DashboardOverview = () => {
                                 </div>
                             </div> */}
                         </div>
-                        <div className='my-10 flex flex-col  justify-between items-center gap-5'>
+                        <div className='my-10 flex flex-col lg:flex-row justify-between items-center gap-5'>
                             <div className='w-full bg-white shadow-lg rounded-2xl p-3'>
                                 <h1 className='text-xl p-2'>Sales Statistics</h1>
                                 <div className='h-96 '>
@@ -403,7 +403,7 @@ const DashboardOverview = () => {
                                 </div>
                             </div> */}
                         </div>
-                        <div className='my-10 flex justify-between items-center gap-5'>
+                        <div className='my-10 flex flex-col lg:flex-row justify-between items-center gap-5'>
                             <div className='w-full bg-white shadow-lg rounded-2xl p-3'>
                                 <h1 className='text-xl p-2'>Sales Statistics</h1>
                                 <div className='h-96 '>
@@ -432,7 +432,7 @@ const DashboardOverview = () => {
                                     </ResponsiveContainer>
                                 </div>
                             </div>
-                            <div className='w-[80%] border p-2 bg-white shadow-lg rounded-2xl'>
+                            <div className='lg:w-[80%] w-full border p-2 bg-white shadow-lg rounded-2xl'>
                                 <h1 className='text-xl p-2'>Sales Statistics</h1>
                                 <div className='h-96'>
                                     <ResponsiveContainer width="100%" height="100%">
@@ -511,7 +511,7 @@ const DashboardOverview = () => {
                                 </div>
                             </div> */}
                         </div>
-                        <div className='my-10 flex justify-between items-center gap-5'>
+                        <div className='my-10 flex flex-col lg:flex-row justify-between items-center gap-5'>
                             <div className='w-full bg-white shadow-lg rounded-2xl p-3'>
                                 <h1 className='text-xl p-2'>Sales Statistics</h1>
                                 <div className='h-96 '>
@@ -540,7 +540,7 @@ const DashboardOverview = () => {
                                     </ResponsiveContainer>
                                 </div>
                             </div>
-                            <div className='w-[80%] border p-2 bg-white shadow-lg rounded-2xl'>
+                            <div className='lg:w-[80%] w-full border p-2 bg-white shadow-lg rounded-2xl'>
                                 <h1 className='text-xl p-2'>Sales Statistics</h1>
                                 <div className='h-96'>
                                     <ResponsiveContainer width="100%" height="100%">
@@ -619,7 +619,7 @@ const DashboardOverview = () => {
                                 </div>
                             </div> */}
                         </div>
-                        <div className='my-10 flex justify-between items-center gap-5'>
+                        <div className='my-10 flex flex-col lg:flex-row justify-between items-center gap-5'>
                             <div className='w-full bg-white shadow-lg rounded-2xl p-3'>
                                 <h1 className='text-xl p-2'>Sales Statistics</h1>
                                 <div className='h-96 '>
@@ -648,7 +648,7 @@ const DashboardOverview = () => {
                                     </ResponsiveContainer>
                                 </div>
                             </div>
-                            <div className='w-[80%] border p-2 bg-white shadow-lg rounded-2xl'>
+                            <div className='lg:w-[80%] w-full border p-2 bg-white shadow-lg rounded-2xl'>
                                 <h1 className='text-xl p-2'>Sales Statistics</h1>
                                 <div className='h-96'>
                                     <ResponsiveContainer width="100%" height="100%">
