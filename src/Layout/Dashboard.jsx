@@ -10,6 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import { IoNotificationsCircleSharp } from "react-icons/io5";
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { io } from 'socket.io-client';
+import { FaBarsStaggered } from "react-icons/fa6";
 
 
 const Dashboard = () => {
@@ -17,7 +18,12 @@ const Dashboard = () => {
     const isAdmin = true
     const [isOpenNoti, setIsOpenNoti] = useState(false)
     const [notifications, setNotifications] = useState([])
+    const [toggleSidebar, setToggleSidebar] = useState(false)
     const axiosSecure = useAxiosSecure()
+
+    const handleToggleBar = () => {
+        setToggleSidebar(!toggleSidebar)
+    }
 
     const handleOpenNotification = () => {
         setIsOpenNoti(!isOpenNoti)
@@ -74,8 +80,8 @@ const Dashboard = () => {
         <div>
             {
                 isAdmin ? (
-                    <div className='flex bg-[#f8f9fa]'>
-                        <div className='w-56 border min-h-screen bg-white'>
+                    <div className='relative flex bg-[#f8f9fa]'>
+                        <div className={`z-20 w-56 border min-h-screen bg-white absolute lg:static transform transition-transform duration-300 lg:translate-x-0  translate-y-20 lg:translate-y-0 -translate-x-full ${toggleSidebar ? 'translate-x-0': '-translate-x-full'} `}>
                             <div className='p-3 border-b'>
                                 <img className='w-32' src={logo} alt="" />
                             </div>
@@ -231,16 +237,19 @@ const Dashboard = () => {
                         </div>
                         <div className='w-full'>
                             <div className='p-3 flex justify-between items-center bg-white'>
-                                <div>
+                                <div onClick={handleToggleBar} className='lg:hidden'>
+                                    <FaBarsStaggered />
+                                </div>
+                                <div className='flex items-center'>
                                     <input className='input input-bordered' placeholder='Search Here' type="text" />
-                                    <button className='btn rounded-none'><FaSearch></FaSearch></button>
+                                    <p className='-ms-5'><FaSearch></FaSearch></p>
                                 </div>
                                 <div className='flex items-center gap-5'>
                                     <div className="indicator">
                                         <span className="indicator-item badge bg-[#de192e] text-white">{unReadNotifications?.totalUnreadNotificaton}+</span>
                                         <div className='relative'>
                                             <IoNotificationsCircleSharp onClick={handleOpenNotification} className='text-4xl' />
-                                            <div className={`${isOpenNoti ? 'visible' : 'hidden'} rounded-xl absolute lg:right-0 z-10 w-96 h-80 border bg-white`}>
+                                            <div className={`${isOpenNoti ? 'visible' : 'hidden'} rounded-xl absolute lg:right-0 -right-10 z-10 lg:w-96 w-80 h-80 border bg-white`}>
                                                 <ul className='space-y-5 p-2 overflow-y-auto scroll-smooth h-full'>
                                                     {
                                                         notifications.map((notification, index) => (
