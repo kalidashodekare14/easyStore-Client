@@ -103,7 +103,7 @@ const CartCheckout = () => {
     return (
         <div className='min-h-screen lg:mx-20'>
             <h1 className='text-center text-3xl my-10'>Checkout</h1>
-            <div className='flex justify-between gap-5'>
+            <div className='flex flex-col lg:flex-row justify-between gap-5'>
                 <div className='w-full'>
                     <div className="overflow-x-auto">
                         <table className="table">
@@ -149,7 +149,7 @@ const CartCheckout = () => {
                         </table>
                     </div>
                 </div>
-                <div className='w-[40%] bg-white shadow p-5'>
+                <div className='lg:w-[40%] w-full bg-white shadow p-5'>
                     <div>
                         <div>
                             <p>Enter Promo Code</p>
