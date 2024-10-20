@@ -67,7 +67,7 @@ const Navbar = () => {
     return (
         <nav x-data="{ isOpen: false }" className="relative dark:bg-gray-800">
             <div className='lg:px-20 border'>
-                <div className="container p-3 mx-auto md:flex md:justify-between md:items-center">
+                <div className="container p-4 mx-auto md:flex md:justify-between md:items-center">
                     <div className="flex items-center justify-between">
                         <p>
                             <img className="h-10 sm:h-10 my-2 lg:w-80" src={logo} alt="QuickShop Logo" />
