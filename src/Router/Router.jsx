@@ -27,6 +27,7 @@ import BlogPost from "../Pages/Dashboard/BlogPost";
 import BlogDetails from "../Pages/BlogsDetails/BlogsDetails";
 import Blogs from "../Pages/Blogs/Blogs";
 import DashboardOverview from "../Pages/Dashboard/DashboardOverview";
+import AdminRoute from "../Routes/AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -99,51 +100,51 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><AdminRoute><Dashboard></Dashboard></AdminRoute></PrivateRoute>,
         children: [
             {
                 path: '/dashboard/overview',
-                element: <DashboardOverview></DashboardOverview>
+                element: <PrivateRoute><AdminRoute><DashboardOverview></DashboardOverview></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/all-product',
-                element: <AllProducts></AllProducts>
+                element: <PrivateRoute><AdminRoute><AllProducts></AllProducts></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/Sellers',
-                element: <Sellers></Sellers>
+                element: <PrivateRoute><AdminRoute><Sellers></Sellers></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/orders',
-                element: <Orders></Orders>
+                element: <PrivateRoute><AdminRoute><Orders></Orders></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/add-product',
-                element: <AddProduct></AddProduct>
+                element: <PrivateRoute><AdminRoute><AddProduct></AddProduct></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/transaction',
-                element: <Transaction></Transaction>
+                element: <PrivateRoute><AdminRoute><Transaction></Transaction></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/account',
-                element: <Account></Account>
+                element: <PrivateRoute><AdminRoute><Account></Account></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/reviews',
-                element: <Account></Account>
+                element: <PrivateRoute><AdminRoute><Account></Account></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/brands',
-                element: <Brands></Brands>
+                element: <PrivateRoute><AdminRoute><Brands></Brands></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/statistics',
-                element: <Statistics></Statistics>
+                element: <PrivateRoute><AdminRoute><Statistics></Statistics></AdminRoute></PrivateRoute>
             },
             {
                 path: '/dashboard/blog-post',
-                element: <BlogPost></BlogPost>
+                element: <PrivateRoute><AdminRoute><BlogPost></BlogPost></AdminRoute></PrivateRoute>
             }
         ]
     }
