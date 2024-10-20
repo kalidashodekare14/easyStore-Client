@@ -3,17 +3,21 @@ import UseBlogsData from '../../Hooks/UseBlogsData';
 import { Link } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 import moment from 'moment/moment';
+import { Helmet } from 'react-helmet-async';
 
 const Blogs = () => {
 
     const [blogsData, blogLoading] = UseBlogsData()
     console.log(blogsData)
 
-   
+
 
 
     return (
         <div className='min-h-screen lg:mx-20 my-20'>
+            <Helmet>
+                <title>Blogs | EasyStore</title>
+            </Helmet>
             {
                 blogLoading ? (
                     <div className='h-40 flex flex-col justify-center items-center gap-5'>

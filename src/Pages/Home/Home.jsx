@@ -19,6 +19,7 @@ import img3 from '../../assets/system/img3.png'
 // import img4 from '../../assets/system/img4.png'
 import img5 from '../../assets/system/img5.png'
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -26,6 +27,9 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     return (
         <div className='lg:mx-20'>
+            <Helmet>
+                <title>Home | EasyStore</title>
+            </Helmet>
             <Banner></Banner>
             {/* Category */}
             <TopCategories></TopCategories>

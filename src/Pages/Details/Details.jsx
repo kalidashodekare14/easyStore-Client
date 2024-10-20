@@ -10,6 +10,7 @@ import { Rating } from '@smastrom/react-rating';
 import { useCart } from 'react-use-cart';
 import { TbBrandAppgallery, TbCategoryFilled } from "react-icons/tb";
 import { MdEventAvailable } from "react-icons/md";
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -36,6 +37,9 @@ const Details = () => {
 
     return (
         <div className='lg:mx-20 min-h-screen'>
+            <Helmet>
+                <title>Details | EasyStore</title>
+            </Helmet>
             <div className='flex flex-col lg:flex-row gap-5'>
                 <div className='lg:w-[500px] lg:h-[10vh]'>
                     <div>

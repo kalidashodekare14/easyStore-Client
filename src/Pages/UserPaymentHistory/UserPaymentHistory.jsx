@@ -3,6 +3,7 @@ import React from 'react';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 const UserPaymentHistory = () => {
 
@@ -24,6 +25,9 @@ const UserPaymentHistory = () => {
 
     return (
         <div className='lg:mx-20 min-h-screen'>
+            <Helmet>
+                <title>Payment History | EasyStore</title>
+            </Helmet>
             <h1 className='text-3xl my-10 m-auto text-center border-b w-72 p-5'>Payment History</h1>
             <div className="overflow-x-auto">
                 <table className="table">
@@ -45,7 +49,7 @@ const UserPaymentHistory = () => {
                             paymentHistory.map(product => (
                                 <tr key={product._id}>
                                     <th>{product.transaction_id}</th>
-                                    <th>{new Date(product.createdAt).toLocaleDateString('en-DB',{
+                                    <th>{new Date(product.createdAt).toLocaleDateString('en-DB', {
                                         year: 'numeric',
                                         month: 'long',
                                         day: 'numeric',

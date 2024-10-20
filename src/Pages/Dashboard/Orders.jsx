@@ -4,6 +4,7 @@ import { TiDocumentText } from 'react-icons/ti';
 import Select from 'react-select';
 import img from '../../assets/shop/img1.png'
 import UseAllOrders from '../../Hooks/UseAllOrders';
+import { Helmet } from 'react-helmet-async';
 
 const Orders = () => {
 
@@ -15,6 +16,9 @@ const Orders = () => {
 
     return (
         <div className='lg:mx-10 my-5'>
+            <Helmet>
+                <title>Orders | EasyStore</title>
+            </Helmet>
             <div className='flex justify-between items-center px-5'>
                 <div>
                     <h1 className='text-3xl font-[600]'>Order List</h1>

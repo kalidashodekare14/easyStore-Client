@@ -13,6 +13,7 @@ import {
     useQuery,
 } from '@tanstack/react-query'
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const data = [
     {
@@ -229,6 +230,9 @@ const DashboardOverview = () => {
 
     return (
         <div className='lg:mx-10 mx-5 my-5'>
+            <Helmet>
+                <title>Dashboard Overview | EasyStore</title>
+            </Helmet>
             <div className='flex justify-between items-center mb-5'>
                 <div>
                     <h1 className='text-3xl font-[600]'>Dashboard</h1>

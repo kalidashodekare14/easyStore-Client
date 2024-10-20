@@ -6,6 +6,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useUser from '../../Hooks/useUser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
 
 const CartCheckout = () => {
 
@@ -102,6 +103,9 @@ const CartCheckout = () => {
 
     return (
         <div className='min-h-screen lg:mx-20'>
+            <Helmet>
+                <title>Checkout | EasyStore</title>
+            </Helmet>
             <h1 className='text-center text-3xl my-10'>Checkout</h1>
             <div className='flex flex-col lg:flex-row justify-between gap-5'>
                 <div className='w-full'>

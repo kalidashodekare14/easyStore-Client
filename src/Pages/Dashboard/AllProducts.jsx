@@ -7,6 +7,7 @@ import img from '../../assets/shop/img1.png'
 import useTotalProduct from '../../Hooks/useTotalProduct';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AllProducts = () => {
 
@@ -48,6 +49,9 @@ const AllProducts = () => {
 
     return (
         <div className='lg:mx-10 my-5'>
+            <Helmet>
+                <title>All Product | EasyStore</title>
+            </Helmet>
             <div className='flex justify-between items-center mx-5'>
                 <div>
                     <h1 className='text-3xl font-[600]'>Product List</h1>

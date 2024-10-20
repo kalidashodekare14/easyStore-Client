@@ -10,6 +10,7 @@ import useAllProduct from '../../Hooks/useAllProduct';
 import { useCart } from 'react-use-cart';
 import { Link, useLocation } from 'react-router-dom';
 import { FaFilter } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const Shop = () => {
 
@@ -103,8 +104,11 @@ const Shop = () => {
 
     return (
         <div className='lg:mx-20 my-10'>
+            <Helmet>
+                <title>Shop | EasyStore</title>
+            </Helmet>
             <div className='relative flex gap-5 w-full min-h-screen mt-10'>
-                <div className={`w-80 space-y-5 min-h-screen absolute lg:static z-20 bg-white -translate-x-full lg:translate-x-0 lg:translate-y-0 translate-y-14 transition-transform duration-300 ${toggleSidebar ? 'translate-y-14 translate-x-0': '-translate-x-full'}`}>
+                <div className={`w-80 space-y-5 min-h-screen absolute lg:static z-20 bg-white -translate-x-full lg:translate-x-0 lg:translate-y-0 translate-y-14 transition-transform duration-300 ${toggleSidebar ? 'translate-y-14 translate-x-0' : '-translate-x-full'}`}>
                     <div className='border shadow rounded-xl'>
 
                         <div className='p-3'>

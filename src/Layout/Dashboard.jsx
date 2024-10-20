@@ -12,6 +12,7 @@ import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { io } from 'socket.io-client';
 import { FaBarsStaggered } from "react-icons/fa6";
 import useAdmin from '../Hooks/useAdmin';
+import { Helmet } from 'react-helmet-async';
 
 
 const Dashboard = () => {
@@ -79,6 +80,9 @@ const Dashboard = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | EasyStore</title>
+            </Helmet>
             {
                 isAdmin ? (
                     <div className='relative flex bg-[#f8f9fa]'>

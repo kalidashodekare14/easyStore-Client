@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
@@ -46,6 +47,9 @@ const Login = () => {
 
     return (
         <div className='min-h-screen flex justify-center items-center'>
+            <Helmet>
+                <title>Login | EasyStore</title>
+            </Helmet>
             <div className='w-96 border p-5 space-y-5 rounded-2xl'>
                 <h1 className='text-3xl font-bold'>Login in</h1>
                 <div className='space-y-5'>

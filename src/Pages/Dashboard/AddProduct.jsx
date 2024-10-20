@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { RotatingLines } from 'react-loader-spinner';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 const image_hosting_key = import.meta.env.VITE_IMG_API_KEY
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
@@ -96,6 +97,9 @@ const AddProduct = () => {
 
     return (
         <div className='lg:mx-10'>
+            <Helmet>
+                <title>Add Product | EasyStore</title>
+            </Helmet>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex flex-col lg:flex-row justify-between items-center gap-5 my-5'>
                     <h1 className='text-2xl'>Add New Product</h1>

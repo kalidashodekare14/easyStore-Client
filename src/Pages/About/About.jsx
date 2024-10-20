@@ -15,6 +15,7 @@ import team2 from '../../assets/about/team2.png'
 import './About.css'
 import CountUp from 'react-countup';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { Helmet } from 'react-helmet-async'
 
 const About = () => {
 
@@ -22,6 +23,9 @@ const About = () => {
 
     return (
         <div className='lg:mx-20'>
+            <Helmet>
+                <title>About | EasyStore</title>
+            </Helmet>
             <div className='flex flex-col lg:flex-row justify-between items-center gap-5'>
                 {/* <img className='lg:w-[500px]' src={img} alt="" /> */}
                 <div className='p-3 my-5 '>

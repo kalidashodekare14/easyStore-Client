@@ -1,6 +1,7 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import img from '../../assets/about/team2.png'
+import { Helmet } from 'react-helmet-async';
 
 const Contact = () => {
 
@@ -16,6 +17,9 @@ const Contact = () => {
 
     return (
         <div className='lg:mx-20'>
+            <Helmet>
+                <title>Context | EasyStore</title>
+            </Helmet>
             <div className='flex flex-col lg:flex-row items-center gap-5 p-5'>
                 <div className='space-y-5'>
                     <p className='text-[#3bb77e]'>How can help you ?</p>

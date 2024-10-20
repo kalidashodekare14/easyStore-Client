@@ -3,10 +3,14 @@ import { MdDelete } from 'react-icons/md';
 import { TiDocumentText } from 'react-icons/ti';
 import Select from 'react-select';
 import img from '../../assets/shop/img1.png'
+import { Helmet } from 'react-helmet-async';
 
 const Sellers = () => {
     return (
         <div className='lg:mx-10  my-5'>
+            <Helmet>
+                <title>Sellers | EasyStore</title>
+            </Helmet>
             <div className='flex justify-between items-center px-2'>
                 <div>
                     <h1 className='text-3xl font-[600]'>Product Selles</h1>
@@ -40,7 +44,7 @@ const Sellers = () => {
                                 <th>Status</th>
                                 <th>Sale Date</th>
                                 <th>Action</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody className='text-[14px]'>

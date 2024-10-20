@@ -5,6 +5,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import Swal from 'sweetalert2';
 import { FaFileImport, FaImage } from 'react-icons/fa';
 import { RotatingLines } from 'react-loader-spinner';
+import { Helmet } from 'react-helmet-async';
 const image_hosting_key = import.meta.env.VITE_IMG_API_KEY
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
@@ -90,6 +91,9 @@ const BlogPost = () => {
 
     return (
         <div className='min-h-screen m-5'>
+            <Helmet>
+                <title>Blog Post | EasyStore</title>
+            </Helmet>
             <div>
                 <div className='flex justify-between items-center my-5'>
                     <div className=''>
