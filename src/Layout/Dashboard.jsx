@@ -11,11 +11,12 @@ import { IoNotificationsCircleSharp } from "react-icons/io5";
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { io } from 'socket.io-client';
 import { FaBarsStaggered } from "react-icons/fa6";
+import useAdmin from '../Hooks/useAdmin';
 
 
 const Dashboard = () => {
 
-    const isAdmin = true
+    const isAdmin = useAdmin()
     const [isOpenNoti, setIsOpenNoti] = useState(false)
     const [notifications, setNotifications] = useState([])
     const [toggleSidebar, setToggleSidebar] = useState(false)
@@ -81,7 +82,7 @@ const Dashboard = () => {
             {
                 isAdmin ? (
                     <div className='relative flex bg-[#f8f9fa]'>
-                        <div className={`z-20 w-56 border min-h-screen bg-white absolute lg:static transform transition-transform duration-300 lg:translate-x-0  translate-y-20 lg:translate-y-0 -translate-x-full ${toggleSidebar ? 'translate-x-0': '-translate-x-full'} `}>
+                        <div className={`z-20 w-56 border min-h-screen bg-white absolute lg:static transform transition-transform duration-300 lg:translate-x-0  translate-y-20 lg:translate-y-0 -translate-x-full ${toggleSidebar ? 'translate-x-0' : '-translate-x-full'} `}>
                             <div className='p-3 border-b'>
                                 <img className='w-32' src={logo} alt="" />
                             </div>
