@@ -51,7 +51,7 @@ const Dashboard = () => {
                 console.log(error.message)
             })
 
-        const socket = io('http://localhost:5000')
+        const socket = io('https://easy-store-server.vercel.app')
 
         socket.on('newUser', (notification) => {
             setNotifications(prev => [notification, ...prev])
