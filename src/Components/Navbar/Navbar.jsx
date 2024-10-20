@@ -4,7 +4,7 @@ import { useState } from 'react';
 import logo from '/logo.png'
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { FiSearch, FiShoppingCart } from 'react-icons/fi';
-import { FaAngleDown, FaHeadphones, FaLocationArrow, FaRegUser } from 'react-icons/fa';
+import { FaAngleDown, FaBars, FaHeadphones, FaLocationArrow, FaRegUser } from 'react-icons/fa';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Flag from 'react-world-flags'
 import { useCart } from 'react-use-cart';
@@ -64,10 +64,11 @@ const Navbar = () => {
     }, [])
 
 
+
     return (
         <nav x-data="{ isOpen: false }" className="relative dark:bg-gray-800">
             <div className='lg:px-20 border'>
-                <div className="py-4 mx-auto md:flex md:justify-between md:items-center">
+                <div className="py-4 px-2 lg:px-0 mx-auto md:flex md:justify-between md:items-center">
                     <div className="flex items-center justify-between">
                         <p>
                             <img className="h-10 sm:h-10 my-2 lg:w-80" src={logo} alt="QuickShop Logo" />
@@ -157,9 +158,7 @@ const Navbar = () => {
                                     </svg>
                                 ) : (
 
-                                    <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
-                                    </svg>
+                                    <FaBars />
                                 )
                                 }
                             </button>

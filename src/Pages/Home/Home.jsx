@@ -26,7 +26,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
-        <div className='lg:mx-20'>
+        <div className='lg:mx-20 mx-2'>
             <Helmet>
                 <title>Home | EasyStore</title>
             </Helmet>

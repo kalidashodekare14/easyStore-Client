@@ -16,7 +16,7 @@ const Contact = () => {
     };
 
     return (
-        <div className='lg:mx-20'>
+        <div className='lg:mx-20 mx-2'>
             <Helmet>
                 <title>Context | EasyStore</title>
             </Helmet>

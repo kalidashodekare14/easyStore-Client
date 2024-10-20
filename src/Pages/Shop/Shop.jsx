@@ -103,7 +103,7 @@ const Shop = () => {
 
 
     return (
-        <div className='lg:mx-20 my-10'>
+        <div className='lg:mx-20 mx-2 my-10'>
             <Helmet>
                 <title>Shop | EasyStore</title>
             </Helmet>

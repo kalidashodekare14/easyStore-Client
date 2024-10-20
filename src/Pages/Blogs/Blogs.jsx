@@ -14,7 +14,7 @@ const Blogs = () => {
 
 
     return (
-        <div className='min-h-screen lg:mx-20 my-20'>
+        <div className='min-h-screen lg:mx-20 mx-2 my-20'>
             <Helmet>
                 <title>Blogs | EasyStore</title>
             </Helmet>

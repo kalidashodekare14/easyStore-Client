@@ -22,7 +22,7 @@ const About = () => {
 
 
     return (
-        <div className='lg:mx-20'>
+        <div className='lg:mx-20 mx-2'>
             <Helmet>
                 <title>About | EasyStore</title>
             </Helmet>
