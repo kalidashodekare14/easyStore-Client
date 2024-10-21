@@ -52,7 +52,10 @@ const Dashboard = () => {
                 console.log(error.message)
             })
 
-        const socket = io('https://easy-store-server.vercel.app')
+        const socket = io('https://easy-store-server.vercel.app', {
+            transports: ['websocket', 'polling'], 
+            withCredentials: true
+        })
 
         socket.on('newUser', (notification) => {
             setNotifications(prev => [notification, ...prev])

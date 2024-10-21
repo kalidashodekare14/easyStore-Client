@@ -138,7 +138,7 @@ const BlogPost = () => {
                 </div>
                 <form className='h-[600px] border rounded-2xl' onSubmit={handleSubmitContent}>
                     <Editor
-                        apiKey={import.meta.env.VITE_CONTENT_EDITOR_API_KEY}
+                        apiKey="g04zgo8n91eh1cj4bup7lu8p5hoe507cqy0su94hw8uj0m99"
                         initialValue='<p>Hello, World</p>'
                         init={{
                             height: 600,
