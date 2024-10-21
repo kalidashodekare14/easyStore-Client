@@ -53,7 +53,7 @@ const Dashboard = () => {
             })
 
         const socket = io('https://easy-store-server.vercel.app', {
-            transports: ['websocket', 'polling'], 
+            transports: ['polling'], 
             withCredentials: true
         })
 
