@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const axiosPublic = axios.create({
-    baseURL: "https://easy-store-server.vercel.app"
+    baseURL: "https://easystore-server-production.up.railway.app"
 })
 
 const useAxiosPublic = () => {
