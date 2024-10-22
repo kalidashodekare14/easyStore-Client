@@ -95,7 +95,7 @@ const BlogPost = () => {
                 <title>Blog Post | EasyStore</title>
             </Helmet>
             <div>
-                <div className='flex justify-between items-center my-5'>
+                <div className='flex flex-col lg:flex-row gap-5 justify-between items-center my-5'>
                     <div className=''>
                         <input onChange={(e) => setBlogTitle(e.target.value)} className='w-96 input input-bordered' placeholder='Blog Title' type="text" />
                     </div>
@@ -138,8 +138,7 @@ const BlogPost = () => {
                 </div>
                 <form className='h-[600px] border rounded-2xl' onSubmit={handleSubmitContent}>
                     <Editor
-                        apiKey="g04zgo8n91eh1cj4bup7lu8p5hoe507cqy0su94hw8uj0m99"
-                        initialValue='<p>Hello, World</p>'
+                        apiKey={import.meta.env.VITE_CONTENT_EDITOR_API_KEY}
                         init={{
                             height: 600,
                             plugins: [
