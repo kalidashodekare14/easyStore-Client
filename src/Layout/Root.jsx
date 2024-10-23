@@ -9,7 +9,7 @@ const Root = () => {
     const location = useLocation()
     console.log(location.pathname)
 
-    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('register')
+    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('register') || location.pathname.includes('payment-success')
 
     return (
         <div>
