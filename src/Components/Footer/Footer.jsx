@@ -92,22 +92,10 @@ const Footer = () => {
                     </div>
                 </nav>
             </footer>
-            <footer className="p-5">
-                <div className="flex justify-between items-center">
-                    <h1>Copyright 2024 © Jinstore WooCommerce WordPress Theme. All right reserved. Powered by BlackRise Themes.</h1>
-                    <ul className="flex items-center link gap-2">
-                        <li>Terms and Conditions</li>
-                        <li>Privacy Policy</li>
-                        <li>Order Tracking</li>
-                    </ul>
-                </div>
-                <div className="flex items-center gap-3 my-5">
-                    <img src={pIcon1} alt="" />
-                    <img src={pIcon2} alt="" />
-                    <img src={pIcon3} alt="" />
-                    <img src={pIcon4} alt="" />
-                    <img src={pIcon5} alt="" />
-                </div>
+            <footer className="footer footer-center bg-base-300 text-base-content p-4">
+                <aside>
+                    <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+                </aside>
             </footer>
         </div>
     );
