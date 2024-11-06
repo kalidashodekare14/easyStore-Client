@@ -1,141 +1,113 @@
-import { CiLocationOn } from 'react-icons/ci';
-import logo from '/logo.png'
-import { FiPhoneCall } from 'react-icons/fi';
-import { SiMinutemailer } from 'react-icons/si';
-import { IoIosTimer } from 'react-icons/io';
-import img from '../../assets/play1.png'
-import img1 from '../../assets/play2.png'
-import img3 from '../../assets/payment.png'
-import { IoCallOutline } from 'react-icons/io5';
-import { FaFacebook, FaFacebookF, FaInstagram, FaPinterest, FaTwitter, FaYoutube } from "react-icons/fa";
+import { MdOutlineWifiCalling } from "react-icons/md";
+import { IoMailOutline } from "react-icons/io5";
+import paymentIcon from '../../assets/play1.png'
+import paymentIcon1 from '../../assets/play2.png'
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import pIcon1 from '../../assets/payemnt/1.png'
+import pIcon2 from '../../assets/payemnt/2.png'
+import pIcon3 from '../../assets/payemnt/3.png'
+import pIcon4 from '../../assets/payemnt/4.png'
+import pIcon5 from '../../assets/payemnt/5.png'
 
 const Footer = () => {
     return (
         <div>
-            <footer className="footer bg-base-200 text-base-content p-10 lg:px-20">
-                <nav className='space-y-3'>
-                    <img src={logo} alt="" />
-                    <a className="link link-hover text-[16px] font-medium">Awesome grocery store website
-                        template</a>
-                    <div className='flex gap-2 font-[700] text-[#253D4E]'>
-                        <CiLocationOn className='text-[#3BB77E] text-xl font-medium' />
-                        <p className='w-52'>Address: 5171 W Campbell Ave undefined Kent, Utah 53127 United States</p>
+            <footer className="footer bg-base-200 text-base-content p-10">
+                <aside>
+                    <h1 className='font-bold'>Do You Need Help ?</h1>
+                    <p className='w-80'>Autoseligen syr. Nek diarask fröbomba. Nör
+                        antipol kynoda nynat. Pressa fåmoska.</p>
+                    <div className="space-y-7 mt-7">
+                        <div className="flex items-center gap-5">
+                            <MdOutlineWifiCalling className="text-3xl" />
+                            <div>
+                                <p>Monday-Friday: 08am-9pm</p>
+                                <h1 className="text-2xl font-bold">0 854 785-562</h1>
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-5">
+                            <IoMailOutline className="text-3xl" />
+                            <div>
+                                <p>Need help with your order?</p>
+                                <h1 className="text-[16px] font-bold">quickshop@gmail.com</h1>
+                            </div>
+                        </div>
                     </div>
-                    <div className='flex gap-2 font-[700] text-[#253D4E]'>
-                        <FiPhoneCall className='text-[#3BB77E] text-xl font-medium' />
-                        <p className='w-52'>Call Us:(+91) - 540-025-124553</p>
-                    </div>
-                    <div className='flex gap-2 font-[700] text-[#253D4E]'>
-                        <SiMinutemailer className='text-[#3BB77E] text-xl font-medium' />
-                        <p className='w-52'>easyshop@gmail.com</p>
-                    </div>
-                    <div className='flex gap-2 font-[700] text-[#253D4E]'>
-                        <IoIosTimer className='text-[#3BB77E] text-xl font-medium' />
-                        <p className='w-52'>Hours:10:00 - 18:00, Mon - Sat</p>
-                    </div>
+                </aside>
+                <nav>
+                    <h6 className="uppercase font-[600]">Make Money with Us</h6>
+                    <a className="link link-hover">Sell on Grogin</a>
+                    <a className="link link-hover">Sell Your Services on Grogin</a>
+                    <a className="link link-hover">Sell on Grogin Business</a>
+                    <a className="link link-hover">Sell Your Apps on Grogin</a>
+                    <a className="link link-hover">Become an Affilate</a>
+                    <a className="link link-hover">Advertise Your Products</a>
+                    <a className="link link-hover">Sell-Publish with Us</a>
+                    <a className="link link-hover">Become an Blowwe Vendor</a>
                 </nav>
-                <nav className='space-y-2'>
-                    <h6 className="footer-title text-xl">Company</h6>
-                    <a className="link link-hover text-[15px]">About us</a>
-                    <a className="link link-hover text-[15px]">Delivery Information</a>
-                    <a className="link link-hover text-[15px]">Privacy Policy</a>
-                    <a className="link link-hover text-[15px]">Terms & Conditions</a>
-                    <a className="link link-hover text-[15px]">Contact Us</a>
-                    <a className="link link-hover text-[15px]">Support Center</a>
-                    <a className="link link-hover text-[15px]">Careers</a>
+                <nav>
+                    <h6 className="uppercase font-[600]">Let Us Help You</h6>
+                    <a className="link link-hover">Accessibility Statement</a>
+                    <a className="link link-hover">Your Orders</a>
+                    <a className="link link-hover">Returns & Replacements</a>
+                    <a className="link link-hover">Shipping Rates & Policies</a>
+                    <a className="link link-hover">Refund and Returns Policy</a>
+                    <a className="link link-hover">Privacy Policy</a>
+                    <a className="link link-hover">Terms and Conditions</a>
+                    <a className="link link-hover">Cookie Settings</a>
+                    <a className="link link-hover">Help Center</a>
                 </nav>
-                <nav className='space-y-2'>
-                    <h6 className="footer-title text-xl">Account</h6>
-                    <a className="link link-hover text-[15px]">Sign In</a>
-                    <a className="link link-hover text-[15px]">View Cart</a>
-                    <a className="link link-hover text-[15px]">My Wishlist</a>
-                    <a className="link link-hover text-[15px]">Track My Order</a>
-                    <a className="link link-hover text-[15px]">Help Ticket</a>
-                    <a className="link link-hover text-[15px]">Shipping Details</a>
-                    <a className="link link-hover text-[15px]">Compare products</a>
+                <nav>
+                    <h6 className="uppercase font-[600]">Get to Know Us</h6>
+                    <a className="link link-hover">Careers for Grogin</a>
+                    <a className="link link-hover">About Grogin</a>
+                    <a className="link link-hover">Inverstor Relations</a>
+                    <a className="link link-hover">Grogin Devices</a>
+                    <a className="link link-hover">Customer reviews</a>
+                    <a className="link link-hover">Social Responsibility</a>
+                    <a className="link link-hover">Store Locations</a>
                 </nav>
-                <nav className='space-y-2'>
-                    <h6 className="footer-title text-xl">Corporate</h6>
-                    <a className="link link-hover text-[15px]">Become a Vendor</a>
-                    <a className="link link-hover text-[15px]">Affiliate Program</a>
-                    <a className="link link-hover text-[15px]">Farm Business</a>
-                    <a className="link link-hover text-[15px]">Farm Careers</a>
-                    <a className="link link-hover text-[15px]">Our Suppliers</a>
-                    <a className="link link-hover text-[15px]">Accessibility</a>
-                    <a className="link link-hover text-[15px]">Promotions</a>
-                </nav>
-                <nav className='space-y-2'>
-                    <h6 className="footer-title text-xl">Popular</h6>
-                    <a className="link link-hover text-[15px]">Milk & Flavoured Milk</a>
-                    <a className="link link-hover text-[15px]">Butter and Margarine</a>
-                    <a className="link link-hover text-[15px]">Eggs Substitutes</a>
-                    <a className="link link-hover text-[15px]">Marmalades</a>
-                    <a className="link link-hover text-[15px]">Sour Cream and Dips</a>
-                    <a className="link link-hover text-[15px]">Tea & Kombucha</a>
-                    <a className="link link-hover text-[15px]">Cheese</a>
-                </nav>
-                <nav className='space-y-6'>
+                <nav>
+                    <h6 className="uppercase font-[600]">Get to Know Us</h6>
                     <div>
-                        <h6 className="footer-title text-xl">Install App</h6>
-                        <a className="link link-hover text-[15px]">From App Store or Google Play</a>
+                        <img src={paymentIcon} alt="" />
+                        <img src={paymentIcon1} alt="" />
                     </div>
-                    <div className='flex items-center'>
-                        <img src={img} alt="" />
-                        <img src={img1} alt="" />
-                    </div>
-                    <div className='space-y-5'>
-                        <h1 className='text-[18px]'>Secured Payment Gateways</h1>
-                        <img src={img3} alt="" />
+                    <div>
+                        <p className="text-[18px]">Follow us on social media:</p>
+                        <div className="flex items-center gap-3 my-5">
+                            <div className="bg-white w-10 h-10 flex justify-center items-center text-2xl text-[#1877f2] rounded-md shadow">
+                                <FaFacebookF />
+                            </div>
+                            <div className="bg-white w-10 h-10 flex justify-center items-center text-2xl text-[#1da1f2] rounded-md shadow">
+                                <FaTwitter />
+                            </div>
+                            <div className="bg-white w-10 h-10 flex justify-center items-center text-2xl text-[#fd2b2b] rounded-md shadow">
+                                <FaInstagram />
+                            </div>
+                            <div className="bg-white w-10 h-10 flex justify-center items-center text-2xl text-[#0077b5] rounded-md shadow">
+                                <FaLinkedinIn />
+                            </div>
+                        </div>
                     </div>
                 </nav>
             </footer>
-            <footer className="lg:px-20 p-2 footer bg-base-200 text-base-content border-base-300 border-t py-4">
-                <aside className="grid-flow-col items-center">
-
-                    <p className='w-80 text-[16px]'>2022, Nest - HTML Ecommerce Template
-                        All rights reserved</p>
-                </aside>
-                <div className='flex items-center gap-5'>
-                    <div className='flex items-center gap-3'>
-                        <IoCallOutline className='text-2xl' />
-                        <div>
-                            <h1 className='text-2xl font-bold text-[#3bb77e]'>1900 - 6666</h1>
-                            <p>Working 8:00 - 22:00</p>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-3'>
-                        <IoCallOutline className='text-2xl' />
-                        <div>
-                            <h1 className='text-2xl font-bold text-[#3bb77e]'>1900 - 8888</h1>
-                            <p>24/7 Support Center</p>
-                        </div>
-                    </div>
+            <footer className="p-5">
+                <div className="flex justify-between items-center">
+                    <h1>Copyright 2024 © Jinstore WooCommerce WordPress Theme. All right reserved. Powered by BlackRise Themes.</h1>
+                    <ul className="flex items-center link gap-2">
+                        <li>Terms and Conditions</li>
+                        <li>Privacy Policy</li>
+                        <li>Order Tracking</li>
+                    </ul>
                 </div>
-                <nav className="md:place-self-center md:justify-self-end">
-                    <div>
-                        <div className='flex items-center gap-3'>
-                            <h1>Follow Us</h1>
-                            <div className='bg-[#3bb77e] text-white w-8 h-8 flex justify-center items-center  border rounded-full'>
-                                <FaFacebook></FaFacebook>
-                            </div>
-                            <div className='bg-[#3bb77e] text-white  w-8 h-8 flex justify-center items-center  border rounded-full'>
-                                <FaTwitter></FaTwitter>
-                            </div>
-                            <div className='bg-[#3bb77e] text-white  w-8 h-8 flex justify-center items-center  border rounded-full'>
-                                <FaInstagram></FaInstagram>
-                            </div>
-                            <div className='bg-[#3bb77e] text-white w-8 h-8 flex justify-center items-center  border rounded-full'>
-                                <FaPinterest></FaPinterest>
-                            </div>
-                            <div className='bg-[#3bb77e] text-white w-8 h-8 flex justify-center items-center  border rounded-full'>
-                                <FaYoutube></FaYoutube>
-                            </div>
-                        </div>
-                        <div>
-                            <h1>Up to 15% discount on your first subscribe</h1>
-                        </div>
-                    </div>
-                </nav>
+                <div className="flex items-center gap-3 my-5">
+                    <img src={pIcon1} alt="" />
+                    <img src={pIcon2} alt="" />
+                    <img src={pIcon3} alt="" />
+                    <img src={pIcon4} alt="" />
+                    <img src={pIcon5} alt="" />
+                </div>
             </footer>
         </div>
     );
