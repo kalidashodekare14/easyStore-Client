@@ -56,10 +56,13 @@ const Login = () => {
                     <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
                         <div>
 
-                            <input {...register("email")} className='input input-bordered w-full' placeholder='Your Name or Email' type="email" />
+                            <input {...register("email", { required: true })} className={`input input-bordered w-full ${errors.email && 'border-red-500 focus:outline-red-500'}`} placeholder='Your Name or Email' type="email" />
+                            {errors.email && <span className='text-red-500'>This field is required</span>}
+
                         </div>
                         <div>
-                            <input {...register("password")} className='input input-bordered w-full' placeholder='Password' type="password" />
+                            <input {...register("password", { required: true })} className={`input input-bordered w-full ${errors.email && 'border-red-500 focus:outline-red-500'}`} placeholder='Password' type="password" />
+                            {errors.password && <span className='text-red-500'>This field is required</span>}
                         </div>
                         <div>
                             <button className='btn w-full bg-[#3bb77e] text-white' type='submit'>Login</button>

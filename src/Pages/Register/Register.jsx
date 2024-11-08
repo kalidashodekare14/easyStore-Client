@@ -16,6 +16,7 @@ const Register = () => {
     const axiosPublic = useAxiosPublic()
     const [phone, setPhone] = useState("")
     const navigate = useNavigate()
+    const [isRequired, setIsRequired] = useState('')
 
     const {
         register,
@@ -25,6 +26,10 @@ const Register = () => {
     } = useForm()
 
     const onSubmit = (data) => {
+        if (!phone) {
+            return setIsRequired("Please enter the number")
+        }
+
         console.log(data, phone)
         registerSystem(data.email, data.password)
             .then(res => {
@@ -102,12 +107,13 @@ const Register = () => {
                     <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
                         <div className='flex flex-col space-y-2'>
                             <label>Email</label>
-                            <input {...register("email")} className='input input-bordered' placeholder='Your Email' type="email" />
+                            <input {...register("email", { required: true })} className={`input input-bordered ${errors.email && 'border-red-500 focus:outline-red-500'}`} placeholder='Your Email' type="email" />
+                            {errors.email && <span className='text-red-500'>This field is required</span>}
                         </div>
                         <div className='flex flex-col space-y-2'>
                             <label>Phone</label>
                             <div>
-                                <div>
+                                <div className={`border rounded-lg ${isRequired && 'border-red-500'}`}>
                                     <PhoneInput
                                         country={'us'}
                                         value={phone}
@@ -118,11 +124,13 @@ const Register = () => {
                                         }}
                                     />
                                 </div>
+                                <span className='text-red-500'>{isRequired}</span>
                             </div>
                         </div>
                         <div className='flex flex-col space-y-2'>
                             <label>Create Password</label>
-                            <input {...register("password")} className='input input-bordered' placeholder='Your Password' type="password" />
+                            <input {...register("password", { required: true })} className={`input input-bordered ${errors.password && 'border-red-500 focus:outline-red-500'}`} placeholder='Your Password' type="password" />
+                            {errors.password && <span className='text-red-500'>This field is required</span>}
                         </div>
                         <div>
                             <button className='btn w-full bg-[#3bb77e] text-white' type='submit'>Sign Up</button>

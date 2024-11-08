@@ -134,7 +134,7 @@ const CartCheckout = () => {
                                             <td>{item.name}</td>
                                             <td>${item.price}</td>
                                             <td>
-                                                <div>
+                                                <div className='flex items-center'>
                                                     <button onClick={() => updateItemQuantity(item.id, Math.max(1, item.quantity - 1))} className='btn'>-</button>
                                                     <input value={item.quantity} className='input input-bordered w-12' type="text" />
                                                     <button onClick={() => updateItemQuantity(item.id, item.quantity + 1)} className='btn'>+</button>
