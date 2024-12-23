@@ -20,6 +20,8 @@ Easystore is an e-commerce platform designed to provide users with a seamless sh
 
 - Users can filter products by categories, brands, or price ranges using an intuitive interface. The filtering system is dynamic and responsive, ensuring a seamless shopping experience.
 
+- I have implemented a checkout system in the EasyStore project using the react-use-cart package. This feature simplifies the product checkout process, making it easier and more convenient for customers to complete their purchases.
+
 - Easystore includes a secure and efficient payment system using SSLCommerz, allowing users to complete transactions seamlessly while purchasing products. This ensures safety and reliability during the checkout process.
 
 - The admin dashboard allows administrators to manage the entire store, including:
