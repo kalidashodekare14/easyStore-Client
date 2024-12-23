@@ -1,5 +1,5 @@
 
-# Precision medical camp
+# EasyStore
 
 
 
@@ -9,20 +9,25 @@
 #### Password: kalidashOdekare14@#
 
 
-## 🔗 Live Link: [precision medical camp](https://precision-medical-camp.web.app)
+## 🔗 Live Link: [EasyStore](https://easystore-9fd6e.web.app)
 
 ## Overview
-This is a Medical Management camp website. Participants can visit this website and take any camp service. Those who are affected by various diseases on this website can come here and cure the disease with the services.
+Easystore is an e-commerce platform designed to provide users with a seamless shopping experience. It offers a user-friendly interface, a robust product categorization system, and efficient filtering options to make online shopping convenient and intuitive.
 
 
 
 ## Features
 
-- This website has a dashboard. And Organizer and Participant have been implemented. Here Organizer can control it.
+- Users can filter products by categories, brands, or price ranges using an intuitive interface. The filtering system is dynamic and responsive, ensuring a seamless shopping experience.
 
-- Here Organizer can control everything and add camp. And can manage that camp. The camps that have been added can be seen in the Available Camps. And Participant can join those camps.
+- Easystore includes a secure and efficient payment system using SSLCommerz, allowing users to complete transactions seamlessly while purchasing products. This ensures safety and reliability during the checkout process.
 
-- Organizer can see if any Participant joins the camp. And if the Participant pays then he can confirm.
+- The admin dashboard allows administrators to manage the entire store, including:
+
+1. Product Management: Add, edit, or remove products.
+2. Order History: View and manage customer orders.
+3. Analytics: Track Total Revenue, Total Customers, and Total Orders for business insights.
+4. Full Control: Admins have full control over products, orders, and store settings, ensuring efficient management.
 
 ## Technologies
 [![My Skills](https://skillicons.dev/icons?i=react,tailwind,nodejs,express,mongodb)](https://skillicons.dev)
