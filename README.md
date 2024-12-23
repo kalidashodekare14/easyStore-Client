@@ -23,11 +23,10 @@ Easystore is an e-commerce platform designed to provide users with a seamless sh
 - Easystore includes a secure and efficient payment system using SSLCommerz, allowing users to complete transactions seamlessly while purchasing products. This ensures safety and reliability during the checkout process.
 
 - The admin dashboard allows administrators to manage the entire store, including:
-
-1. Product Management: Add, edit, or remove products.
-2. Order History: View and manage customer orders.
-3. Analytics: Track Total Revenue, Total Customers, and Total Orders for business insights.
-4. Full Control: Admins have full control over products, orders, and store settings, ensuring efficient management.
+  1. Product Management: Add, edit, or remove products.
+  2. Order History: View and manage customer orders.
+  3. Analytics: Track Total Revenue, Total Customers, and Total Orders for business insights.
+  4. Full Control: Admins have full control over products, orders, and store settings, ensuring efficient management.
 
 ## Technologies
 [![My Skills](https://skillicons.dev/icons?i=react,tailwind,nodejs,express,mongodb)](https://skillicons.dev)
