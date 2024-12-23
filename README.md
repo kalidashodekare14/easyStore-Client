@@ -4,8 +4,9 @@
 
 
 
-## 👤  Organizer
+## 👤  Admin
 #### Username: Kalidash Odekare
+#### Email: kalidashodekare14@gmail.com
 #### Password: kalidash14
 
 
