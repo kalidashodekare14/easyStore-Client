@@ -4,7 +4,7 @@
 
 
 
-## 👤  Organizers
+## 👤  Organizer
 #### Username: Kalidash Odekare
 #### Password: kalidash14
 
