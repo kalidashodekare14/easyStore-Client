@@ -29,6 +29,8 @@ const Shop = () => {
     const [toggleSidebar, setToggleSidebar] = useState(false)
 
 
+    console.log(allProduct)
+
     const handleToggleSidebar = () => {
         setToggleSidebar(!toggleSidebar)
     }
@@ -117,6 +119,7 @@ const Shop = () => {
                             </div>
                             <div className='mt-5'>
                                 <RangeSlider
+                                    
                                     min={0}
                                     max={1000}
                                     step={10}
@@ -218,7 +221,7 @@ const Shop = () => {
                         <div className='w-72'>
                             <input onChange={(e) => setSearchName(e.target.value)} className='input input-bordered w-full' placeholder='Search Here' type="text" />
                         </div>
-                        <div className='space-x-5 flex'>
+                        <div className='space-x-5 flex w-full'>
                             {/* <Select
                             className='w-full'
                             placeholder="Select sort order"
@@ -239,8 +242,8 @@ const Shop = () => {
                         {
                             shortedProduct.map(product => (
                                 <div key={product._id} className=' border space-y-2 rounded-2xl'>
-                                    <div className='flex justify-center items-center bg-[#f74b81] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
-                                        <p>Hot</p>
+                                    <div className='flex justify-center items-center bg-[#60bf91] text-white border w-16 h-9 rounded-tl-2xl rounded-br-2xl'>
+                                        <p>${product.price}</p>
                                     </div>
                                     <div className='p-5 flex flex-col justify-center gap-2'>
                                         <img className='h-32' src={product.image[0]} alt="" />
