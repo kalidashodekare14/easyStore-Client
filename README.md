@@ -6,7 +6,7 @@
 
 ## 👤  Organizers
 #### Username: Kalidash Odekare
-#### Password: kalidashOdekare14@#
+#### Password: kalidash14
 
 
 ## 🔗 Live Link: [EasyStore](https://easystore-9fd6e.web.app)
