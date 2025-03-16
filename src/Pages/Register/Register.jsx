@@ -9,6 +9,7 @@ import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { Helmet } from 'react-helmet-async';
+import { RotatingLines } from 'react-loader-spinner';
 
 const Register = () => {
 
@@ -17,6 +18,7 @@ const Register = () => {
     const [phone, setPhone] = useState("")
     const navigate = useNavigate()
     const [isRequired, setIsRequired] = useState('')
+    const [registerLoading, setRegisterLoading] = useState(false)
 
     const {
         register,
@@ -25,26 +27,25 @@ const Register = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => {
-        if (!phone) {
-            return setIsRequired("Please enter the number")
-        }
+    const onSubmit = async (data) => {
+        try {
+            if (!phone) {
+                return setIsRequired("Please enter the number")
+            }
 
-        console.log(data, phone)
-        registerSystem(data.email, data.password)
-            .then(res => {
-                console.log(res.data)
-
-                const info = {
-                    email: data.email,
-                    password: data.password,
-                    mobile: phone
-                }
-
-                axiosPublic.post("/user-register", info)
-                    .then(res => {
+            console.log(data, phone)
+            registerSystem(data.email, data.password)
+                .then(async (res) => {
+                    try {
+                        setRegisterLoading(true)
                         console.log(res.data)
-                        if (res.data.result.insertedId) {
+                        const info = {
+                            email: data.email,
+                            password: data.password,
+                            mobile: phone
+                        }
+                        const resiterRes = await axiosPublic.post("/user-register", info)
+                        if (resiterRes.data.result.insertedId) {
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
@@ -55,15 +56,18 @@ const Register = () => {
                             navigate("/")
                         }
 
-                    })
-                    .catch(error => {
-                        console.log(error.message)
-                    })
-
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
+                    } catch (error) {
+                        console.log(error)
+                    } finally {
+                        setRegisterLoading(false)
+                    }
+                })
+                .catch(error => {
+                    console.log(error.message)
+                })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const handleGoogleRegister = () => {
@@ -133,7 +137,26 @@ const Register = () => {
                             {errors.password && <span className='text-red-500'>This field is required</span>}
                         </div>
                         <div>
-                            <button className='btn w-full bg-[#3bb77e] text-white' type='submit'>Sign Up</button>
+                            <button className='btn w-full bg-[#3bb77e] text-white' type='submit'>
+                                {
+                                    registerLoading ? (
+                                        <RotatingLines
+                                            visible={true}
+                                            height="30"
+                                            width="30"
+                                            color=""
+                                            strokeColor="white"
+                                            strokeWidth="5"
+                                            animationDuration="0.75"
+                                            ariaLabel="rotating-lines-loading"
+                                            wrapperStyle={{}}
+                                            wrapperClass=""
+                                        />
+                                    ) : (
+                                        "Sign Up"
+                                    )
+                                }
+                            </button>
                         </div>
                     </form>
                     <p className='text-center '>or sign up with</p>

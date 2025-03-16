@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { useState } from 'react';
+import { RotatingLines } from 'react-loader-spinner';
 
 const Login = () => {
 
@@ -15,6 +16,9 @@ const Login = () => {
     const navigate = useNavigate()
     const axiosPublic = useAxiosPublic()
     const [isRequired, setIsRequired] = useState("")
+    const [loginLoading, setLoginLoading] = useState(false)
+
+    console.log('loading checking', loginLoading)
 
     const {
         register,
@@ -24,38 +28,34 @@ const Login = () => {
     } = useForm()
 
 
-    const onSubmit = (data) => {
-        console.log(data)
+    const onSubmit = async (data) => {
+        try {
+            setLoginLoading(true)
+            console.log(data)
+            const dataInfo = {
+                email: data.email,
+                password: data.password
+            }
+            loginSystem(data.email, data.password)
+                .then(async (res) => {
+                    try {
+                        setLoginLoading(true)
+                        const loginRes = await axiosPublic.get('/login-matched', { params: dataInfo })
+                        console.log(loginRes.data)
+                        navigate("/")
+                    } catch (error) {
+                        console.log(error)
+                    } finally {
+                        setLoginLoading(false)
+                    }
 
-        const dataInfo = {
-            email: data.email,
-            password: data.password
+                })
+                .catch(error => {
+                    console.log(error.message)
+                })
+        } catch (error) {
+            console.log(error)
         }
-        axiosPublic.get('/login-matched', { params: dataInfo })
-            .then(res => {
-                console.log(res.data)
-
-                if (res.data.email === true && res.data.password === false) {
-                    return setIsRequired("Your password is incorrect")
-                }
-                if (data.password.length > 0) {
-                    setIsRequired("")
-                }
-
-                if (res.data.email && res.data.password) {
-                    loginSystem(data.email, data.password)
-                        .then(res => {
-                            console.log(res.data)
-                            navigate("/")
-                        })
-                        .catch(error => {
-                            console.log(error.message)
-                        })
-                }
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
 
 
 
@@ -94,7 +94,26 @@ const Login = () => {
                             <span className='text-red-500'>{isRequired}</span>
                         </div>
                         <div>
-                            <button className='btn w-full bg-[#3bb77e] text-white' type='submit'>Login</button>
+                            <button className='btn w-full bg-[#3bb77e] text-white' type='submit'>
+                                {
+                                    loginLoading ? (
+                                        <RotatingLines
+                                            visible={true}
+                                            height="30"
+                                            width="30"
+                                            color=""
+                                            strokeColor="white"
+                                            strokeWidth="5"
+                                            animationDuration="0.75"
+                                            ariaLabel="rotating-lines-loading"
+                                            wrapperStyle={{}}
+                                            wrapperClass=""
+                                        />
+                                    ) : (
+                                        "Login"
+                                    )
+                                }
+                            </button>
                         </div>
                     </form>
                     <p className='text-center '>or sign up with</p>
