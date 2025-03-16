@@ -60,7 +60,7 @@ const Home = () => {
             {/* Deals Of Day */}
             <DealsOfDay></DealsOfDay>
             {/* Product Review */}
-            <ProductReview></ProductReview>
+            {/* <ProductReview></ProductReview> */}
             <div className="my-10 subscribe-banner h-[300px] bg-center bg-no-repeat bg-cover">
                 <div className='lg:w-96 space-y-3 flex flex-col justify-center h-[300px] lg:mx-10 mx-5'>
                     <h1 className='text-3xl font-bold'>Stay home & get your daily

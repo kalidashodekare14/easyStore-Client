@@ -52,7 +52,7 @@ const Dashboard = () => {
                 console.log(error.message)
             })
 
-        const socket = io('https://easystore-server-production.up.railway.app', {
+        const socket = io('https://easy-store-server-zh6b.vercel.app', {
             transports: ['polling'], 
             withCredentials: true
         })

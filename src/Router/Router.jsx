@@ -49,12 +49,12 @@ const router = createBrowserRouter([
             {
                 path: '/blogs_details/:id',
                 element: <BlogDetails></BlogDetails>,
-                loader: ({ params }) => fetch(`https://easystore-server-production.up.railway.app/blog-details/${params.id}`)
+                loader: ({ params }) => fetch(`https://easy-store-server-zh6b.vercel.app/blog-details/${params.id}`)
             },
             {
                 path: '/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://easystore-server-production.up.railway.app/prodcut_details/${params.id}`)
+                loader: ({ params }) => fetch(`https://easy-store-server-zh6b.vercel.app/prodcut_details/${params.id}`)
             },
             {
                 path: '/about',
